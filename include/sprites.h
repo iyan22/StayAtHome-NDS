@@ -20,8 +20,10 @@ extern void guardarSpritesEnMemoria();
 
 /* Funciones específicas para manejar los sprites. */
 
-extern void MostrarRombo(int indice, int x, int y);
-extern void BorrarRombo(int indice, int x, int y);
+extern void MostrarSpray(int indice, int x, int y);
+extern void BorrarSpray(int indice, int x, int y);
+extern void MostrarPersona(int indice, int x, int y);
+extern void BorrarPersona(int indice, int x, int y);
 
 extern void MostrarRomboGrande(int x, int y);
 extern void BorrarRomboGrande(int x, int y);
