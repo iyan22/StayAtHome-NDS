@@ -12,6 +12,7 @@ dovoto y otro de Jaeden Amero
 
 u16* gfxRombo;
 u16* gfxSpray;
+u16* gfxPersona;
 u16* gfxRomboGrande;
 
 
@@ -24,6 +25,7 @@ void initSpriteMem() {
 
 	gfxRombo =    oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 	gfxSpray =    oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	gfxPersona =    oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 	gfxRomboGrande = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 
 }
@@ -47,18 +49,18 @@ void establecerPaletaPrincipal() {
    SPRITE_PALETTE[10] = RGB15(25,25,25); // GRIS CLARO:     RGB24={D0,D0,D0}
    SPRITE_PALETTE[11] = RGB15(8,8,8);    // GRIS OSCURO:    RGB24={40,40,40}
    SPRITE_PALETTE[12] = RGB15(31,19,0);  // NARANJA:        RGB24={FF,99,00}
-   SPRITE_PALETTE[13] = RGB15(19,0,4);   // GRANATE:        RGB24={99,00,21}
-   SPRITE_PALETTE[14] = RGB15(25,0,0);   // MARRON:         RGB24={66,00,00}
+   SPRITE_PALETTE[13] = RGB15(27,3,0);   // ROJO v2
+   SPRITE_PALETTE[14] = RGB15(12,9,8);   // MARRON
    SPRITE_PALETTE[15] = RGB15(16,0,16);  // MORADO:         RGB24={80,00,80}
    SPRITE_PALETTE[16] = RGB15(25,19,31); // LILA:           RGB24={CC,99,FF}
    SPRITE_PALETTE[17] = RGB15(31,19,25); // ROSA:           RGB24={FF,99,CC}
-   SPRITE_PALETTE[18] = RGB15(0,18,29); // AZUL CLARO:     RGB24={BB,FF,FF}
+   SPRITE_PALETTE[18] = RGB15(0,18,29);  // AZUL CLARO
    SPRITE_PALETTE[19] = RGB15(0,0,16);   // AZUL MARINO:    RGB24={00,00,80}
    SPRITE_PALETTE[20] = RGB15(0,16,16);  // VERDE AZULADO:  RGB24={00,80,80}
    SPRITE_PALETTE[21] = RGB15(0,12,0);   // VERDE OSCURO:   RGB24={00,66,00}
    SPRITE_PALETTE[22] = RGB15(16,16,0);  // VERDE OLIVA:    RGB24={80,80,00}
    SPRITE_PALETTE[23] = RGB15(19,31,19); // VERDE CLARO:    RGB24={99,FF,99}
-   SPRITE_PALETTE[24] = RGB15(31,31,19); // AMARILLO CLARO: RGB24={FF,FF,99}
+   SPRITE_PALETTE[24] = RGB15(31,27,25); // CARNE/PIEL
 }
 
 
@@ -114,6 +116,25 @@ u8 Spray[256] =
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 };
 
+u8 Persona[256] = 
+{
+	0, 0, 0, 0, 14, 14, 14, 14, 0, 0, 0, 14, 14, 14, 14, 14, 
+	0, 0, 14, 14, 14, 24, 24, 24, 0, 0, 14, 14, 24, 3, 3, 24, 
+	0, 0, 14, 14, 24, 3, 6, 24, 0, 0, 14, 14, 24, 24, 24, 24, 
+	0, 0, 14, 14, 24, 24, 24, 6, 0, 0, 0, 14, 24, 24, 24, 24, 
+	14, 14, 14, 14, 0, 0, 0, 0, 14, 14, 14, 14, 14, 0, 0, 0, 
+	24, 24, 24, 14, 14, 14, 0, 0, 24, 3, 3, 24, 14, 14, 0, 0, 
+	24, 3, 6, 24, 14, 14, 0, 0, 24, 24, 24, 24, 14, 14, 0, 0, 
+	6, 24, 24, 24, 14, 14, 0, 0, 24, 24, 24, 24, 14, 0, 0, 0, 
+	0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 
+	0, 0, 0, 0, 1, 13, 13, 13, 0, 0, 0, 0, 1, 1, 1, 1, 
+	0, 0, 0, 0, 1, 1, 1, 13, 0, 0, 0, 0, 1, 1, 1, 1, 
+	0, 0, 0, 0, 1, 13, 13, 13, 0, 0, 0, 0, 1, 1, 1, 1, 
+	1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 
+	13, 13, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 
+	13, 13, 13, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 
+	1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 
+};
 
 
 /* Dibujado de un Sprite de 32x32 pixels */
@@ -228,6 +249,42 @@ oamSet(&oamMain, //main graphics engine context
 	oamUpdate(&oamMain);  
 }
 
+void BorrarPersona(int indice, int x, int y) {
+oamSet(&oamMain, //main graphics engine context
+	indice,  //oam index (0 to 127)  
+	x, y,    //x and y pixle location of the sprite
+	0,       //priority, lower renders last (on top)
+	0,       //this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxPersona,//+16*16/2, 	//pointer to the loaded graphics
+	-1,                  	//sprite rotation data  
+	false,               	//double the size when rotating?
+	true,			//hide the sprite?
+	false, false, 		//vflip, hflip
+	false			//apply mosaic
+	); 
+	oamUpdate(&oamMain); 
+}
+
+void MostrarPersona (int indice, int x, int y){ 
+oamSet(&oamMain, //main graphics engine context
+	indice,  //oam index (0 to 127)  
+	x, y,    //x and y pixle location of the sprite
+	0,       //priority, lower renders last (on top)
+	0,       //this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxPersona,//+16*16/2, 	//pointer to the loaded graphics
+	-1,                  	//sprite rotation data  
+	false,               	//double the size when rotating?
+	false,			//hide the sprite?
+	false, false, 		//vflip, hflip
+	false			//apply mosaic
+	); 
+	oamUpdate(&oamMain);  
+}
+
 void BorrarRomboGrande(int x, int y){
 oamSet(&oamMain, //main graphics engine context
 	127,     //oam index (0 to 127)  
@@ -274,6 +331,9 @@ int i;
 	}
 	for(i = 0; i < 16 * 16 / 2; i++) {	
 		gfxSpray[i] = Spray[i*2] | (Spray[(i*2)+1]<<8);				
+	}
+	for(i = 0; i < 16 * 16 / 2; i++) {	
+		gfxPersona[i] = Persona[i*2] | (Persona[(i*2)+1]<<8);				
 	}
 	//para sprites de 32*32
 	for(i = 0; i < 32 * 32 / 2; i++) {	

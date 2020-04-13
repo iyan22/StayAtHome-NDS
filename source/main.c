@@ -72,11 +72,11 @@ int main() {
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 
 	MostrarSpray(6,50,50);
-	MostrarRombo(1,20,8);
-	MostrarRombo(2,20,40);
-	MostrarRombo(3,20,75);
-	MostrarRombo(4,20,110);
-	MostrarRombo(5,20,145);
+	MostrarPersona(1,20,8);
+	MostrarPersona(2,20,40);
+	MostrarPersona(3,20,75);
+	MostrarPersona(4,20,110);
+	MostrarPersona(5,20,145);
 
 	
 	while(1) {
