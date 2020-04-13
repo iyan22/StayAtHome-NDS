@@ -92,6 +92,7 @@ u8 Rombo[256] =
 	1,1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,	//	0,0,0,0,0,0,1,1, 1,1,0,0,0,0,0,0,
 };
 
+
 /* Dibujado de un Sprite de 32x32 pixels */
 
 u8 RomboGrande[1024] = 
@@ -146,7 +147,7 @@ oamSet(&oamMain, //main graphics engine context
 	false, false, 		//vflip, hflip
 	false			//apply mosaic
 	); 
-oamUpdate(&oamMain); 
+	oamUpdate(&oamMain); 
 }
 
 void MostrarRombo (int indice, int x, int y){ 
@@ -164,7 +165,7 @@ oamSet(&oamMain, //main graphics engine context
 	false, false, 		//vflip, hflip
 	false			//apply mosaic
 	); 
-oamUpdate(&oamMain);  
+	oamUpdate(&oamMain);  
 }
 
 void BorrarRomboGrande(int x, int y){
@@ -182,7 +183,7 @@ oamSet(&oamMain, //main graphics engine context
 	false, false, 		//vflip, hflip
 	false			//apply mosaic
 	); 
-oamUpdate(&oamMain); 
+	oamUpdate(&oamMain); 
 }
 
 void MostrarRomboGrande (int x, int y){
@@ -200,7 +201,7 @@ oamSet(&oamMain, //main graphics engine context
 	false, false, 		//vflip, hflip
 	false			//apply mosaic
 	); 
-oamUpdate(&oamMain);  
+	oamUpdate(&oamMain);  
 }
 
 
@@ -208,13 +209,11 @@ void guardarSpritesEnMemoria(){
 	
 int i;
 	//para sprites de 16*16
-	for(i = 0; i < 16 * 16 / 2; i++) 
-	{	
+	for(i = 0; i < 16 * 16 / 2; i++) {	
 		gfxRombo[i] = Rombo[i*2] | (Rombo[(i*2)+1]<<8);				
 	}
 	//para sprites de 32*32
-	for(i = 0; i < 32 * 32 / 2; i++) 
-	{	
+	for(i = 0; i < 32 * 32 / 2; i++) {	
 		gfxRomboGrande[i] = RomboGrande[i*2] | (RomboGrande[(i*2)+1]<<8);				
 	}
 }

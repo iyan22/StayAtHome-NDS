@@ -29,7 +29,7 @@ int main() {
 
 
 	// Variables del main
-	touchPosition pos_pantalla;
+	//touchPosition pos_pantalla;
 
 	//  Poner en marcha el motor gráfico 2D.
     	powerOn(POWER_ALL_2D);
@@ -71,8 +71,12 @@ int main() {
 	iprintf("\x1b[20;00H          Grupo 2A03           ");
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 
+	MostrarRombo(1,20,8);
+	MostrarRombo(2,20,40);
+	MostrarRombo(3,20,75);
+	MostrarRombo(4,20,110);
+	MostrarRombo(5,20,145);
 
-	// MostrarRombo(1,8,8);
 	
 	while(1) {
 		
