@@ -1,4 +1,4 @@
-sprites.o: /home/parallels/Desktop/StayAtHome/source/sprites.c \
+sprites.o: /home/parallels/Desktop/StayAtHome-NDS/source/sprites.c \
  /opt/devkitpro/libnds/include/nds.h \
  /opt/devkitpro/libnds/include/nds/libversion.h \
  /opt/devkitpro/libnds/include/nds/ndstypes.h \
@@ -59,8 +59,8 @@ sprites.o: /home/parallels/Desktop/StayAtHome/source/sprites.c \
  /opt/devkitpro/libnds/include/nds/arm9/video.h \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
- /home/parallels/Desktop/StayAtHome/include/sprites.h \
- /home/parallels/Desktop/StayAtHome/include/defines.h
+ /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h \
+ /home/parallels/Desktop/StayAtHome-NDS/include/defines.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -182,6 +182,6 @@ sprites.o: /home/parallels/Desktop/StayAtHome/source/sprites.c \
 
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 
-/home/parallels/Desktop/StayAtHome/include/sprites.h:
+/home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
 
-/home/parallels/Desktop/StayAtHome/include/defines.h:
+/home/parallels/Desktop/StayAtHome-NDS/include/defines.h:

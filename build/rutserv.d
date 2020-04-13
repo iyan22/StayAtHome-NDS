@@ -1,4 +1,4 @@
-rutserv.o: /home/parallels/Desktop/StayAtHome/source/rutserv.c \
+rutserv.o: /home/parallels/Desktop/StayAtHome-NDS/source/rutserv.c \
  /opt/devkitpro/libnds/include/nds.h \
  /opt/devkitpro/libnds/include/nds/libversion.h \
  /opt/devkitpro/libnds/include/nds/ndstypes.h \
@@ -59,9 +59,9 @@ rutserv.o: /home/parallels/Desktop/StayAtHome/source/rutserv.c \
  /opt/devkitpro/libnds/include/nds/arm9/video.h \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
- /home/parallels/Desktop/StayAtHome/include/teclado.h \
- /home/parallels/Desktop/StayAtHome/include/defines.h \
- /home/parallels/Desktop/StayAtHome/include/temporizadores.h
+ /home/parallels/Desktop/StayAtHome-NDS/include/teclado.h \
+ /home/parallels/Desktop/StayAtHome-NDS/include/defines.h \
+ /home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -183,8 +183,8 @@ rutserv.o: /home/parallels/Desktop/StayAtHome/source/rutserv.c \
 
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 
-/home/parallels/Desktop/StayAtHome/include/teclado.h:
+/home/parallels/Desktop/StayAtHome-NDS/include/teclado.h:
 
-/home/parallels/Desktop/StayAtHome/include/defines.h:
+/home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
 
-/home/parallels/Desktop/StayAtHome/include/temporizadores.h:
+/home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h:
