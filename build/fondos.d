@@ -1,4 +1,4 @@
-fondos.o: /home/parallels/Desktop/StayAtHome/source/fondos.c \
+fondos.o: /home/parallels/Desktop/StayAtHome-NDS/source/fondos.c \
  /opt/devkitpro/libnds/include/nds.h \
  /opt/devkitpro/libnds/include/nds/libversion.h \
  /opt/devkitpro/libnds/include/nds/ndstypes.h \
@@ -59,8 +59,8 @@ fondos.o: /home/parallels/Desktop/StayAtHome/source/fondos.c \
  /opt/devkitpro/libnds/include/nds/arm9/video.h \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
- /home/parallels/Desktop/StayAtHome/include/fondos.h \
- /home/parallels/Desktop/StayAtHome/build/FondoTrafico.h
+ /home/parallels/Desktop/StayAtHome-NDS/include/fondos.h \
+ /home/parallels/Desktop/StayAtHome-NDS/build/FondoTrafico.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -182,6 +182,6 @@ fondos.o: /home/parallels/Desktop/StayAtHome/source/fondos.c \
 
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 
-/home/parallels/Desktop/StayAtHome/include/fondos.h:
+/home/parallels/Desktop/StayAtHome-NDS/include/fondos.h:
 
-/home/parallels/Desktop/StayAtHome/build/FondoTrafico.h:
+/home/parallels/Desktop/StayAtHome-NDS/build/FondoTrafico.h:
