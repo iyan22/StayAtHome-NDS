@@ -22,11 +22,14 @@ extern void guardarSpritesEnMemoria();
 
 extern void MostrarSpray(int indice, int x, int y);
 extern void BorrarSpray(int indice, int x, int y);
-extern void MostrarPersona(int indice, int x, int y);
-extern void BorrarPersona(int indice, int x, int y);
+extern void MostrarGota(int indice, int x, int y);
+extern void BorrarGota(int indice, int x, int y);
 
-extern void MostrarRomboGrande(int x, int y);
-extern void BorrarRomboGrande(int x, int y);
+extern void MostrarP1Arriba(int indice, int x, int y);
+extern void BorrarP1Arriba(int indice, int x, int y);
+extern void MostrarP1Abajo(int indice, int x, int y);
+extern void BorrarP1Abajo(int indice, int x, int y);
+
 
 
 

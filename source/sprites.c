@@ -10,8 +10,12 @@ dovoto y otro de Jaeden Amero
 #include "sprites.h"
 #include "defines.h"
 
+
 u16* gfxSpray;
-u16* gfxPersona;
+u16* gfxGota;
+u16* gfxP1Arriba;
+u16* gfxP1Abajo;
+
 
 
 /* Inicializar la memoria de Sprites. */
@@ -22,7 +26,9 @@ void initSpriteMem() {
 	oamInit(&oamSub, SpriteMapping_1D_32, false);
 
 	gfxSpray = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
-	gfxPersona = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	gfxGota = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	gfxP1Arriba = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	gfxP1Abajo = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 
 }
 
@@ -88,26 +94,65 @@ u8 Spray[256] =
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 };
 
-u8 Persona[256] = 
+u8 Gota[256] = 
 {
-	 0, 0, 0, 0,14,14,14,14, 0, 0, 0,14,14,14,14,14, 
-	 0, 0,14,14,14,24,24,24, 0, 0,14,14,24, 3, 3,24, 
-	 0, 0,14,14,24, 3, 6,24, 0, 0,14,14,24,24,24,24, 
-	 0, 0,14,14,24,24,24, 6, 0, 0, 0,14,24,24,24,24, 
-	14,14,14,14, 0, 0, 0, 0,14,14,14,14,14, 0, 0, 0, 
-	24,24,24,14,14,14, 0, 0,24, 3, 3,24,14,14, 0, 0, 
-	24, 3, 6,24,14,14, 0, 0,24,24,24,24,14,14, 0, 0, 
-	 6,24,24,24,14,14, 0, 0,24,24,24,24,14, 0, 0, 0, 
-	 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 
-	 0, 0, 0, 0, 1,13,13,13, 0, 0, 0, 0, 1, 1, 1, 1, 
-	 0, 0, 0, 0, 1, 1, 1,13, 0, 0, 0, 0, 1, 1, 1, 1, 
-	 0, 0, 0, 0, 1,13,13,13, 0, 0, 0, 0, 1, 1, 1, 1, 
-	 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 
-	13,13, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 
-	13,13,13, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 
-	 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 
+	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0,18,18,18, 0, 0, 0, 0,18,18,18,18, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0,18, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0,18,18,18,18, 0, 0, 0, 0,18,18,18,18, 
+	 0, 0, 0, 0, 0,18,18,18, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	18,18,18, 0, 0, 0, 0, 0,18, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
+u8 P1Arriba[256] = 
+{
+	 0, 0, 0, 0, 0, 0, 6, 6, 0, 0, 0, 0, 0, 6,14,14, 
+	 0, 0, 0, 0, 6,14,14,14, 0, 0, 0, 0, 6,14,14,24, 
+	 0, 0, 0, 0, 6,14,14,24, 0, 0, 0, 0, 6,24,14,24, 
+	 0, 0, 0, 0, 6,24,24,24, 0, 0, 0, 0, 0, 6,24,24, 
+	 6, 6, 6, 0, 0, 0, 0, 0,14,14,14, 6, 0, 0, 0, 0, 
+	14,14,14,14, 6, 0, 0, 0,24,24,24,24, 6, 0, 0, 0, 
+	24,24,24,24, 6, 0, 0, 0,14,24,14,24, 6, 0, 0, 0, 
+	24,24,24,24, 6, 0, 0, 0,22,22,24,24, 6, 0, 0, 0, 
+	 0, 0, 0, 0, 0, 6, 6,24, 0, 0, 0, 0, 6, 6, 6, 6, 
+	 0, 0, 6, 6, 6,13, 1, 6, 0, 0, 6,13,13,13,13,13, 
+	 0, 0, 6,13,13,13,13,13, 0, 0, 6,13,13, 6,13,13, 
+	 0, 0, 6,13,13, 6,13,13, 0, 0, 6, 1, 1, 6,13,13, 
+	24,24,24, 6, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 
+	 1,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0, 
+	13,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0, 
+	13,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0,  
+};
+
+u8 P1Abajo[256] = 
+{
+	 0, 0, 6,24,24, 6,13,13, 0, 0, 6,24,24, 6,13,13, 
+	 0, 0, 6,24,24, 6,13,13, 0, 0, 6,24,24, 6,13,13, 
+	 0, 0, 6,24,24, 6, 1, 1, 0, 0, 0, 6, 6,19,19, 6, 
+	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6,19,19, 6, 
+	13,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0, 
+	13,13, 6, 0, 0, 0, 0, 0, 1, 1, 6, 0, 0, 0, 0, 0, 
+	19,19, 6, 0, 0, 0, 0, 0,19,19, 6, 0, 0, 0, 0, 0, 
+	19,19, 6, 0, 0, 0, 0, 0,19,19, 6, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6,19,19, 6, 
+	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6,19,19, 6, 
+	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6, 6, 6, 6, 
+	 0, 0, 0, 0, 6, 3, 3, 3, 0, 0, 0, 0, 6, 6, 6, 6, 
+	19,19, 6, 0, 0, 0, 0, 0,19,19, 6, 0, 0, 0, 0, 0, 
+	19,19, 6, 0, 0, 0, 0, 0,19,19, 6, 0, 0, 0, 0, 0, 
+	19,19, 6, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0, 
+	 6, 3, 3, 3, 6, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0,  
+};
 
 /* Para cada Sprite que se quiera llevar a pantalla hay que hacer una de estas funciones. */
 
@@ -147,7 +192,7 @@ oamSet(&oamMain, 					//main graphics engine context
 	oamUpdate(&oamMain);  
 }
 
-void BorrarPersona(int indice, int x, int y) {
+void BorrarGota (int indice, int x, int y) {
 oamSet(&oamMain, 					//main graphics engine context
 	indice,  						//oam index (0 to 127)  
 	x, y,    						//x and y pixle location of the sprite
@@ -155,7 +200,7 @@ oamSet(&oamMain, 					//main graphics engine context
 	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
 	SpriteSize_16x16,     
 	SpriteColorFormat_256Color, 
-	gfxPersona, //+16*16/2, 		//pointer to the loaded graphics
+	gfxGota, //+16*16/2, 			//pointer to the loaded graphics
 	-1,                  			//sprite rotation data  
 	false,               			//double the size when rotating?
 	true,							//hide the sprite?
@@ -165,7 +210,7 @@ oamSet(&oamMain, 					//main graphics engine context
 	oamUpdate(&oamMain); 
 }
 
-void MostrarPersona (int indice, int x, int y){ 
+void MostrarGota (int indice, int x, int y){ 
 oamSet(&oamMain, 					//main graphics engine context
 	indice,  						//oam index (0 to 127)  
 	x, y,    						//x and y pixle location of the sprite
@@ -173,7 +218,79 @@ oamSet(&oamMain, 					//main graphics engine context
 	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
 	SpriteSize_16x16,     
 	SpriteColorFormat_256Color, 
-	gfxPersona, //+16*16/2, 		//pointer to the loaded graphics
+	gfxGota, //+16*16/2, 			//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	false,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain);  
+}
+
+void BorrarP1Arriba(int indice, int x, int y) {
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxP1Arriba, //+16*16/2, 		//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	true,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain); 
+}
+
+void MostrarP1Arriba (int indice, int x, int y){ 
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxP1Arriba, //+16*16/2, 		//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	false,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain);  
+}
+
+void BorrarP1Abajo(int indice, int x, int y) {
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxP1Abajo, //+16*16/2, 		//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	true,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain); 
+}
+
+void MostrarP1Abajo (int indice, int x, int y){ 
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxP1Abajo, //+16*16/2, 		//pointer to the loaded graphics
 	-1,                  			//sprite rotation data  
 	false,               			//double the size when rotating?
 	false,							//hide the sprite?
@@ -190,8 +307,10 @@ void guardarSpritesEnMemoria(){
 	int i;
 	//para sprites de 16*16
 	for(i = 0; i < 16 * 16 / 2; i++) {				
-		gfxSpray[i] = Spray[i*2] | (Spray[(i*2)+1]<<8);	
-		gfxPersona[i] = Persona[i*2] | (Persona[(i*2)+1]<<8);				
+		gfxSpray[i] = Spray[i*2] | (Spray[(i*2)+1]<<8);
+		gfxGota[i] = Gota[i*2] | (Gota[(i*2)+1]<<8);
+		gfxP1Arriba[i] = P1Arriba[i*2] | (P1Arriba[(i*2)+1]<<8);	
+		gfxP1Abajo[i] = P1Abajo[i*2] | (P1Abajo[(i*2)+1]<<8);				
 	}
 }
 

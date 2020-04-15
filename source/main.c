@@ -1,7 +1,7 @@
-/*---------------------------------------------------------------------------------
-Este código se ha implementado basándose en el ejemplo "Simple sprite demo" de 
-dovoto y otro de Jaeden Amero
----------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------
+			Este código se ha implementado basándose en el ejemplo "Simple sprite demo" de 
+										dovoto y otro de Jaeden Amero
+-----------------------------------------------------------------------------------------------------------*/
 
 #include <nds.h>
 #include <stdio.h>
@@ -16,9 +16,9 @@ dovoto y otro de Jaeden Amero
 #include "teclado.h"
 #include "temporizadores.h"
 
-//-----------------------------------------------------
-// Variables globales
-//-----------------------------------------------------
+/*----------------------------------------------------------------------------------------------------------
+ 											Variables globales
+-----------------------------------------------------------------------------------------------------------*/
 
 int estado;
 
@@ -71,12 +71,19 @@ int main() {
 	iprintf("\x1b[20;00H          Grupo 2A03           ");
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 
-	MostrarSpray(6,50,50);
-	MostrarPersona(1,20,8);
-	MostrarPersona(2,20,40);
-	MostrarPersona(3,20,75);
-	MostrarPersona(4,20,110);
-	MostrarPersona(5,20,145);
+	
+	MostrarP1Arriba(1,10,5);
+	MostrarP1Abajo (2,10,21);
+	MostrarP1Arriba(3,10,40);
+	MostrarP1Abajo (4,10,56);
+	MostrarP1Arriba(5,10,75);
+	MostrarP1Abajo (6,10,91);
+	MostrarP1Arriba(7,10,110);
+	MostrarP1Abajo (8,10,126);
+	MostrarP1Arriba(9,10,145);
+	MostrarP1Abajo (10,10,161);
+	MostrarSpray(20,30,50);
+	MostrarGota(21,45,50);
 
 	
 	while(1) {
