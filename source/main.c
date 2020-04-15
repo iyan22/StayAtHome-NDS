@@ -68,6 +68,7 @@ int main() {
  	iprintf("\x1b[02;00H  : EC                 19/20 : ");
  	iprintf("\x1b[03;00H  +--------------------------+ ");
 	iprintf("\x1b[10;00H    Project StayAtHome - NDS   ");
+	iprintf("\x1b[12;00H  Segundos:");
 	iprintf("\x1b[20;00H          Grupo 2A03           ");
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 
@@ -87,6 +88,7 @@ int main() {
 
 	
 	while(1) {
+
 		
 
 	

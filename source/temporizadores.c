@@ -12,8 +12,13 @@
 void IntTemp() {
 
 	static int tick = 0;
-
 	tick++;
+
+	if (tick == 60) {
+		tick = 0;
+		segs++;
+		iprintf("\x1b[12;13H %d", segs);
+	}
 
 }
 
