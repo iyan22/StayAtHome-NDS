@@ -15,6 +15,7 @@ u16* gfxSpray;
 u16* gfxGota;
 u16* gfxP1Arriba;
 u16* gfxP1Abajo;
+u16* gfxVirus;
 
 
 
@@ -29,6 +30,7 @@ void initSpriteMem() {
 	gfxGota = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 	gfxP1Arriba = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 	gfxP1Abajo = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	gfxVirus = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 
 }
 
