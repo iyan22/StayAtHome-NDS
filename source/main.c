@@ -85,6 +85,7 @@ int main() {
 	MostrarP1Abajo (10,10,161);
 	MostrarSpray(20,30,50);
 	MostrarGota(21,45,50);
+	MostrarVirus(22,100,100)
 
 	
 	while(1) {
@@ -93,5 +94,6 @@ int main() {
 
 	
  	}
+
 }
 

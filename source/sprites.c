@@ -154,6 +154,26 @@ u8 P1Abajo[256] =
 	 6, 3, 3, 3, 6, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0,  
 };
 
+u8 Virus[256] = 
+{
+	 0, 0, 0, 0, 1,18, 0, 0, 0, 0, 0, 0, 0,23,18, 0, 
+	 0, 0, 0, 0, 0,18,23, 0, 0, 0, 1, 0, 0,18,20,20, 
+	 0, 1,18, 0,20,23,20,18, 0,23,18,18,20,20,20,20, 
+	 0, 0, 0,20,20,18,20,23, 0, 0, 0,20,23,20,20,20,
+	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  
+	 0, 0, 0,18,23, 1, 0, 0, 0, 0, 0,18, 0, 0, 0, 0,  
+	20,20,18,23, 0, 0, 0, 0,23,20,18,18,23, 0, 0, 0,  
+	18,20,23,23, 0, 0, 0, 0,20,20,20,20, 0, 0, 0, 0,  
+	 0,18,18,18,20,20,18,20, 0, 1, 0, 0,20,23,20,23,  
+	 0, 0, 0, 0,20,18,20,20, 0, 0, 0, 0,23, 0, 0, 0,  
+	 0, 0,23,23,18, 0, 0, 0, 0, 0, 1,18, 0, 0, 0, 0,  
+ 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  
+	 23,20,23,18,18,23, 0, 0,20,18,20, 0, 0,18, 1, 0,  
+ 	20,20, 0, 0, 0, 0, 0, 0, 0,18, 0, 0, 0, 0, 0, 0,  
+ 	 0,23,18, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,  
+ 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  
+};
+
 /* Para cada Sprite que se quiera llevar a pantalla hay que hacer una de estas funciones. */
 
 void BorrarSpray (int indice, int x, int y) {
@@ -300,6 +320,41 @@ oamSet(&oamMain, 					//main graphics engine context
 	oamUpdate(&oamMain);  
 }
 
+void BorrarVirus (int indice, int x, int y) {
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxVirus, //+16*16/2, 			//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	true,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain); 
+}
+
+void MostrarVirus (int indice, int x, int y){ 
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxVirus, //+16*16/2, 			//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	false,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain);  
+}
 
 
 void guardarSpritesEnMemoria(){ 
@@ -310,7 +365,8 @@ void guardarSpritesEnMemoria(){
 		gfxSpray[i] = Spray[i*2] | (Spray[(i*2)+1]<<8);
 		gfxGota[i] = Gota[i*2] | (Gota[(i*2)+1]<<8);
 		gfxP1Arriba[i] = P1Arriba[i*2] | (P1Arriba[(i*2)+1]<<8);	
-		gfxP1Abajo[i] = P1Abajo[i*2] | (P1Abajo[(i*2)+1]<<8);				
+		gfxP1Abajo[i] = P1Abajo[i*2] | (P1Abajo[(i*2)+1]<<8);	
+		gfxVirus[i] = Virus[i*2] | (Virus[(i*2)+1]<<8);			
 	}
 }
 
