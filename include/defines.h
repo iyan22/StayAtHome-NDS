@@ -20,6 +20,7 @@ defines.h
 
 // Aquí se definen los registros del temporizador
 #define TIMER0_CNT   	(*(vuint16*)0x04000102) //Registro de control del temporizador
+#define TIMER1_CNT   	(*(vuint16*)0x04000106) 
 // El temporizador se activa poniendo un 1 en el 7º bit.
 // El temporizador interrumpirá al desbordarse el contador, si hay un 1 en el 6º bit.
 // Los dos bits de menos peso indican lo siguiente:
@@ -29,6 +30,7 @@ defines.h
 //		11 frecuencia 33554432/1024 hz
 
 #define TIMER0_DAT    (*(vuint16*)0x04000100) //Registro de datos del temporizador
+#define TIMER1_DAT    (*(vuint16*)0x04000104) 
 // Se utiliza para indicar a partir de qué valor tiene que empezar a contar
 
 // Para no liarse con los números a cada teclas se le ha asignado un nombre
@@ -45,14 +47,20 @@ defines.h
 #define L			9
 
 // Asignar un nombre a cada estado
-#define INICIO 	0
+#define INIT 		0
+#define GAME 		1
+#define PAUSE 		2
+#define RESTART 	3
+#define END 		4
 
-//...
+
+// Implement typedef
 
 
 // Variables globales
 extern int estado;
 extern int tsegs;
-extern int segs;
+extern int segs0;
+extern int segs1;
 
-//...
+

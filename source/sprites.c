@@ -178,9 +178,9 @@ u8 Virus[256] =
 
 /* Para cada Sprite que se quiera llevar a pantalla hay que hacer una de estas funciones. */
 
-void BorrarSpray (int indice, int x, int y) {
+void BorrarSpray (int x, int y) {
 oamSet(&oamMain, 					//main graphics engine context
-	indice,  						//oam index (0 to 127)  
+	127,  							//oam index (0 to 127)  
 	x, y,    						//x and y pixle location of the sprite
 	0,       						//priority, lower renders last (on top)
 	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
@@ -196,9 +196,9 @@ oamSet(&oamMain, 					//main graphics engine context
 	oamUpdate(&oamMain); 
 }
 
-void MostrarSpray (int indice, int x, int y){ 
+void MostrarSpray (int x, int y){ 
 oamSet(&oamMain, 					//main graphics engine context
-	indice,  						//oam index (0 to 127)  
+	127,  							//oam index (0 to 127)  
 	x, y,    						//x and y pixle location of the sprite
 	0,       						//priority, lower renders last (on top)
 	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
