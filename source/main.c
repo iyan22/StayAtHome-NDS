@@ -21,10 +21,11 @@
  											Variables globales
 -----------------------------------------------------------------------------------------------------------*/
 
-//int estado;
+int estado;
 
-//int segs = 0;
-//int tsegs = 0;
+int segs0 = 0;
+int segs1 = 0;
+int tsegs = 0;
 
 int main() {
 
@@ -47,6 +48,9 @@ int main() {
 
 	// Establecer las paletas para los sprites 
 	establecerPaletaPrincipal();
+
+	// Para poder imprimir en pantalla (hacer trazas) 
+	consoleDemoInit();
 	
  	// Para inicializar el generador de números aleatorios en función de una semilla,
 	// en este caso time(NULL). 

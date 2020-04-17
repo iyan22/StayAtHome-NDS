@@ -2,5 +2,6 @@
 temporizadores.h
 -------------------------------------*/
 
-extern void IntTemp();
+extern void IntTemp0();
+extern void IntTemp1();
 

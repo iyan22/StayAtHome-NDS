@@ -32,7 +32,7 @@ void printBasicInfo() {
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 }
 
-void initGameScren() {
+void initGameScreen() {
 	MostrarP1Arriba(1,10,5);
 	MostrarP1Abajo (2,10,21);
 	MostrarP1Arriba(3,10,40);
@@ -43,7 +43,7 @@ void initGameScren() {
 	MostrarP1Abajo (8,10,126);
 	MostrarP1Arriba(9,10,145);
 	MostrarP1Abajo (10,10,161);
-	MostrarSpray(20,30,50);
+	MostrarSpray(30,50);
 	MostrarGota(21,45,50);
 }
 
