@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include "fondos.h"
 
-/* añadir aquí los includes para cada fondo. */
+/* Añadir aquí los includes para cada fondo. */
 
 
 #include "FondoTrafico.h"

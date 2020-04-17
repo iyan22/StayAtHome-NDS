@@ -1,4 +1,4 @@
-main.o: /home/parallels/Desktop/StayAtHome-NDS/source/main.c \
+funciones.o: /home/parallels/Desktop/StayAtHome-NDS/source/funciones.c \
  /opt/devkitpro/libnds/include/nds.h \
  /opt/devkitpro/libnds/include/nds/libversion.h \
  /opt/devkitpro/libnds/include/nds/ndstypes.h \
@@ -62,13 +62,6 @@ main.o: /home/parallels/Desktop/StayAtHome-NDS/source/main.c \
  /home/parallels/Desktop/StayAtHome-NDS/include/fondos.h \
  /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h \
  /home/parallels/Desktop/StayAtHome-NDS/include/defines.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/teclado.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/funciones.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/defines.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/fondos.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h \
  /home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h \
  /home/parallels/Desktop/StayAtHome-NDS/include/teclado.h \
  /home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h
@@ -198,20 +191,6 @@ main.o: /home/parallels/Desktop/StayAtHome-NDS/source/main.c \
 /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
 
 /home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/teclado.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/funciones.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/fondos.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
 
 /home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h:
 

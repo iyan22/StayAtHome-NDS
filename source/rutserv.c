@@ -62,8 +62,7 @@ void InhibirInterrupciones() { // En el Controlador de Interrupciones
 }
 
 
-void interrupciones()
-{
+void interrupciones() {
   HabilitarInterrupciones();
   ProgramarRegistrosControl();
   DefinirVectorInterrupciones();

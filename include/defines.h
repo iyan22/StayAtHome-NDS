@@ -45,7 +45,12 @@ defines.h
 #define L			9
 
 // Asignar un nombre a cada estado
-#define INICIO 	0
+#define INIIT 		0
+#define GAME 		1
+#define PAUSE 		2
+#define RESTART 	3
+#define END 		4
+
 
 //...
 
@@ -55,4 +60,4 @@ extern int estado;
 extern int tsegs;
 extern int segs;
 
-//...
+
