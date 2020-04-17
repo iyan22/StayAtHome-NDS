@@ -85,13 +85,16 @@ int main() {
 	MostrarP1Abajo (10,10,161);
 	MostrarSpray(20,30,50);
 	MostrarGota(21,45,50);
+	MostrarVirus(22,70,70);
 
 	
 	while(1) {
+	
 
 		
 
 	
  	}
+
 }
 
