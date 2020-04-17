@@ -30,6 +30,9 @@ extern void BorrarP1Arriba(int indice, int x, int y);
 extern void MostrarP1Abajo(int indice, int x, int y);
 extern void BorrarP1Abajo(int indice, int x, int y);
 
+extern void MostrarVirus(int indice, int x, int y);
+extern void BorrarVirus(int indice, int x, int y);
+
 
 
 

@@ -60,6 +60,7 @@ int main() {
 	
 	interrupciones();
 
+
 	printBasicInfo();
 	initGameScreen();
 
@@ -69,6 +70,7 @@ int main() {
 
 	
  	//}
+
 
 }
 
