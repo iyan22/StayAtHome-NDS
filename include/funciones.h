@@ -15,5 +15,8 @@
 extern int tactilTocada();
 
 extern void printBasicInfo();
-extern void initGameScreen();
-extern void desplazarSpray();
+extern void printGameScreen();
+extern void initVarGameScreen();
+extern void updateSpray();
+
+

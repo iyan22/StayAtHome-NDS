@@ -19,7 +19,7 @@
 int tactilTocada() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
-  	return !(pos_pantalla.px==0 && pos_pantalla.py==0);
+  	return !(pos_pantalla.px == 0 && pos_pantalla.py == 0);
 }
 
 void printBasicInfo() {
@@ -33,7 +33,7 @@ void printBasicInfo() {
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 }
 
-void initGameScreen() {
+void printGameScreen() {
 	MostrarP1Arriba(1,10,5);
 	MostrarP1Abajo (2,10,21);
 	MostrarP1Arriba(3,10,40);
@@ -44,21 +44,29 @@ void initGameScreen() {
 	MostrarP1Abajo (8,10,126);
 	MostrarP1Arriba(9,10,145);
 	MostrarP1Abajo (10,10,161);
-	MostrarSpray(30,50);
-	ySp = 50;
-	MostrarGota(21,45,50);
+	MostrarSpray(xSp, ySp);
 }
 
-void desplazarSpray() {
-	if (speSp == 1) {
+
+void initVarGameScreen() {
+	ySp = 50;
+	speSp = false;
+}
+
+void updateSpray() {
+	if (speSp) {
 		if (dirSp == UP && ySp > 3) {
 			ySp--;
 		}
 		else if (dirSp == DOWN && ySp < 160) {
 			ySp++;
 		}
-		MostrarSpray(30, ySp);
+		MostrarSpray(xSp, ySp);
 	}
 }
+
+
+
+
 
 

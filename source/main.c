@@ -25,10 +25,9 @@ int estado;
 
 int segs0 = 0;
 int segs1 = 0;
-int tsegs = 0;
+bool speSp = false;
 int dirSp = 0;
-int speSp = 0;
-int ySp = 0;
+int ySp = 50;
 
 int main() {
 
@@ -65,7 +64,8 @@ int main() {
 
 
 	printBasicInfo();
-	initGameScreen();
+	initVarGameScreen();
+	printGameScreen();
 
 	
 	while(1) {
@@ -74,22 +74,18 @@ int main() {
 		switch(TeclaPulsada()) {
 			case UP:
 				dirSp = UP;
-				speSp = 1;
+				speSp = true;
 				break;
 
 			case DOWN:
 				dirSp = DOWN;
-				speSp = 1;
+				speSp = true;
 				break;
 			default:
-				speSp = 0;
+				speSp = false;
 				break;
 		}
-		
-
-	
  	}
-
 
 }
 

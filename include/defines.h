@@ -54,7 +54,24 @@ defines.h
 #define END 		4
 
 
-// Implement typedef
+// Constantes
+#define xSp 		28
+
+/*
+typedef struct {
+   int x;
+   int y;
+} tSprite;
+
+
+typedef struct {
+   tSprite Sp;
+   int dirSp;
+   int speSp;
+} tSpray;
+*/
+
+
 
 
 
@@ -65,7 +82,6 @@ extern int segs0;
 extern int segs1;
 
 extern int dirSp;
-extern int speSp;
+extern bool speSp;
 extern int ySp;
-
 
