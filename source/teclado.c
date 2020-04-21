@@ -16,10 +16,10 @@ int  TeclaPulsada() {
 	else if((TECLAS_DAT & 0x0002)==0)return B;
 	else if((TECLAS_DAT & 0x0004)==0)return SELECT;
 	else if((TECLAS_DAT & 0x0008)==0)return START;
-	else if((TECLAS_DAT & 0x0010)==0)return IZDA;
-	else if((TECLAS_DAT & 0x0020)==0)return DCHA;
-	else if((TECLAS_DAT & 0x0040)==0)return ARRIBA;
-	else if((TECLAS_DAT & 0x0080)==0)return ABAJO;
+	else if((TECLAS_DAT & 0x0010)==0)return LEFT;
+	else if((TECLAS_DAT & 0x0020)==0)return RIGHT;
+	else if((TECLAS_DAT & 0x0040)==0)return UP;
+	else if((TECLAS_DAT & 0x0080)==0)return DOWN;
 	else if((TECLAS_DAT & 0x0100)==0)return R;
 	else if((TECLAS_DAT & 0x0200)==0)return L;
 	else return -1;

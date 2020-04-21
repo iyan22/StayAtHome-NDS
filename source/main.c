@@ -26,6 +26,9 @@ int estado;
 int segs0 = 0;
 int segs1 = 0;
 int tsegs = 0;
+int dirSp = 0;
+int speSp = 0;
+int ySp = 0;
 
 int main() {
 
@@ -65,11 +68,27 @@ int main() {
 	initGameScreen();
 
 	
-	//while(1) {
+	while(1) {
+
+		// Encuesta movimiento Spray
+		switch(TeclaPulsada()) {
+			case UP:
+				dirSp = UP;
+				speSp = 1;
+				break;
+
+			case DOWN:
+				dirSp = DOWN;
+				speSp = 1;
+				break;
+			default:
+				speSp = 0;
+				break;
+		}
 		
 
 	
- 	//}
+ 	}
 
 
 }

@@ -39,10 +39,10 @@ defines.h
 #define B			1
 #define SELECT		2 
 #define START		3
-#define IZDA		4 
-#define DCHA		5
-#define ARRIBA		6 
-#define ABAJO		7
+#define LEFT		4 
+#define RIGHT		5
+#define UP			6 
+#define DOWN		7
 #define R			8 
 #define L			9
 
@@ -57,10 +57,15 @@ defines.h
 // Implement typedef
 
 
+
 // Variables globales
 extern int estado;
 extern int tsegs;
 extern int segs0;
 extern int segs1;
+
+extern int dirSp;
+extern int speSp;
+extern int ySp;
 
 

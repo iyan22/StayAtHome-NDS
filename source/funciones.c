@@ -15,6 +15,7 @@
 							Funciones auxiliares
 ---------------------------------------------------------------------------------------------------------------*/
 
+
 int tactilTocada() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
@@ -44,7 +45,20 @@ void initGameScreen() {
 	MostrarP1Arriba(9,10,145);
 	MostrarP1Abajo (10,10,161);
 	MostrarSpray(30,50);
+	ySp = 50;
 	MostrarGota(21,45,50);
+}
+
+void desplazarSpray() {
+	if (speSp == 1) {
+		if (dirSp == UP && ySp > 3) {
+			ySp--;
+		}
+		else if (dirSp == DOWN && ySp < 160) {
+			ySp++;
+		}
+		MostrarSpray(30, ySp);
+	}
 }
 
 

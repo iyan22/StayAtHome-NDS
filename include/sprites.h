@@ -1,5 +1,8 @@
-extern u16* gfxBola;
-extern u16* gfxRaqueta;
+extern u16* gfxSpray;
+extern u16* gfxGota;
+extern u16* gfxP1Arriba;
+extern u16* gfxP1Abajo;
+extern u16* gfxVirus;
 
 /* Inicializar la memoria de Sprites. */
 extern void initSpriteMem();

@@ -4,6 +4,7 @@
 // Añadir los includes que sean necesarios
 #include "defines.h"
 #include "sprites.h"
+#include "funciones.h"
 #include <nds.h>
 #include <stdio.h>
 
@@ -21,12 +22,12 @@ void IntTemp0() {
 
 // Rutina de atención a la interrupción del temporizador
 void IntTemp1() {
-
 	static int tick1 = 0;
 	tick1++;
 	if (tick1 == 1) {
 		tick1 = 0;
 		segs1++;
+		desplazarSpray();
 		iprintf("\x1b[14;13H %d", segs1);
 	}
 }

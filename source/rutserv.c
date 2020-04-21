@@ -40,12 +40,12 @@ void ProgramarRegistrosControl() {
   //      10 frecuencia 33554432/256 hz
   //      11 frecuencia 33554432/1024 hz
 	TIMER0_CNT = 0x00C1;
-  TIMER1_CNT = 0x00C2;
+  TIMER1_CNT = 0x00C1;
 
   // TIMERx_DAT 
   //   Indica a partir de qué valor tiene que empezar a contar (latch)
 	TIMER0_DAT = 56798;
-  TIMER1_DAT = 39322;
+  TIMER1_DAT = 56798;
 
 }
 
