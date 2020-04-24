@@ -34,6 +34,7 @@ void printBasicInfo() {
 }
 
 void printGameScreen() {
+	initVarGameScreen();
 	MostrarP1Arriba(1,10,5);
 	MostrarP1Abajo (2,10,21);
 	MostrarP1Arriba(3,10,40);

@@ -41,9 +41,6 @@ int main() {
     initVideo();
     initFondos();
 
-    // Mostrar fondos en pantalla. 
-    MostrarFondoTrafico();
-
 	// Inicializar memoria de sprites y guardar en ella los sprites 
 	initSpriteMem();
 	guardarSpritesEnMemoria();
@@ -64,26 +61,41 @@ int main() {
 
 
 	printBasicInfo();
-	initVarGameScreen();
 	printGameScreen();
 
 	
 	while(1) {
 
-		// Encuesta movimiento Spray
-		switch(TeclaPulsada()) {
-			case UP:
-				dirSp = UP;
-				speSp = true;
+
+
+		switch(estado){
+			case INIT:
+				if(TeclaPulsada() == A) {
+					estado = GAME;
+				}
+
+
 				break;
 
-			case DOWN:
-				dirSp = DOWN;
-				speSp = true;
+			case GAME:
+				MostrarFondoTrafico();
+				// Encuesta movimiento Spray
+				switch(TeclaPulsada()) {
+					case UP:
+						dirSp = UP;
+						speSp = true;
+						break;
+
+					case DOWN:
+						dirSp = DOWN;
+						speSp = true;
+						break;
+					default:
+						speSp = false;
+						break;
+				}
 				break;
-			default:
-				speSp = false;
-				break;
+
 		}
  	}
 

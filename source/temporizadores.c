@@ -16,11 +16,21 @@
 void IntTemp0() {
 	static int tick0 = 0;
 	tick0++;
-	updateSpray();
+	if (estado == GAME) {
+		updateSpray();
+	}
 	if (tick0 == 60) {
 		tick0 = 0;
 		segs0++;
 		iprintf("\x1b[12;13H %d", segs0);
+
+		if (estado == INIT) {
+			if 		(segs0%5==0) {MostrarInicio1();}
+			else if (segs0%5==1) {MostrarInicio2();}
+			else if (segs0%5==2) {MostrarInicio3();}
+			else if (segs0%5==3) {MostrarInicio2();}
+			else if (segs0%5==4) {MostrarInicio1();}
+		}
 	}
 }
 
@@ -28,13 +38,10 @@ void IntTemp0() {
 void IntTemp1() {
 	static int tick1 = 0;
 	tick1++;
-	if (tick1 == 1) {
-		tick1 = 0;
-		segs1++;
-		iprintf("\x1b[12;15H %d", segs1);
-	}
+	
 }
 */
+
 
 
 

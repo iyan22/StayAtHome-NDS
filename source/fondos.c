@@ -10,9 +10,11 @@
 #include "fondos.h"
 
 /* Añadir aquí los includes para cada fondo. */
-
-
 #include "FondoTrafico.h"
+#include "Inicio1.h"
+#include "Inicio2.h"
+#include "Inicio3.h"
+
 
 /* Seleccionar un canal DMA para copiar a memoria las imágenes */
 static const int DMA_CHANNEL = 3;
@@ -85,6 +87,25 @@ void MostrarFondoTrafico() {
                      (uint16 *)BG_BMP_RAM(0),       /* Dirección del fondo 3 principal */
                      FondoTraficoBitmapLen);        /* Longitud (en bytes) generada automáticamente */
 }
+void MostrarInicio1() {
+    dmaCopyHalfWords(DMA_CHANNEL,
+                     Inicio1Bitmap,            /* Variable generada automáticamente */
+                     (uint16 *)BG_BMP_RAM(0),       /* Dirección del fondo 3 principal */
+                     Inicio1BitmapLen);        /* Longitud (en bytes) generada automáticamente */
+}
+void MostrarInicio2() {
+    dmaCopyHalfWords(DMA_CHANNEL,
+                     Inicio2Bitmap,            /* Variable generada automáticamente */
+                     (uint16 *)BG_BMP_RAM(0),       /* Dirección del fondo 3 principal */
+                     Inicio2BitmapLen);        /* Longitud (en bytes) generada automáticamente */
+}
+void MostrarInicio3() {
+    dmaCopyHalfWords(DMA_CHANNEL,
+                     Inicio3Bitmap,            /* Variable generada automáticamente */
+                     (uint16 *)BG_BMP_RAM(0),       /* Dirección del fondo 3 principal */
+                     Inicio3BitmapLen);        /* Longitud (en bytes) generada automáticamente */
+}
+
 
 
 
