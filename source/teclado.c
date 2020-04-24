@@ -29,6 +29,13 @@ int  TeclaPulsada() {
 
 // Rutina de atencion a la interrupcion del teclado
 void IntTec() {
+	if (estado == GAME) {
+		if (TeclaPulsada() == DOWN) {
+			speSp = true;
+			dirSp = DOWN;
+			iprintf("\x1b[18;00H DOWN interrupcion    ");
+		}
+	}
 
 }
 

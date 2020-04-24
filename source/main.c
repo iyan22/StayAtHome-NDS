@@ -82,15 +82,16 @@ int main() {
 				// Encuesta movimiento Spray
 				switch(TeclaPulsada()) {
 					case UP:
+						iprintf("\x1b[18;00H UP encuesta     ");
 						dirSp = UP;
 						speSp = true;
 						break;
-
-					case DOWN:
-						dirSp = DOWN;
-						speSp = true;
-						break;
+					//case DOWN:
+					//	dirSp = DOWN;
+					//	speSp = true;
+					//	break;
 					default:
+						iprintf("\x1b[18;00H                  ");
 						speSp = false;
 						break;
 				}
