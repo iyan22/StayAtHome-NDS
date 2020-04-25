@@ -65,10 +65,12 @@ int main() {
 	while(1) {
 		switch(estado){
 			case INIT:
+				// Hay que cambiarlo por playButton() y que funcione bien
 				if (TeclaPulsada() == A) {
 					consoleDemoInit();
 					estado = GAME;
 				}
+				// Hay que cambiarlo por instructionButton() y que funcione bien
 				else if (!instructdone && TeclaPulsada() == B) {
 					printInstructions();
 					instructdone = true;
