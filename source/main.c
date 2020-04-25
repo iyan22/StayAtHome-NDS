@@ -25,7 +25,11 @@ int estado;
 
 int segs0 = 0;
 int segs1 = 0;
-int tsegs = 0;
+bool speSp = false;
+int dirSp = 0;
+int ySp = 50;
+bool initdone = false;
+bool instructdone = false;
 
 int main() {
 
@@ -38,9 +42,6 @@ int main() {
     lcdMainOnBottom();
     initVideo();
     initFondos();
-
-    // Mostrar fondos en pantalla. 
-    MostrarFondoTrafico();
 
 	// Inicializar memoria de sprites y guardar en ella los sprites 
 	initSpriteMem();
@@ -60,19 +61,41 @@ int main() {
 	
 	interrupciones();
 
-
-	printBasicInfo();
-	initGameScreen();
-
 	
-	//while(1) {
-		
+	while(1) {
+		switch(estado){
+			case INIT:
+				if (TeclaPulsada() == A) {
+					consoleDemoInit();
+					estado = GAME;
+				}
+				else if (!instructdone && TeclaPulsada() == B) {
+					printInstructions();
+					instructdone = true;
+				}
+				break;
+			case GAME:
+				if (!initdone) {
+					MostrarFondoTrafico();
+					printBasicInfo();
+					printGameScreen();
+					initdone = true;
+				}
+				// Encuesta movimiento Spray
+				switch(TeclaPulsada()) {
+					case DOWN:
+						dirSp = DOWN;
+						speSp = true;
+						break;
+					//default:
+					//	speSp = false;
+					//	break;
+				}
+				break;
 
-	
- 	//}
-
-
-}
+		} // switch(estado)
+ 	} // while(1)
+} // main()
 
  
 

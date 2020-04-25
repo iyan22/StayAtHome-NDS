@@ -12,7 +12,14 @@
 #include "temporizadores.h"
 
 // Esta función consulta si se ha tocado la pantalla tactil
-extern int tactilTocada();
+extern bool playButton();
+extern bool instructionButton();
+extern bool touchingScreen();
 
+extern void printInstructions();
 extern void printBasicInfo();
-extern void initGameScreen();
+extern void printGameScreen();
+extern void initVarGameScreen();
+extern void updateSpray();
+
+

@@ -1,9 +1,9 @@
 
-//{{BLOCK(FondoTrafico)
+//{{BLOCK(Inicio2)
 
 //======================================================================
 //
-//	FondoTrafico, 255x191@16, 
+//	Inicio2, 255x191@16, 
 //	Alphabit on.
 //	+ bitmap not compressed
 //	Total size: 97792 = 97792
@@ -14,12 +14,12 @@
 //
 //======================================================================
 
-#ifndef GRIT_FONDOTRAFICO_H
-#define GRIT_FONDOTRAFICO_H
+#ifndef GRIT_INICIO2_H
+#define GRIT_INICIO2_H
 
-#define FondoTraficoBitmapLen 97792
-extern const unsigned int FondoTraficoBitmap[24448];
+#define Inicio2BitmapLen 97792
+extern const unsigned int Inicio2Bitmap[24448];
 
-#endif // GRIT_FONDOTRAFICO_H
+#endif // GRIT_INICIO2_H
 
-//}}BLOCK(FondoTrafico)
+//}}BLOCK(Inicio2)

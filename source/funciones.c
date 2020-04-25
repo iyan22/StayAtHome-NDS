@@ -15,11 +15,58 @@
 							Funciones auxiliares
 ---------------------------------------------------------------------------------------------------------------*/
 
-int tactilTocada() {
+
+bool touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
-  	return !(pos_pantalla.px==0 && pos_pantalla.py==0);
+  	if (pos_pantalla.px == 0 && pos_pantalla.py == 0) {
+  		return false;
+  	}
+  	else {
+  		return true;
+  	}
 }
+
+bool playButton() {
+	touchPosition pos_pantalla;
+	touchRead(&pos_pantalla);
+  	if (pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
+  		pos_pantalla.py > 40 && pos_pantalla.py < 95) {
+  		return true;
+  	}
+  	else {
+  		return false;
+  	}
+}
+
+bool instructionButton() {
+	touchPosition pos_pantalla;
+	touchRead(&pos_pantalla);
+  	if (pos_pantalla.px > 105 && pos_pantalla.px < 175 &&
+  		pos_pantalla.py > 108 && pos_pantalla.py < 126) {
+  		return true;
+  	}
+  	else {
+  		return false;
+  	}
+}
+
+void printInstructions() {
+	iprintf("\x1b[01;00H    Welcome to StayAtHome-NDS  ");
+ 	iprintf("\x1b[03;00H           Instructions:       ");
+ 	iprintf("\x1b[05;00H    Press PLAY (touchscreen)   ");
+	iprintf("\x1b[07;00H    Kill COVID-19 viruses with ");
+	iprintf("\x1b[08;00H    the hidroalcoholic gel     ");
+	iprintf("\x1b[09;00H    Press A to shot.           ");
+	iprintf("\x1b[11;00H    Move the hidroalcoholic gel");
+	iprintf("\x1b[12;00H    pressing UP and DOWN       ");
+	iprintf("\x1b[14;00H           BE CAREFUL!!!       ");
+	iprintf("\x1b[16;00H      If virus touches people  ");
+	iprintf("\x1b[17;00H       they will be infected   ");
+	iprintf("\x1b[20;00H    Developed by:              ");
+	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
+}
+
 
 void printBasicInfo() {
 	consoleDemoInit();
@@ -32,7 +79,8 @@ void printBasicInfo() {
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 }
 
-void initGameScreen() {
+void printGameScreen() {
+	initVarGameScreen();
 	MostrarP1Arriba(1,10,5);
 	MostrarP1Abajo (2,10,21);
 	MostrarP1Arriba(3,10,40);
@@ -43,8 +91,29 @@ void initGameScreen() {
 	MostrarP1Abajo (8,10,126);
 	MostrarP1Arriba(9,10,145);
 	MostrarP1Abajo (10,10,161);
-	MostrarSpray(30,50);
-	MostrarGota(21,45,50);
+	MostrarSpray(xSp, ySp);
 }
+
+
+void initVarGameScreen() {
+	ySp = 50;
+	speSp = false;
+}
+
+void updateSpray() {
+	if (speSp) {
+		if (dirSp == UP && ySp > 3) {
+			ySp--;
+		}
+		else if (dirSp == DOWN && ySp < 160) {
+			ySp++;
+		}
+		MostrarSpray(xSp, ySp);
+	}
+}
+
+
+
+
 
 

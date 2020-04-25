@@ -28,7 +28,7 @@ void HabilitarInterrupciones() { // En el Controlador de Interrupciones
 void ProgramarRegistrosControl() { 
 
   // Registro de Control del Teclado
-	TECLAS_CNT = 0x4009;
+	TECLAS_CNT = 0x4040; // Tecla UP 
 
   // TIMERx_CNT   
   //   El temporizador se activa poniendo un 1 en el 7º bit.
@@ -40,12 +40,12 @@ void ProgramarRegistrosControl() {
   //      10 frecuencia 33554432/256 hz
   //      11 frecuencia 33554432/1024 hz
 	TIMER0_CNT = 0x00C1;
-  TIMER1_CNT = 0x00C2;
+  TIMER1_CNT = 0x00C3;
 
   // TIMERx_DAT 
   //   Indica a partir de qué valor tiene que empezar a contar (latch)
 	TIMER0_DAT = 56798;
-  TIMER1_DAT = 39322;
+  TIMER1_DAT = 49152;
 
 }
 

@@ -76,7 +76,7 @@ void establecerPaletaPrincipal() {
  * filas, el cuadrante inferior derecho, como se muestra al lado.
  */
 
-u8 Spray[256] = 
+u8 SprayM[256] = 
 {
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 	 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 
@@ -96,7 +96,7 @@ u8 Spray[256] =
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 };
 
-u8 Gota[256] = 
+u8 GotaM[256] = 
 {
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -116,7 +116,7 @@ u8 Gota[256] =
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
-u8 P1Arriba[256] = 
+u8 P1ArribaM[256] = 
 {
 	 0, 0, 0, 0, 0, 0, 6, 6, 0, 0, 0, 0, 0, 6,14,14, 
 	 0, 0, 0, 0, 6,14,14,14, 0, 0, 0, 0, 6,14,14,24, 
@@ -136,7 +136,7 @@ u8 P1Arriba[256] =
 	13,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0,  
 };
 
-u8 P1Abajo[256] = 
+u8 P1AbajoM[256] = 
 {
 	 0, 0, 6,24,24, 6,13,13, 0, 0, 6,24,24, 6,13,13, 
 	 0, 0, 6,24,24, 6,13,13, 0, 0, 6,24,24, 6,13,13, 
@@ -156,7 +156,7 @@ u8 P1Abajo[256] =
 	 6, 3, 3, 3, 6, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0,  
 };
 
-u8 Virus[256] = 
+u8 VirusM[256] = 
 {
 	 0, 0, 0, 0, 1,20, 0, 0, 0, 0, 0, 0, 0,23,20, 0, 
 	 0, 0, 0, 0, 0,20,23, 0, 0, 0, 1, 0, 0,20, 4, 4, 
@@ -364,11 +364,11 @@ void guardarSpritesEnMemoria(){
 	int i;
 	//para sprites de 16*16
 	for(i = 0; i < 16 * 16 / 2; i++) {				
-		gfxSpray[i] = Spray[i*2] | (Spray[(i*2)+1]<<8);
-		gfxGota[i] = Gota[i*2] | (Gota[(i*2)+1]<<8);
-		gfxP1Arriba[i] = P1Arriba[i*2] | (P1Arriba[(i*2)+1]<<8);	
-		gfxP1Abajo[i] = P1Abajo[i*2] | (P1Abajo[(i*2)+1]<<8);	
-		gfxVirus[i] = Virus[i*2] | (Virus[(i*2)+1]<<8);			
+		gfxSpray[i] = SprayM[i*2] | (SprayM[(i*2)+1]<<8);
+		gfxGota[i] = GotaM[i*2] | (GotaM[(i*2)+1]<<8);
+		gfxP1Arriba[i] = P1ArribaM[i*2] | (P1ArribaM[(i*2)+1]<<8);	
+		gfxP1Abajo[i] = P1AbajoM[i*2] | (P1AbajoM[(i*2)+1]<<8);	
+		gfxVirus[i] = VirusM[i*2] | (VirusM[(i*2)+1]<<8);			
 	}
 }
 

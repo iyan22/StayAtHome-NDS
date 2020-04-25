@@ -1,1 +1,0 @@
-FondoArribaInicio.o: FondoArribaInicio.s
