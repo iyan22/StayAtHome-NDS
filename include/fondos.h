@@ -6,7 +6,6 @@ extern void initFondos();
 extern void MostrarFondoTrafico();
 extern void MostrarInicio1();
 extern void MostrarInicio2();
-extern void MostrarInicio3();
 
 /* Definir el sistema de vídeo */
 extern void initVideo();

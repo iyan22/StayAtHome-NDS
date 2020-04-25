@@ -16,11 +16,42 @@
 ---------------------------------------------------------------------------------------------------------------*/
 
 
-int tactilTocada() {
+bool touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
   	return !(pos_pantalla.px == 0 && pos_pantalla.py == 0);
 }
+
+bool playButton() {
+	touchPosition pos_pantalla;
+	touchRead(&pos_pantalla);
+  	return (pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
+  			pos_pantalla.py > 40 && pos_pantalla.py < 95);
+}
+
+bool instructionButton() {
+	touchPosition pos_pantalla;
+	touchRead(&pos_pantalla);
+  	return (pos_pantalla.px > 105 && pos_pantalla.px < 175 &&
+  			pos_pantalla.py > 108 && pos_pantalla.py < 126);
+}
+
+void printInstructions() {
+	iprintf("\x1b[01;00H    Welcome to StayAtHome-NDS  ");
+ 	iprintf("\x1b[03;00H           Instructions:       ");
+ 	iprintf("\x1b[05;00H    Press PLAY (touchscreen)   ");
+	iprintf("\x1b[07;00H    Kill COVID-19 viruses with ");
+	iprintf("\x1b[08;00H    the hidroalcoholic gel     ");
+	iprintf("\x1b[09;00H    Press A to shot.           ");
+	iprintf("\x1b[11;00H    Move the hidroalcoholic gel");
+	iprintf("\x1b[12;00H    pressing UP and DOWN       ");
+	iprintf("\x1b[14;00H           BE CAREFUL!!!       ");
+	iprintf("\x1b[16;00H      If virus touches people  ");
+	iprintf("\x1b[17;00H       they will be infected   ");
+	iprintf("\x1b[20;00H    Developed by:              ");
+	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
+}
+
 
 void printBasicInfo() {
 	consoleDemoInit();

@@ -28,6 +28,8 @@ int segs1 = 0;
 bool speSp = false;
 int dirSp = 0;
 int ySp = 50;
+bool initdone = false;
+bool instructdone = false;
 
 int main() {
 
@@ -59,47 +61,43 @@ int main() {
 	
 	interrupciones();
 
-
-	printBasicInfo();
-	printGameScreen();
-
 	
 	while(1) {
-
-
-
 		switch(estado){
 			case INIT:
-				if(TeclaPulsada() == A) {
+				if (TeclaPulsada() == A) {
+					consoleDemoInit();
 					estado = GAME;
 				}
-
-
+				else if (!instructdone && TeclaPulsada() == B) {
+					printInstructions();
+					instructdone = true;
+				}
 				break;
-
 			case GAME:
-				MostrarFondoTrafico();
+				if (!initdone) {
+					MostrarFondoTrafico();
+					printBasicInfo();
+					printGameScreen();
+					initdone = true;
+				}
 				// Encuesta movimiento Spray
 				switch(TeclaPulsada()) {
 					case UP:
-						iprintf("\x1b[18;00H UP encuesta     ");
 						dirSp = UP;
 						speSp = true;
 						break;
-					//case DOWN:
-					//	dirSp = DOWN;
-					//	speSp = true;
-					//	break;
+					case DOWN:
+						dirSp = DOWN;
+						speSp = true;
+						break;
 					default:
-						iprintf("\x1b[18;00H                  ");
 						speSp = false;
 						break;
 				}
 				break;
-
 		}
  	}
-
 }
 
  

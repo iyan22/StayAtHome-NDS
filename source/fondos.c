@@ -13,7 +13,6 @@
 #include "FondoTrafico.h"
 #include "Inicio1.h"
 #include "Inicio2.h"
-#include "Inicio3.h"
 
 
 /* Seleccionar un canal DMA para copiar a memoria las imágenes */
@@ -98,12 +97,6 @@ void MostrarInicio2() {
                      Inicio2Bitmap,            /* Variable generada automáticamente */
                      (uint16 *)BG_BMP_RAM(0),       /* Dirección del fondo 3 principal */
                      Inicio2BitmapLen);        /* Longitud (en bytes) generada automáticamente */
-}
-void MostrarInicio3() {
-    dmaCopyHalfWords(DMA_CHANNEL,
-                     Inicio3Bitmap,            /* Variable generada automáticamente */
-                     (uint16 *)BG_BMP_RAM(0),       /* Dirección del fondo 3 principal */
-                     Inicio3BitmapLen);        /* Longitud (en bytes) generada automáticamente */
 }
 
 

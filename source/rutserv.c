@@ -40,12 +40,12 @@ void ProgramarRegistrosControl() {
   //      10 frecuencia 33554432/256 hz
   //      11 frecuencia 33554432/1024 hz
 	TIMER0_CNT = 0x00C1;
-  //TIMER1_CNT = 0x00C2;
+  TIMER1_CNT = 0x00C3;
 
   // TIMERx_DAT 
   //   Indica a partir de qué valor tiene que empezar a contar (latch)
 	TIMER0_DAT = 56798;
-  //TIMER1_DAT = 39322;
+  TIMER1_DAT = 49152;
 
 }
 
@@ -55,7 +55,7 @@ void DefinirVectorInterrupciones() { // Rutinas de atención
 	irqSet(IRQ_KEYS, IntTec);
   // Rutinas de Atención a los Temporizadores
 	irqSet(IRQ_TIMER0, IntTemp0);
-  //irqSet(IRQ_TIMER1, IntTemp1);
+  irqSet(IRQ_TIMER1, IntTemp1);
 }
 
 void InhibirInterrupciones() { // En el Controlador de Interrupciones
