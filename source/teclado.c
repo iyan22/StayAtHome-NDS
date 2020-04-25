@@ -12,7 +12,7 @@
 // Esta funcion tiene que devolver el valor de la tecla pulsada
 int  TeclaPulsada() {
 
-	if((TECLAS_DAT & 0x0001)==0)return A;
+	if((TECLAS_DAT & 0x0001)==0)	 return A;
 	else if((TECLAS_DAT & 0x0002)==0)return B;
 	else if((TECLAS_DAT & 0x0004)==0)return SELECT;
 	else if((TECLAS_DAT & 0x0008)==0)return START;
@@ -29,7 +29,21 @@ int  TeclaPulsada() {
 
 // Rutina de atencion a la interrupcion del teclado
 void IntTec() {
+	switch(estado) {
+		case INIT:
+			break;
+		case GAME:
+			switch(TeclaPulsada()) {
+				case UP:
+					dirSp = UP;
+					speSp = true;
+					break;
+			}
+			break;
 
+
+
+	}
 
 }
 

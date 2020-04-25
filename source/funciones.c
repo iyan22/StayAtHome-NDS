@@ -19,21 +19,36 @@
 bool touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
-  	return !(pos_pantalla.px == 0 && pos_pantalla.py == 0);
+  	if (pos_pantalla.px == 0 && pos_pantalla.py == 0) {
+  		return false;
+  	}
+  	else {
+  		return true;
+  	}
 }
 
 bool playButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
-  	return (pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
-  			pos_pantalla.py > 40 && pos_pantalla.py < 95);
+  	if (pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
+  		pos_pantalla.py > 40 && pos_pantalla.py < 95) {
+  		return true;
+  	}
+  	else {
+  		return false;
+  	}
 }
 
 bool instructionButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
-  	return (pos_pantalla.px > 105 && pos_pantalla.px < 175 &&
-  			pos_pantalla.py > 108 && pos_pantalla.py < 126);
+  	if (pos_pantalla.px > 105 && pos_pantalla.px < 175 &&
+  		pos_pantalla.py > 108 && pos_pantalla.py < 126) {
+  		return true;
+  	}
+  	else {
+  		return false;
+  	}
 }
 
 void printInstructions() {

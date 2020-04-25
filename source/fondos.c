@@ -88,15 +88,15 @@ void MostrarFondoTrafico() {
 }
 void MostrarInicio1() {
     dmaCopyHalfWords(DMA_CHANNEL,
-                     Inicio1Bitmap,            /* Variable generada automáticamente */
+                     Inicio1Bitmap,                 /* Variable generada automáticamente */
                      (uint16 *)BG_BMP_RAM(0),       /* Dirección del fondo 3 principal */
-                     Inicio1BitmapLen);        /* Longitud (en bytes) generada automáticamente */
+                     Inicio1BitmapLen);             /* Longitud (en bytes) generada automáticamente */
 }
 void MostrarInicio2() {
     dmaCopyHalfWords(DMA_CHANNEL,
-                     Inicio2Bitmap,            /* Variable generada automáticamente */
+                     Inicio2Bitmap,                 /* Variable generada automáticamente */
                      (uint16 *)BG_BMP_RAM(0),       /* Dirección del fondo 3 principal */
-                     Inicio2BitmapLen);        /* Longitud (en bytes) generada automáticamente */
+                     Inicio2BitmapLen);             /* Longitud (en bytes) generada automáticamente */
 }
 
 

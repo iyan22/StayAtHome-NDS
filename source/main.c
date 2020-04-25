@@ -83,22 +83,19 @@ int main() {
 				}
 				// Encuesta movimiento Spray
 				switch(TeclaPulsada()) {
-					case UP:
-						dirSp = UP;
-						speSp = true;
-						break;
 					case DOWN:
 						dirSp = DOWN;
 						speSp = true;
 						break;
-					default:
-						speSp = false;
-						break;
+					//default:
+					//	speSp = false;
+					//	break;
 				}
 				break;
-		}
- 	}
-}
+
+		} // switch(estado)
+ 	} // while(1)
+} // main()
 
  
 
