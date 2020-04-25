@@ -1,4 +1,4 @@
-teclado.o: /home/parallels/Desktop/StayAtHome-NDS/source/teclado.c \
+teclado.o: /home/proyectoec/Escritorio/StayAtHome-NDS/source/teclado.c \
  /opt/devkitpro/libnds/include/nds.h \
  /opt/devkitpro/libnds/include/nds/libversion.h \
  /opt/devkitpro/libnds/include/nds/ndstypes.h \
@@ -59,8 +59,8 @@ teclado.o: /home/parallels/Desktop/StayAtHome-NDS/source/teclado.c \
  /opt/devkitpro/libnds/include/nds/arm9/video.h \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/defines.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/defines.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/sprites.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -182,6 +182,6 @@ teclado.o: /home/parallels/Desktop/StayAtHome-NDS/source/teclado.c \
 
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/defines.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/sprites.h:

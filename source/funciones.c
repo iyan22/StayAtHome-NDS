@@ -16,6 +16,7 @@
 ---------------------------------------------------------------------------------------------------------------*/
 
 
+
 bool touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
@@ -110,6 +111,10 @@ void updateSpray() {
 		}
 		MostrarSpray(xSp, ySp);
 	}
+}
+
+void spawnVirus(){
+
 }
 
 
