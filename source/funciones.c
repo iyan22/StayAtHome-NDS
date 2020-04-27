@@ -172,26 +172,68 @@ void spawnVirus(){
 
 void updateVirus(){
 	if (v1Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random1 < 150){
+				random1 += 2;
+			}else if (1+rand()%(2) == 2 && random1 > 10){
+				random1 -= 2;
+			}
+		}
 		xVi1--;
 		MostrarVirus(Objetos.Virus1.indice, xVi1, random1);
 	}
 	if (v2Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random2 < 150){
+				random2 += 2;
+			}else if (1+rand()%(2) == 2 && random2 > 10){
+				random2 -= 2;
+			}
+		}
 		xVi2--;
 		MostrarVirus(Objetos.Virus2.indice, xVi2, random2);
 	}
 	if (v3Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random3 < 150){
+				random3 += 2;
+			}else if (1+rand()%(2) == 2 && random3 > 10){
+				random3 -= 2;
+			}
+		}
 		xVi3--;
 		MostrarVirus(Objetos.Virus3.indice, xVi3, random3);
 	}
 	if (v4Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random4 < 150){
+				random4 += 2;
+			}else if (1+rand()%(2) == 2 && random4 > 10){
+				random4 -= 2;
+			}
+		}
 		xVi4--;
 		MostrarVirus(Objetos.Virus4.indice, xVi4, random4);
 	}
 	if (v5Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random5 < 150){
+				random5 += 2;
+			}else if (1+rand()%(2) == 2 && random5 > 10){
+				random5 -= 2;
+			}
+		}
 		xVi5--;
 		MostrarVirus(Objetos.Virus5.indice, xVi5, random5);
 	}
 	if (v6Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random6 < 150){
+				random6 += 2;
+			}else if (1+rand()%(2) == 2 && random6 > 10){
+				random6 -= 2;
+			}
+		}
 		xVi6--;
 		MostrarVirus(Objetos.Virus6.indice, xVi6, random6);
 	}
