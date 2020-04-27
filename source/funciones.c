@@ -121,7 +121,7 @@ void updateSpray() {
 }
 
 void spawnVirus(){
-	
+
 	int random = 0;
 	switch(nv){
 		case 1:
@@ -161,6 +161,10 @@ void spawnVirus(){
 			nv = 1;
 			break;
 	}
+}
+
+void updateVirus(){
+	
 }
 
 
