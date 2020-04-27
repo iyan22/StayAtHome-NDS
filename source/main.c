@@ -30,6 +30,7 @@ int dirSp = 0;
 int ySp = 50;
 bool initdone = false;
 bool instructdone = false;
+int n = 3;
 
 int main() {
 
@@ -66,13 +67,15 @@ int main() {
 		switch(estado){
 			case INIT:
 				// Hay que cambiarlo por playButton() y que funcione bien
-				if (TeclaPulsada() == A) {
-					consoleDemoInit();
+				n = touchingScreen();
+				iprintf("\x1b[05;00H  %d ", n);
+				if (n == 1) {
+					//consoleDemoInit();
 					estado = GAME;
 				}
 				// Hay que cambiarlo por instructionButton() y que funcione bien
-				else if (!instructdone && TeclaPulsada() == B) {
-					printInstructions();
+				else if (!instructdone && instructionButton() == 1) {
+					//printInstructions();
 					instructdone = true;
 				}
 				break;

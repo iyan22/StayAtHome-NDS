@@ -16,38 +16,41 @@
 ---------------------------------------------------------------------------------------------------------------*/
 
 
-bool touchingScreen() {
+int touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
+	iprintf("\x1b[00;00H  NORMAL        ");
   	if (pos_pantalla.px == 0 && pos_pantalla.py == 0) {
-  		return false;
+  		return 0;
   	}
   	else {
-  		return true;
+  		return 1;
   	}
 }
 
-bool playButton() {
+int playButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
+	iprintf("\x1b[01;00H  PLAYYY      ");
   	if (pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
   		pos_pantalla.py > 40 && pos_pantalla.py < 95) {
-  		return true;
+  		return 1;
   	}
   	else {
-  		return false;
+  		return 0;
   	}
 }
 
-bool instructionButton() {
+int instructionButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
+	iprintf("\x1b[02;00H  INSTRUCTION ");
   	if (pos_pantalla.px > 105 && pos_pantalla.px < 175 &&
   		pos_pantalla.py > 108 && pos_pantalla.py < 126) {
-  		return true;
+  		return 1;
   	}
   	else {
-  		return false;
+  		return 0;
   	}
 }
 
