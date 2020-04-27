@@ -22,6 +22,7 @@ void IntTemp0() {
 	if (tick0 == 60) {								// Cuando tenemos 60 tick0
 		tick0 = 0;									// Restablecemos tick0
 		if (estado == GAME) {						// Si estamos en estado GAME
+			spawnVirus();							// Generamos virus
 			segs0++;								// Sumamos 1 a segs0 (seg jugando)
 			iprintf("\x1b[12;13H %d", segs0);		// Imprimimos en pantalla
 		}

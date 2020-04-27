@@ -56,6 +56,8 @@ defines.h
 
 // Constantes
 #define xSp 		28
+#define xVi			240
+
 
 /*
 typedef struct {
@@ -71,6 +73,21 @@ typedef struct {
 } tSpray;
 */
 
+typedef struct {
+	int x;
+	int y;
+	int indice;
+} tVirus;
+
+typedef struct {
+	tVirus Virus1;
+	tVirus Virus2;
+	tVirus Virus3;
+	tVirus Virus4;
+	tVirus Virus5;
+	tVirus Virus6;
+} tObjetos;
+
 
 
 
@@ -85,3 +102,4 @@ extern int dirSp;
 extern bool speSp;
 extern int ySp;
 
+extern tObjetos Objetos;

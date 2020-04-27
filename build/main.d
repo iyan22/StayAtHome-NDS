@@ -65,13 +65,7 @@ main.o: /home/proyectoec/Escritorio/StayAtHome-NDS/source/main.c \
  /home/proyectoec/Escritorio/StayAtHome-NDS/include/rutserv.h \
  /home/proyectoec/Escritorio/StayAtHome-NDS/include/teclado.h \
  /home/proyectoec/Escritorio/StayAtHome-NDS/include/temporizadores.h \
- /home/proyectoec/Escritorio/StayAtHome-NDS/include/funciones.h \
- /home/proyectoec/Escritorio/StayAtHome-NDS/include/defines.h \
- /home/proyectoec/Escritorio/StayAtHome-NDS/include/fondos.h \
- /home/proyectoec/Escritorio/StayAtHome-NDS/include/sprites.h \
- /home/proyectoec/Escritorio/StayAtHome-NDS/include/rutserv.h \
- /home/proyectoec/Escritorio/StayAtHome-NDS/include/teclado.h \
- /home/proyectoec/Escritorio/StayAtHome-NDS/include/temporizadores.h
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/funciones.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -206,15 +200,3 @@ main.o: /home/proyectoec/Escritorio/StayAtHome-NDS/source/main.c \
 /home/proyectoec/Escritorio/StayAtHome-NDS/include/temporizadores.h:
 
 /home/proyectoec/Escritorio/StayAtHome-NDS/include/funciones.h:
-
-/home/proyectoec/Escritorio/StayAtHome-NDS/include/defines.h:
-
-/home/proyectoec/Escritorio/StayAtHome-NDS/include/fondos.h:
-
-/home/proyectoec/Escritorio/StayAtHome-NDS/include/sprites.h:
-
-/home/proyectoec/Escritorio/StayAtHome-NDS/include/rutserv.h:
-
-/home/proyectoec/Escritorio/StayAtHome-NDS/include/teclado.h:
-
-/home/proyectoec/Escritorio/StayAtHome-NDS/include/temporizadores.h:

@@ -99,6 +99,14 @@ void printGameScreen() {
 void initVarGameScreen() {
 	ySp = 50;
 	speSp = false;
+
+	Objetos.Virus1.indice = 11;
+	Objetos.Virus2.indice = 12;
+	Objetos.Virus3.indice = 13;
+	Objetos.Virus4.indice = 14;
+	Objetos.Virus5.indice = 15;
+	Objetos.Virus6.indice = 16;
+
 }
 
 void updateSpray() {
@@ -114,8 +122,48 @@ void updateSpray() {
 }
 
 void spawnVirus(){
-
+	int i = 1;
+	int random = 0;
+	switch(i){
+		case 1:
+			// srand(time(NULL));
+			random = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus1.indice, xVi, random);
+			i++;
+			break;
+		case 2:
+			// srand(time(NULL));
+			random = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus2.indice, xVi, random);
+			i++;
+			break;
+		case 3:
+			// srand(time(NULL));
+			random = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus3.indice, xVi, random);
+			i++;
+			break;
+		case 4:
+			// srand(time(NULL));
+			random = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus4.indice, xVi, random);
+			i++;
+			break;
+		case 5:
+			// srand(time(NULL));
+			random = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus5.indice, xVi, random);
+			i++;
+			break;
+		case 6:
+			// srand(time(NULL));
+			random = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus6.indice, xVi, random);
+			i = 1;
+			break;
+	}
 }
+
 
 
 

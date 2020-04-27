@@ -31,6 +31,8 @@ int ySp = 50;
 bool initdone = false;
 bool instructdone = false;
 
+tObjetos Objetos;
+
 int main() {
 
 
