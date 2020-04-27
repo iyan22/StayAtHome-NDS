@@ -14,11 +14,10 @@
 /*--------------------------------------------------------------------------------------------------------------
 							Funciones auxiliares
 ---------------------------------------------------------------------------------------------------------------*/
-/*
-touchPosition pos_pantalla;
+
 
 int touchingScreen() {
-	//touchPosition pos_pantalla;
+	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
 	iprintf("\x1b[00;00H  NORMAL        ");
 	iprintf("\x1b[00;10H %d %d", pos_pantalla.px, pos_pantalla.py);
@@ -29,12 +28,13 @@ int touchingScreen() {
   		return 1;
   	}
 }
-*/
+
 
 int playButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
-	iprintf("\x1b[01;00H  PLAYYY      ");
+	iprintf("\x1b[01;00H  PLAYYY  ");
+	iprintf("\x1b[01;10H  %d %d ", pos_pantalla.px, pos_pantalla.py);
   	if (pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
   		pos_pantalla.py > 40 && pos_pantalla.py < 95) {
   		return 1;
@@ -56,6 +56,7 @@ int instructionButton() {
   		return 0;
   	}
 }
+
 
 void printInstructions() {
 	iprintf("\x1b[01;00H    Welcome to StayAtHome-NDS  ");
@@ -97,24 +98,30 @@ void printGameScreen() {
 	MostrarP1Abajo (8,10,126);
 	MostrarP1Arriba(9,10,145);
 	MostrarP1Abajo (10,10,161);
-	MostrarSpray(Spray.x, Spray.y);
+	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
 }
 
 
 void initVarGameScreen() {
-	Spray.x = xSp;
-	Spray.y = 50;
-	Spray.dir = 0;
+	Objetos.Virus1.indice = 11;
+	Objetos.Virus2.indice = 12;
+	Objetos.Virus3.indice = 13;
+	Objetos.Virus4.indice = 14;
+	Objetos.Virus5.indice = 15;
+	Objetos.Virus6.indice = 16;
+	Objetos.Spray.x = xSp;
+	Objetos.Spray.y = 50;
+	Objetos.Spray.dir = 0;
 }
 
 void updateSpray() {
-	if (Spray.dir == UP && Spray.y > 3) {
-		Spray.y--;
+	if (Objetos.Spray.dir == UP && Objetos.Spray.y > 3) {
+		Objetos.Spray.y--;
 	}
-	else if (Spray.dir == DOWN && Spray.y < 160) {
-		Spray.y++;
+	else if (Objetos.Spray.dir == DOWN && Objetos.Spray.y < 160) {
+		Objetos.Spray.y++;
 	}
-	MostrarSpray(Spray.x, Spray.y);
+	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
 }
 
 

@@ -25,26 +25,12 @@ int estado;
 
 int segs0 = 0;
 int segs1 = 0;
-bool initdone = false;
-bool instructdone = false;
-int n = 3;
-
-tSpray Spray;
-
+int initdone = 0;
+int instructdone = 0;
 touchPosition pos_pantalla;
 
-int touchingScreen() {
-	//touchPosition pos_pantalla;
-	touchRead(&pos_pantalla);
-	iprintf("\x1b[00;00H  NORMAL        ");
-	iprintf("\x1b[00;10H %d %d", pos_pantalla.px, pos_pantalla.py);
-  	if (pos_pantalla.px == 0 && pos_pantalla.py == 0) {
-  		return 0;
-  	}
-  	else {
-  		return 1;
-  	}
-}
+tObjetos Objetos;
+
 
 int main() {
 
@@ -81,8 +67,8 @@ int main() {
 		switch(estado){
 			case INIT:
 				// Hay que cambiarlo por playButton() y que funcione bien
-				if (TeclaPulsada() == A) {
-					consoleDemoInit();
+				if (touchingScreen() == 1) {
+					//consoleDemoInit();
 					estado = GAME;
 				}
 				// Hay que cambiarlo por instructionButton() y que funcione bien
@@ -92,16 +78,16 @@ int main() {
 				}
 				break;
 			case GAME:
-				if (!initdone) {
+				if (initdone == 0) {
 					MostrarFondoTrafico();
 					printBasicInfo();
 					printGameScreen();
-					initdone = true;
+					initdone = 1;
 				}
 				// Encuesta movimiento Spray
 				switch(TeclaPulsada()) {
 					case DOWN:
-						Spray.dir = DOWN;
+						Objetos.Spray.dir = DOWN;
 						break;
 					//default:
 					//	speSp = false;

@@ -70,6 +70,22 @@ typedef struct {
    int dir;
 } tSpray;
 
+typedef struct {
+	int x;
+	int y;
+	int indice;
+} tVirus;
+
+typedef struct {
+	tSpray Spray;
+	tVirus Virus1;
+	tVirus Virus2;
+	tVirus Virus3;
+	tVirus Virus4;
+	tVirus Virus5;
+	tVirus Virus6;
+} tObjetos;
+
 
 // Variables globales
 extern int estado;
@@ -77,5 +93,6 @@ extern int tsegs;
 extern int segs0;
 extern int segs1;
 
-extern tSpray Spray;
+extern tObjetos Objetos;
+
 
