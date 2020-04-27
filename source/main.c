@@ -30,6 +30,7 @@ int dirSp = 0;
 int ySp = 50;
 bool initdone = false;
 bool instructdone = false;
+int nv = 1;
 
 tObjetos Objetos;
 
@@ -79,6 +80,7 @@ int main() {
 			case GAME:
 				if (!initdone) {
 					MostrarFondoTrafico();
+					initVarGameScreen();
 					printBasicInfo();
 					printGameScreen();
 					initdone = true;

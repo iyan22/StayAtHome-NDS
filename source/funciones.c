@@ -81,7 +81,6 @@ void printBasicInfo() {
 }
 
 void printGameScreen() {
-	initVarGameScreen();
 	MostrarP1Arriba(1,10,5);
 	MostrarP1Abajo (2,10,21);
 	MostrarP1Arriba(3,10,40);
@@ -122,44 +121,44 @@ void updateSpray() {
 }
 
 void spawnVirus(){
-	int i = 1;
+	
 	int random = 0;
-	switch(i){
+	switch(nv){
 		case 1:
 			// srand(time(NULL));
 			random = 10+rand()%(150 + 1 - 10);
 			MostrarVirus(Objetos.Virus1.indice, xVi, random);
-			i++;
+			nv++;
 			break;
 		case 2:
 			// srand(time(NULL));
 			random = 10+rand()%(150 + 1 - 10);
 			MostrarVirus(Objetos.Virus2.indice, xVi, random);
-			i++;
+			nv++;
 			break;
 		case 3:
 			// srand(time(NULL));
 			random = 10+rand()%(150 + 1 - 10);
 			MostrarVirus(Objetos.Virus3.indice, xVi, random);
-			i++;
+			nv++;
 			break;
 		case 4:
 			// srand(time(NULL));
 			random = 10+rand()%(150 + 1 - 10);
 			MostrarVirus(Objetos.Virus4.indice, xVi, random);
-			i++;
+			nv++;
 			break;
 		case 5:
 			// srand(time(NULL));
 			random = 10+rand()%(150 + 1 - 10);
 			MostrarVirus(Objetos.Virus5.indice, xVi, random);
-			i++;
+			nv++;
 			break;
 		case 6:
 			// srand(time(NULL));
 			random = 10+rand()%(150 + 1 - 10);
 			MostrarVirus(Objetos.Virus6.indice, xVi, random);
-			i = 1;
+			nv = 1;
 			break;
 	}
 }

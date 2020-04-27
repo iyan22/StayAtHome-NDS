@@ -103,3 +103,4 @@ extern bool speSp;
 extern int ySp;
 
 extern tObjetos Objetos;
+extern int nv;
