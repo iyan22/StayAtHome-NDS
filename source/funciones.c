@@ -97,25 +97,24 @@ void printGameScreen() {
 	MostrarP1Abajo (8,10,126);
 	MostrarP1Arriba(9,10,145);
 	MostrarP1Abajo (10,10,161);
-	MostrarSpray(xSp, ySp);
+	MostrarSpray(Spray.x, Spray.y);
 }
 
 
 void initVarGameScreen() {
-	ySp = 50;
-	speSp = false;
+	Spray.x = xSp;
+	Spray.y = 50;
+	Spray.dir = 0;
 }
 
 void updateSpray() {
-	if (speSp) {
-		if (dirSp == UP && ySp > 3) {
-			ySp--;
-		}
-		else if (dirSp == DOWN && ySp < 160) {
-			ySp++;
-		}
-		MostrarSpray(xSp, ySp);
+	if (Spray.dir == UP && Spray.y > 3) {
+		Spray.y--;
 	}
+	else if (Spray.dir == DOWN && Spray.y < 160) {
+		Spray.y++;
+	}
+	MostrarSpray(Spray.x, Spray.y);
 }
 
 

@@ -57,7 +57,7 @@ defines.h
 // Constantes
 #define xSp 		28
 
-/*
+// Typedefs
 typedef struct {
    int x;
    int y;
@@ -65,14 +65,10 @@ typedef struct {
 
 
 typedef struct {
-   tSprite Sp;
-   int dirSp;
-   int speSp;
+   int x;
+   int y;
+   int dir;
 } tSpray;
-*/
-
-
-
 
 
 // Variables globales
@@ -81,7 +77,5 @@ extern int tsegs;
 extern int segs0;
 extern int segs1;
 
-extern int dirSp;
-extern bool speSp;
-extern int ySp;
+extern tSpray Spray;
 

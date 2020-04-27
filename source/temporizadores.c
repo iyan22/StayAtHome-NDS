@@ -5,6 +5,7 @@
 #include "defines.h"
 #include "sprites.h"
 #include "funciones.h"
+#include "fondos.h"
 #include <nds.h>
 #include <stdio.h>
 

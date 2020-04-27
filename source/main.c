@@ -25,12 +25,11 @@ int estado;
 
 int segs0 = 0;
 int segs1 = 0;
-bool speSp = false;
-int dirSp = 0;
-int ySp = 50;
 bool initdone = false;
 bool instructdone = false;
 int n = 3;
+
+tSpray Spray;
 
 touchPosition pos_pantalla;
 
@@ -82,10 +81,8 @@ int main() {
 		switch(estado){
 			case INIT:
 				// Hay que cambiarlo por playButton() y que funcione bien
-				n = touchingScreen();
-				iprintf("\x1b[05;00H  %d ", n);
-				if (n == 1) {
-					//consoleDemoInit();
+				if (TeclaPulsada() == A) {
+					consoleDemoInit();
 					estado = GAME;
 				}
 				// Hay que cambiarlo por instructionButton() y que funcione bien
@@ -104,8 +101,7 @@ int main() {
 				// Encuesta movimiento Spray
 				switch(TeclaPulsada()) {
 					case DOWN:
-						dirSp = DOWN;
-						speSp = true;
+						Spray.dir = DOWN;
 						break;
 					//default:
 					//	speSp = false;
