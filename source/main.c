@@ -32,6 +32,21 @@ bool initdone = false;
 bool instructdone = false;
 int n = 3;
 
+touchPosition pos_pantalla;
+
+int touchingScreen() {
+	//touchPosition pos_pantalla;
+	touchRead(&pos_pantalla);
+	iprintf("\x1b[00;00H  NORMAL        ");
+	iprintf("\x1b[00;10H %d %d", pos_pantalla.px, pos_pantalla.py);
+  	if (pos_pantalla.px == 0 && pos_pantalla.py == 0) {
+  		return 0;
+  	}
+  	else {
+  		return 1;
+  	}
+}
+
 int main() {
 
 
