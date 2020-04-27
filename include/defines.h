@@ -56,8 +56,6 @@ defines.h
 
 // Constantes
 #define xSp 		28
-#define xVi			240
-
 
 /*
 typedef struct {
@@ -104,3 +102,29 @@ extern int ySp;
 
 extern tObjetos Objetos;
 extern int nv;
+
+
+
+extern int xVi1;
+extern int xVi2;
+extern int xVi3;
+extern int xVi4;
+extern int xVi5;
+extern int xVi6;
+
+extern bool v1Visible;
+extern bool v2Visible;
+extern bool v3Visible;
+extern bool v4Visible;
+extern bool v5Visible;
+extern bool v6Visible;
+
+extern int random1;
+extern int random2;
+extern int random3;
+extern int random4;
+extern int random5;
+extern int random6;
+
+
+

@@ -32,6 +32,28 @@ bool initdone = false;
 bool instructdone = false;
 int nv = 1;
 
+
+int xVi1 = 255;
+int xVi2 = 255;
+int xVi3 = 255;
+int xVi4 = 255;
+int xVi5 = 255;
+int xVi6 = 255;
+
+bool v1Visible = false;
+bool v2Visible = false;
+bool v3Visible = false;
+bool v4Visible = false;
+bool v5Visible = false;
+bool v6Visible = false;
+
+int random1 = 0;
+int random2 = 0;
+int random3 = 0;
+int random4 = 0;
+int random5 = 0;
+int random6 = 0;
+
 tObjetos Objetos;
 
 int main() {

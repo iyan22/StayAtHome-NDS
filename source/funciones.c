@@ -121,50 +121,81 @@ void updateSpray() {
 }
 
 void spawnVirus(){
-
-	int random = 0;
+	//int xVi1 = 240, xVi2 = 240, xVi3 = 240, xVi4 = 240, xVi5 = 240, xVi6 = 240;
+	//bool v1Visible = false, v2Visible = false, v3Visible = false, v4Visible = false, v5Visible = false, v6Visible = false;
+	//int random1 = 0, random2 = 0, random3 = 0, random4 = 0, random5 = 0, random6 = 0;
 	switch(nv){
 		case 1:
 			// srand(time(NULL));
-			random = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus1.indice, xVi, random);
+			v1Visible = true;
+			random1 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus1.indice, xVi1, random1);
 			nv++;
 			break;
 		case 2:
 			// srand(time(NULL));
-			random = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus2.indice, xVi, random);
+			v2Visible = true;
+			random2 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus2.indice, xVi2, random2);
 			nv++;
 			break;
 		case 3:
 			// srand(time(NULL));
-			random = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus3.indice, xVi, random);
+			v3Visible = true;
+			random3 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus3.indice, xVi3, random3);
 			nv++;
 			break;
 		case 4:
 			// srand(time(NULL));
-			random = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus4.indice, xVi, random);
+			v4Visible = true;
+			random4 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus4.indice, xVi4, random4);
 			nv++;
 			break;
 		case 5:
 			// srand(time(NULL));
-			random = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus5.indice, xVi, random);
+			v5Visible = true;
+			random5 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus5.indice, xVi5, random5);
 			nv++;
 			break;
 		case 6:
 			// srand(time(NULL));
-			random = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus6.indice, xVi, random);
+			v6Visible = true;
+			random6 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus6.indice, xVi6, random6);
 			nv = 1;
 			break;
 	}
 }
 
 void updateVirus(){
-	
+	if (v1Visible){
+		xVi1--;
+		MostrarVirus(Objetos.Virus1.indice, xVi1, random1);
+	}
+	if (v2Visible){
+		xVi2--;
+		MostrarVirus(Objetos.Virus2.indice, xVi2, random2);
+	}
+	if (v3Visible){
+		xVi3--;
+		MostrarVirus(Objetos.Virus3.indice, xVi3, random3);
+	}
+	if (v4Visible){
+		xVi4--;
+		MostrarVirus(Objetos.Virus4.indice, xVi4, random4);
+	}
+	if (v5Visible){
+		xVi5--;
+		MostrarVirus(Objetos.Virus5.indice, xVi5, random5);
+	}
+	if (v6Visible){
+		xVi6--;
+		MostrarVirus(Objetos.Virus6.indice, xVi6, random6);
+	}
+
 }
 
 

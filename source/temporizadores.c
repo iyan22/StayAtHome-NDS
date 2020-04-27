@@ -18,12 +18,14 @@ void IntTemp0() {
 	tick0++;										// Sumamos 1 a tick0
 	if (estado == GAME) {							// Si estamos en estado GAME
 		updateSpray();
-		updateVirus();								// Actualizamos posición Spray 60 veces/seg
+		if (tick0 % 5 == 0){
+			updateVirus();
+		}								// Actualizamos posición Spray 60 veces/seg
 	}
 	if (tick0 == 60) {								// Cuando tenemos 60 tick0
 		tick0 = 0;									// Restablecemos tick0
 		if (estado == GAME) {						// Si estamos en estado GAME
-			if (segs0 % 5 == 0){
+			if (segs0 % 7 == 0){
 				spawnVirus();
 			}							// Generamos virus
 			segs0++;								// Sumamos 1 a segs0 (seg jugando)
