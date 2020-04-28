@@ -1,1 +1,0 @@
-FondoTrafico.o: FondoTrafico.s
