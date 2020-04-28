@@ -53,6 +53,9 @@ defines.h
 #define RESTART 	3
 #define END 		4
 
+// Constante
+#define numVirusT 	6
+
 
 // Typedefs
 typedef struct {
@@ -77,12 +80,7 @@ typedef struct {
 
 typedef struct {
 	tSpray Spray;
-	tVirus Virus1;
-	tVirus Virus2;
-	tVirus Virus3;
-	tVirus Virus4;
-	tVirus Virus5;
-	tVirus Virus6;
+	tVirus Virus[numVirusT];
 } tObjetos;
 
 typedef struct {

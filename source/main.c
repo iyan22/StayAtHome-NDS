@@ -63,7 +63,7 @@ int main() {
 			case INIT:
 				// Hay que cambiarlo por playButton() y que funcione bien
 				if (TeclaPulsada() == A) {
-					//consoleDemoInit();
+					consoleDemoInit();
 					Estado.estado = GAME;
 				}
 				// Hay que cambiarlo por instructionButton() y que funcione bien
