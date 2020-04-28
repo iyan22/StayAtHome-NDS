@@ -16,132 +16,117 @@
 ---------------------------------------------------------------------------------------------------------------*/
 
 
-
-
-int touchingScreen() {
+bool touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
 	iprintf("\x1b[00;00H  NORMAL        ");
 	iprintf("\x1b[00;10H %d %d", pos_pantalla.px, pos_pantalla.py);
-  	if (pos_pantalla.px == 0 && pos_pantalla.py == 0) {
-  		return 0;
-  	}
-  	else {
-  		return 1;
-  	}
+  	return pos_pantalla.px != 0 && pos_pantalla.py != 0;
 }
 
-
-int playButton() {
+bool playButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
 	iprintf("\x1b[01;00H  PLAYYY  ");
 	iprintf("\x1b[01;10H  %d %d ", pos_pantalla.px, pos_pantalla.py);
-  	if (pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
-  		pos_pantalla.py > 40 && pos_pantalla.py < 95) {
-  		return 1;
-  	}
-  	else {
-  		return 0;
-  	}
+  	return pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
+  		pos_pantalla.py > 40 && pos_pantalla.py < 95;
 }
 
-int instructionButton() {
+bool instructionButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
 	iprintf("\x1b[02;00H  INSTRUCTION ");
-  	if (pos_pantalla.px > 105 && pos_pantalla.px < 175 &&
-  		pos_pantalla.py > 108 && pos_pantalla.py < 126) {
-  		return 1;
-  	}
-  	else {
-  		return 0;
-  	}
+  	return pos_pantalla.px > 105 && pos_pantalla.px < 175 &&
+  		   pos_pantalla.py > 108 && pos_pantalla.py < 126;
 }
-
 
 void printInstructions() {
-	iprintf("\x1b[01;00H    Welcome to StayAtHome-NDS  ");
- 	iprintf("\x1b[03;00H           Instructions:       ");
- 	iprintf("\x1b[05;00H    Press PLAY (touchscreen)   ");
-	iprintf("\x1b[07;00H    Kill COVID-19 viruses with ");
-	iprintf("\x1b[08;00H    the hidroalcoholic gel     ");
-	iprintf("\x1b[09;00H    Press A to shot.           ");
-	iprintf("\x1b[11;00H    Move the hidroalcoholic gel");
-	iprintf("\x1b[12;00H    pressing UP and DOWN       ");
-	iprintf("\x1b[14;00H           BE CAREFUL!!!       ");
-	iprintf("\x1b[16;00H      If virus touches people  ");
-	iprintf("\x1b[17;00H       they will be infected   ");
-	iprintf("\x1b[20;00H    Developed by:              ");
-	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
+	iprintf("\x1b[01;00H   Welcome to StayAtHome-NDS  ");
+ 	iprintf("\x1b[03;00H          Instructions:       ");
+ 	iprintf("\x1b[05;00H   Press PLAY (touchscreen)   ");
+	iprintf("\x1b[07;00H   Kill COVID-19 viruses with ");
+	iprintf("\x1b[08;00H   the hidroalcoholic gel     ");
+	iprintf("\x1b[09;00H   Press A to shot.           ");
+	iprintf("\x1b[11;00H   Move the hidroalcoholic gel");
+	iprintf("\x1b[12;00H   pressing UP and DOWN       ");
+	iprintf("\x1b[14;00H          BE CAREFUL!!!       ");
+	iprintf("\x1b[16;00H     If virus touches people  ");
+	iprintf("\x1b[17;00H      they will be infected   ");
+	iprintf("\x1b[20;00H   Developed by:              ");
+	iprintf("\x1b[22;00H   Iyan A. Unai R. Aleina P.  ");
 }
-
 
 void printBasicInfo() {
 	consoleDemoInit();
 	iprintf("\x1b[01;00H  +--------------------------+ ");
  	iprintf("\x1b[02;00H  : EC                 19/20 : ");
  	iprintf("\x1b[03;00H  +--------------------------+ ");
-	iprintf("\x1b[10;00H    Project StayAtHome - NDS   ");
-	iprintf("\x1b[12;00H  Segundos:");
+	iprintf("\x1b[08;00H    Project StayAtHome - NDS   ");
+	iprintf("\x1b[10;00H  Segundos:");
 	iprintf("\x1b[20;00H          Grupo 2A03           ");
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 }
 
 void initVarEstado() {
+	Estado.dificultad = 1;
 	Estado.initdone = false;
 	Estado.instructdone = false;
-	Estado.numVirus = 1;
+	Estado.numVirus = 0;
+	Estado.numGota = 0;
 }
 
 void printGameScreen() {
-	MostrarPersona(1,10,5);
-	MostrarPersona(3,10,40);
-	MostrarPersona(5,10,75);
-	MostrarPersona(7,10,110);
-	MostrarPersona(9,10,145);
+	MostrarPersonas();
 	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
 }
 
 void initVarGameScreen() {
 
 	Objetos.Spray.x = 28;
-	Objetos.Spray.y = 50;
+	Objetos.Spray.y = 85;
 	Objetos.Spray.dir = 0;
 
-	Objetos.Virus1.indice = 11;
-	Objetos.Virus2.indice = 12;
-	Objetos.Virus3.indice = 13;
-	Objetos.Virus4.indice = 14;
-	Objetos.Virus5.indice = 15;
-	Objetos.Virus6.indice = 16;
+	int i = 0;
+	while (i < numVirusT) {
+		Objetos.Virus[i].indice = i;
+		Objetos.Virus[i].visible = false;
+		Objetos.Virus[i].x = 250;
+		Objetos.Virus[i].y = 0;
+		i++;
+	}
 
-	Objetos.Virus1.x = 250;
-	Objetos.Virus2.x = 250;
-	Objetos.Virus3.x = 250;
-	Objetos.Virus4.x = 250;
-	Objetos.Virus5.x = 250;
-	Objetos.Virus6.x = 250;
+	i = 0;
+	while (i < numGotaT) {
+		Objetos.Gota[i].indice = 10 + i;
+		Objetos.Gota[i].visible = false;
+		Objetos.Gota[i].x = 0;
+		Objetos.Gota[i].y = 0;
+		i++;
+	}
 
-	Objetos.Virus1.y = 0;
-	Objetos.Virus2.y = 0;
-	Objetos.Virus3.y = 0;
-	Objetos.Virus4.y = 0;
-	Objetos.Virus5.y = 0;
-	Objetos.Virus6.y = 0;
-
-	Objetos.Virus1.visible = false;
-	Objetos.Virus2.visible = false;
-	Objetos.Virus3.visible = false;
-	Objetos.Virus4.visible = false;
-	Objetos.Virus5.visible = false;
-	Objetos.Virus6.visible = false;
-
+	i = 0;
+	while (i < numPersonaT) {
+		Objetos.Persona[i].indiceArriba = 20 + (i*2);
+		Objetos.Persona[i].indiceAbajo = 20 + (i*2) +1;
+		Objetos.Persona[i].infectado = false;
+		Objetos.Persona[i].x = 10;
+		Objetos.Persona[i].y = 5 + 35*i;
+		i++;
+	}
 }
 
 void MostrarPersona(int indice, int x, int y) {
 	MostrarP1Arriba(indice,x,y);
 	MostrarP1Abajo (indice+1,x,y+16);
+}
+
+void MostrarPersonas() {
+	int i = 0;
+	while (i < numPersonaT) {
+		MostrarPersona(Objetos.Persona[i].indiceArriba, Objetos.Persona[i].x, Objetos.Persona[i].y);
+		i++;
+	}
 }
 
 void updateSpray() {
@@ -155,119 +140,124 @@ void updateSpray() {
 }
 
 void spawnVirus(){
-	switch(Estado.numVirus){
-		case 1:
-			Objetos.Virus1.visible = true;
-			Objetos.Virus1.y = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus1.indice, Objetos.Virus1.x, Objetos.Virus1.y);
-			Estado.numVirus++;
-			break;
-		case 2:
-			Objetos.Virus2.visible = true;
-			Objetos.Virus2.y = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus2.indice, Objetos.Virus2.x, Objetos.Virus2.y);
-			Estado.numVirus++;
-			break;
-		case 3:
-			Objetos.Virus3.visible = true;
-			Objetos.Virus3.y = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus3.indice, Objetos.Virus3.x, Objetos.Virus3.y);
-			Estado.numVirus++;
-			break;
-		case 4:
-			Objetos.Virus4.visible = true;
-			Objetos.Virus4.y = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus4.indice, Objetos.Virus4.x, Objetos.Virus4.y);
-			Estado.numVirus++;
-			break;
-		case 5:
-			Objetos.Virus5.visible = true;
-			Objetos.Virus5.y = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus5.indice, Objetos.Virus5.x, Objetos.Virus5.y);
-			Estado.numVirus++;
-			break;
-		case 6:
-			Objetos.Virus6.visible = true;
-			Objetos.Virus6.y = 10+rand()%(150 + 1 - 10);
-			MostrarVirus(Objetos.Virus6.indice, Objetos.Virus6.x, Objetos.Virus6.y);
-			Estado.numVirus = 1;
-			break;
+	int n = Estado.numVirus;
+	Objetos.Virus[n].visible = true;
+	Objetos.Virus[n].y = rand()% (150-10+1) + 10;
+	MostrarVirus(Objetos.Virus[n].indice, Objetos.Virus[n].x, Objetos.Virus[n].y);
+	if (n < numVirusT-1) {
+		Estado.numVirus++;
+	}
+	else {
+		Estado.numVirus = 0;
 	}
 }
 
-void updateVirus(){
-	if (Objetos.Virus1.visible){
-		if (1+rand()%(5) == 1){
-			if (1+rand()%(2) == 1 && Objetos.Virus1.y < 150){
-				Objetos.Virus1.y += 2;
-			}else if (1+rand()%(2) == 2 && Objetos.Virus1.y > 10){
-				Objetos.Virus1.y -= 2;
+void updateVirus() {
+	int i = 0;
+	if (Estado.dificultad == 1) {
+		while (i < numVirusT) {
+			if (Objetos.Virus[i].visible){
+	       		Objetos.Virus[i].x--;
+	        	MostrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
-		}
-		Objetos.Virus1.x--;
-		MostrarVirus(Objetos.Virus1.indice, Objetos.Virus1.x, Objetos.Virus1.y);
+			i++;
+    	}
 	}
-	if (Objetos.Virus2.visible){
-		if (1+rand()%(5) == 1){
-			if (1+rand()%(2) == 1 && Objetos.Virus2.y < 150){
-				Objetos.Virus2.y += 2;
-			}else if (1+rand()%(2) == 2 && Objetos.Virus2.y > 10){
-				Objetos.Virus2.y -= 2;
+	else if (Estado.dificultad >= 2) {
+		while (i < numVirusT) {
+			if (Objetos.Virus[i].visible) {
+				if (rand()%2 == 0 && Objetos.Virus[i].y < 150){
+						Objetos.Virus[i].y += 2;
+					}
+				else if (Objetos.Virus[i].y > 10){
+						Objetos.Virus[i].y -= 2;
+				}
+				Objetos.Virus[i].x--;
+				MostrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
+			i++;
 		}
-		Objetos.Virus2.x--;
-		MostrarVirus(Objetos.Virus2.indice, Objetos.Virus2.x, Objetos.Virus2.y);
 	}
-	if (Objetos.Virus3.visible){
-		if (1+rand()%(5) == 1){
-			if (1+rand()%(2) == 1 && Objetos.Virus3.y < 150){
-				Objetos.Virus3.y += 2;
-			}else if (1+rand()%(2) == 2 && Objetos.Virus3.y > 10){
-				Objetos.Virus3.y -= 2;
+	else {
+		while (i < numVirusT) {
+			if (Objetos.Virus[i].visible) {
+				//if (rand()%2 == 1){
+					if (rand()%2 == 0 && Objetos.Virus[i].y < 150){
+						Objetos.Virus[i].y += 2;
+					}
+					else if (Objetos.Virus[i].y > 10){
+						Objetos.Virus[i].y -= 2;
+					}
+				//}
+				Objetos.Virus[i].x--;
+				MostrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
+			i++;
 		}
-		Objetos.Virus3.x--;
-		MostrarVirus(Objetos.Virus3.indice, Objetos.Virus3.x, Objetos.Virus3.y);
 	}
-	if (Objetos.Virus4.visible){
-		if (1+rand()%(5) == 1){
-			if (1+rand()%(2) == 1 && Objetos.Virus4.y < 150){
-				Objetos.Virus4.y += 2;
-			}else if (1+rand()%(2) == 2 && Objetos.Virus4.y > 10){
-				Objetos.Virus4.y -= 2;
-			}
-		}
-		Objetos.Virus4.x--;
-		MostrarVirus(Objetos.Virus4.indice, Objetos.Virus4.x, Objetos.Virus4.y);
-	}
-	if (Objetos.Virus5.visible){
-		if (1+rand()%(5) == 1){
-			if (1+rand()%(2) == 1 && Objetos.Virus5.y < 150){
-				Objetos.Virus5.y += 2;
-			}else if (1+rand()%(2) == 2 && Objetos.Virus5.y > 10){
-				Objetos.Virus5.y -= 2;
-			}
-		}
-		Objetos.Virus5.x--;
-		MostrarVirus(Objetos.Virus5.indice, Objetos.Virus5.x, Objetos.Virus5.y);
-	}
-	if (Objetos.Virus6.visible){
-		if (1+rand()%(5) == 1){
-			if (1+rand()%(2) == 1 && Objetos.Virus6.y < 150){
-				Objetos.Virus6.y += 2;
-			}else if (1+rand()%(2) == 2 && Objetos.Virus6.y > 10){
-				Objetos.Virus6.y -= 2;
-			}
-		}
-		Objetos.Virus6.x--;
-		MostrarVirus(Objetos.Virus6.indice, Objetos.Virus6.x, Objetos.Virus6.y);
-	}
-
 }
 
+void spawnDrop() {
+	int n = Estado.numGota;
+	Objetos.Gota[n].visible = true;
+	Objetos.Gota[n].x = Objetos.Spray.x + 16;
+	Objetos.Gota[n].y = Objetos.Spray.y;
+	MostrarGota(Objetos.Gota[n].indice, Objetos.Gota[n].x, Objetos.Gota[n].y);
+	if (n < numGotaT-1) {
+		Estado.numGota++;
+	}
+	else {
+		Estado.numGota = 0;
+	}
+}
 
+void updateDrop() {
+	int i = 0;
+	while (i < numGotaT) {
+		if (Objetos.Gota[i].visible){
+	       	Objetos.Gota[i].x++;
+	       	MostrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+		}
+		if (Objetos.Gota[i].x > 250) {
+			Objetos.Gota[i].visible = false;
+			BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+		}
+		i++;
+   	}
+}
 
+void shot() {
+	spawnDrop();
+}
 
+void calculateDifficulty(int segs) {
+	if (segs < 60) {
+		Estado.dificultad = 1;
+		iprintf("\x1b[12;00H  Dificultad: Facil    ");
+	}
+	else if (segs < 120) {
+		Estado.dificultad = 2;
+		iprintf("\x1b[12;00H  Dificultad: Media    ");
+	}
+	else {
+		Estado.dificultad = 3;
+		iprintf("\x1b[12;00H  Dificultad: Dificil  ");
+	}
+}
 
+int calculateInfectados() {
+	int i = 0;
+	int inf = 0;
+	while (i < numPersonaT) {
+		if (Objetos.Persona[i].infectado) {
+			inf++;
+		}
+		i++;
+	}
+	return inf;
+}
 
+void printInfectados() {
+	iprintf("\x1b[14;00H  Infectados: %d", calculateInfectados());
+}
 
