@@ -21,42 +21,11 @@
  											Variables globales
 -----------------------------------------------------------------------------------------------------------*/
 
-int estado;
+tObjetos Objetos;
+tEstado Estado;
 
-int segs0 = 0;
-int segs1 = 0;
-bool speSp = false;
-int dirSp = 0;
-int ySp = 50;
-int nv = 1;
-
-
-int xVi1 = 255;
-int xVi2 = 255;
-int xVi3 = 255;
-int xVi4 = 255;
-int xVi5 = 255;
-int xVi6 = 255;
-
-bool v1Visible = false;
-bool v2Visible = false;
-bool v3Visible = false;
-bool v4Visible = false;
-bool v5Visible = false;
-bool v6Visible = false;
-
-int random1 = 0;
-int random2 = 0;
-int random3 = 0;
-int random4 = 0;
-int random5 = 0;
-int random6 = 0;
-
-int initdone = 0;
-int instructdone = 0;
 touchPosition pos_pantalla;
 
-tObjetos Objetos;
 
 int main() {
 
@@ -85,40 +54,37 @@ int main() {
 	// srand() sólo se suele activar una vez por ejecución y no devuelve ningún valor 
 	srand (time(NULL));
 
-	
 	interrupciones();
+	initVarEstado();
 
 	
 	while(1) {
-		switch(estado){
+		switch(Estado.estado){
 			case INIT:
 				// Hay que cambiarlo por playButton() y que funcione bien
 				if (TeclaPulsada() == A) {
 					//consoleDemoInit();
-					estado = GAME;
+					Estado.estado = GAME;
 				}
 				// Hay que cambiarlo por instructionButton() y que funcione bien
-				else if (instructdone == 0 && TeclaPulsada() == B) {
-					//printInstructions();
-					instructdone = 1;
+				else if (!Estado.instructdone && TeclaPulsada() == B) {
+					printInstructions();
+					Estado.instructdone = true;
 				}
 				break;
 			case GAME:
-				if (initdone == 0) {
+				if (Estado.initdone == 0) {
 					MostrarFondoTrafico();
 					initVarGameScreen();
 					printBasicInfo();
 					printGameScreen();
-					initdone = 1;
+					Estado.initdone = 1;
 				}
 				// Encuesta movimiento Spray
 				switch(TeclaPulsada()) {
 					case DOWN:
 						Objetos.Spray.dir = DOWN;
 						break;
-					//default:
-					//	speSp = false;
-					//	break;
 				}
 				break;
 

@@ -54,9 +54,6 @@ defines.h
 #define END 		4
 
 
-// Constantes
-#define xSp 		28
-
 // Typedefs
 typedef struct {
    int x;
@@ -74,6 +71,8 @@ typedef struct {
 	int x;
 	int y;
 	int indice;
+	int random;
+	bool visible;
 } tVirus;
 
 typedef struct {
@@ -86,40 +85,19 @@ typedef struct {
 	tVirus Virus6;
 } tObjetos;
 
+typedef struct {
+	int estado;
+	int segs0;
+	int numVirus;
+	bool initdone;
+	bool instructdone;
+} tEstado;
+
 
 // Variables globales
-extern int estado;
-extern int tsegs;
-extern int segs0;
-extern int segs1;
-
 extern tObjetos Objetos;
+extern tEstado Estado;
 
-
-extern tObjetos Objetos;
-extern int nv;
-
-
-extern int xVi1;
-extern int xVi2;
-extern int xVi3;
-extern int xVi4;
-extern int xVi5;
-extern int xVi6;
-
-extern bool v1Visible;
-extern bool v2Visible;
-extern bool v3Visible;
-extern bool v4Visible;
-extern bool v5Visible;
-extern bool v6Visible;
-
-extern int random1;
-extern int random2;
-extern int random3;
-extern int random4;
-extern int random5;
-extern int random6;
 
 
 
