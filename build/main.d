@@ -1,4 +1,4 @@
-main.o: /home/parallels/Desktop/StayAtHome-NDS/source/main.c \
+main.o: /home/proyectoec/Escritorio/StayAtHome-NDS/source/main.c \
  /opt/devkitpro/libnds/include/nds.h \
  /opt/devkitpro/libnds/include/nds/libversion.h \
  /opt/devkitpro/libnds/include/nds/ndstypes.h \
@@ -59,19 +59,13 @@ main.o: /home/parallels/Desktop/StayAtHome-NDS/source/main.c \
  /opt/devkitpro/libnds/include/nds/arm9/video.h \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/fondos.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/defines.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/teclado.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/funciones.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/defines.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/fondos.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/teclado.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/fondos.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/sprites.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/defines.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/rutserv.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/teclado.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/temporizadores.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/funciones.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -193,28 +187,16 @@ main.o: /home/parallels/Desktop/StayAtHome-NDS/source/main.c \
 
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/fondos.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/fondos.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/sprites.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/defines.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/rutserv.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/teclado.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/teclado.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/temporizadores.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/funciones.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/fondos.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/teclado.h:
-
-/home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/funciones.h:

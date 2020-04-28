@@ -1,4 +1,5 @@
-funciones.o: /home/parallels/Desktop/StayAtHome-NDS/source/funciones.c \
+funciones.o: \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/source/funciones.c \
  /opt/devkitpro/libnds/include/nds.h \
  /opt/devkitpro/libnds/include/nds/libversion.h \
  /opt/devkitpro/libnds/include/nds/ndstypes.h \
@@ -59,12 +60,12 @@ funciones.o: /home/parallels/Desktop/StayAtHome-NDS/source/funciones.c \
  /opt/devkitpro/libnds/include/nds/arm9/video.h \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/fondos.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/defines.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/teclado.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/fondos.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/sprites.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/defines.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/rutserv.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/teclado.h \
+ /home/proyectoec/Escritorio/StayAtHome-NDS/include/temporizadores.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -186,14 +187,14 @@ funciones.o: /home/parallels/Desktop/StayAtHome-NDS/source/funciones.c \
 
 /opt/devkitpro/libnds/include/nds/arm9/nand.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/fondos.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/fondos.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/sprites.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/defines.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/rutserv.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/rutserv.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/teclado.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/teclado.h:
 
-/home/parallels/Desktop/StayAtHome-NDS/include/temporizadores.h:
+/home/proyectoec/Escritorio/StayAtHome-NDS/include/temporizadores.h:
