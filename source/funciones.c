@@ -16,6 +16,7 @@
 ---------------------------------------------------------------------------------------------------------------*/
 
 
+
 bool touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
@@ -80,7 +81,6 @@ void printBasicInfo() {
 }
 
 void printGameScreen() {
-	initVarGameScreen();
 	MostrarP1Arriba(1,10,5);
 	MostrarP1Abajo (2,10,21);
 	MostrarP1Arriba(3,10,40);
@@ -98,6 +98,14 @@ void printGameScreen() {
 void initVarGameScreen() {
 	ySp = 50;
 	speSp = false;
+
+	Objetos.Virus1.indice = 11;
+	Objetos.Virus2.indice = 12;
+	Objetos.Virus3.indice = 13;
+	Objetos.Virus4.indice = 14;
+	Objetos.Virus5.indice = 15;
+	Objetos.Virus6.indice = 16;
+
 }
 
 void updateSpray() {
@@ -111,6 +119,127 @@ void updateSpray() {
 		MostrarSpray(xSp, ySp);
 	}
 }
+
+void spawnVirus(){
+	//int xVi1 = 240, xVi2 = 240, xVi3 = 240, xVi4 = 240, xVi5 = 240, xVi6 = 240;
+	//bool v1Visible = false, v2Visible = false, v3Visible = false, v4Visible = false, v5Visible = false, v6Visible = false;
+	//int random1 = 0, random2 = 0, random3 = 0, random4 = 0, random5 = 0, random6 = 0;
+	switch(nv){
+		case 1:
+			// srand(time(NULL));
+			v1Visible = true;
+			random1 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus1.indice, xVi1, random1);
+			nv++;
+			break;
+		case 2:
+			// srand(time(NULL));
+			v2Visible = true;
+			random2 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus2.indice, xVi2, random2);
+			nv++;
+			break;
+		case 3:
+			// srand(time(NULL));
+			v3Visible = true;
+			random3 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus3.indice, xVi3, random3);
+			nv++;
+			break;
+		case 4:
+			// srand(time(NULL));
+			v4Visible = true;
+			random4 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus4.indice, xVi4, random4);
+			nv++;
+			break;
+		case 5:
+			// srand(time(NULL));
+			v5Visible = true;
+			random5 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus5.indice, xVi5, random5);
+			nv++;
+			break;
+		case 6:
+			// srand(time(NULL));
+			v6Visible = true;
+			random6 = 10+rand()%(150 + 1 - 10);
+			MostrarVirus(Objetos.Virus6.indice, xVi6, random6);
+			nv = 1;
+			break;
+	}
+}
+
+void updateVirus(){
+	if (v1Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random1 < 150){
+				random1 += 2;
+			}else if (1+rand()%(2) == 2 && random1 > 10){
+				random1 -= 2;
+			}
+		}
+		xVi1--;
+		MostrarVirus(Objetos.Virus1.indice, xVi1, random1);
+	}
+	if (v2Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random2 < 150){
+				random2 += 2;
+			}else if (1+rand()%(2) == 2 && random2 > 10){
+				random2 -= 2;
+			}
+		}
+		xVi2--;
+		MostrarVirus(Objetos.Virus2.indice, xVi2, random2);
+	}
+	if (v3Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random3 < 150){
+				random3 += 2;
+			}else if (1+rand()%(2) == 2 && random3 > 10){
+				random3 -= 2;
+			}
+		}
+		xVi3--;
+		MostrarVirus(Objetos.Virus3.indice, xVi3, random3);
+	}
+	if (v4Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random4 < 150){
+				random4 += 2;
+			}else if (1+rand()%(2) == 2 && random4 > 10){
+				random4 -= 2;
+			}
+		}
+		xVi4--;
+		MostrarVirus(Objetos.Virus4.indice, xVi4, random4);
+	}
+	if (v5Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random5 < 150){
+				random5 += 2;
+			}else if (1+rand()%(2) == 2 && random5 > 10){
+				random5 -= 2;
+			}
+		}
+		xVi5--;
+		MostrarVirus(Objetos.Virus5.indice, xVi5, random5);
+	}
+	if (v6Visible){
+		if (1+rand()%(5) == 1){
+			if (1+rand()%(2) == 1 && random6 < 150){
+				random6 += 2;
+			}else if (1+rand()%(2) == 2 && random6 > 10){
+				random6 -= 2;
+			}
+		}
+		xVi6--;
+		MostrarVirus(Objetos.Virus6.indice, xVi6, random6);
+	}
+
+}
+
 
 
 
