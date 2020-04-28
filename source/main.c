@@ -62,6 +62,7 @@ int main() {
 		switch(Estado.estado){
 			case INIT:
 				// Hay que cambiarlo por playButton() y que funcione bien
+				// SOLUCIONAR EN ESTA RAMA SI O SI....
 				if (TeclaPulsada() == A) {
 					consoleDemoInit();
 					Estado.estado = GAME;
