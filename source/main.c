@@ -73,12 +73,12 @@ int main() {
 				}
 				break;
 			case GAME:
-				if (Estado.initdone == 0) {
+				if (!Estado.initdone) {
 					MostrarFondoTrafico();
 					initVarGameScreen();
 					printBasicInfo();
 					printGameScreen();
-					Estado.initdone = 1;
+					Estado.initdone = true;
 				}
 				// Encuesta movimiento Spray
 				switch(TeclaPulsada()) {

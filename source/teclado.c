@@ -35,6 +35,9 @@ void IntTec() {
 				case UP:
 					Objetos.Spray.dir = UP;
 					break;
+				case A:
+					shot();
+					break;
 			}
 			break;
 

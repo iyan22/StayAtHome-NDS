@@ -54,16 +54,12 @@ defines.h
 #define END 		4
 
 // Constante
-#define numVirusT 	6
+#define numVirusT 		6
+#define numGotaT 		6
+#define numPersonaT		5	
 
 
 // Typedefs
-typedef struct {
-   int x;
-   int y;
-} tSprite;
-
-
 typedef struct {
    int x;
    int y;
@@ -74,23 +70,40 @@ typedef struct {
 	int x;
 	int y;
 	int indice;
-	int random;
+	bool visible;
+} tGota;
+
+typedef struct {
+	int x;
+	int y;
+	int indice;
 	bool visible;
 } tVirus;
 
 typedef struct {
+	int x;
+	int y;
+	int indiceArriba;
+	int indiceAbajo;
+	bool infectado;
+} tPersona;
+
+typedef struct {
 	tSpray Spray;
 	tVirus Virus[numVirusT];
+	tGota Gota[numGotaT];
+	tPersona Persona[numPersonaT];
 } tObjetos;
 
 typedef struct {
 	int estado;
 	int segs0;
 	int numVirus;
+	int numGota;
+	int dificultad;
 	bool initdone;
 	bool instructdone;
 } tEstado;
-
 
 // Variables globales
 extern tObjetos Objetos;

@@ -28,7 +28,7 @@ void HabilitarInterrupciones() { // En el Controlador de Interrupciones
 void ProgramarRegistrosControl() { 
 
   // Registro de Control del Teclado
-	TECLAS_CNT = 0x4040; // Tecla UP 
+	TECLAS_CNT = 0x4041; // Tecla A y UP 
 
   // TIMERx_CNT   
   //   El temporizador se activa poniendo un 1 en el 7º bit.
