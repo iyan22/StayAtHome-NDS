@@ -28,8 +28,6 @@ int segs1 = 0;
 bool speSp = false;
 int dirSp = 0;
 int ySp = 50;
-bool initdone = false;
-bool instructdone = false;
 int nv = 1;
 
 
@@ -53,6 +51,10 @@ int random3 = 0;
 int random4 = 0;
 int random5 = 0;
 int random6 = 0;
+
+int initdone = 0;
+int instructdone = 0;
+touchPosition pos_pantalla;
 
 tObjetos Objetos;
 
@@ -90,28 +92,29 @@ int main() {
 	while(1) {
 		switch(estado){
 			case INIT:
+				// Hay que cambiarlo por playButton() y que funcione bien
 				if (TeclaPulsada() == A) {
-					consoleDemoInit();
+					//consoleDemoInit();
 					estado = GAME;
 				}
-				else if (!instructdone && TeclaPulsada() == B) {
-					printInstructions();
-					instructdone = true;
+				// Hay que cambiarlo por instructionButton() y que funcione bien
+				else if (instructdone == 0 && TeclaPulsada() == B) {
+					//printInstructions();
+					instructdone = 1;
 				}
 				break;
 			case GAME:
-				if (!initdone) {
+				if (initdone == 0) {
 					MostrarFondoTrafico();
 					initVarGameScreen();
 					printBasicInfo();
 					printGameScreen();
-					initdone = true;
+					initdone = 1;
 				}
 				// Encuesta movimiento Spray
 				switch(TeclaPulsada()) {
 					case DOWN:
-						dirSp = DOWN;
-						speSp = true;
+						Objetos.Spray.dir = DOWN;
 						break;
 					//default:
 					//	speSp = false;

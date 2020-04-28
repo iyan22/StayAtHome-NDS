@@ -17,40 +17,48 @@
 
 
 
-bool touchingScreen() {
+
+int touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
+	iprintf("\x1b[00;00H  NORMAL        ");
+	iprintf("\x1b[00;10H %d %d", pos_pantalla.px, pos_pantalla.py);
   	if (pos_pantalla.px == 0 && pos_pantalla.py == 0) {
-  		return false;
+  		return 0;
   	}
   	else {
-  		return true;
+  		return 1;
   	}
 }
 
-bool playButton() {
+
+int playButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
+	iprintf("\x1b[01;00H  PLAYYY  ");
+	iprintf("\x1b[01;10H  %d %d ", pos_pantalla.px, pos_pantalla.py);
   	if (pos_pantalla.px > 75 && pos_pantalla.px < 205 &&
   		pos_pantalla.py > 40 && pos_pantalla.py < 95) {
-  		return true;
+  		return 1;
   	}
   	else {
-  		return false;
+  		return 0;
   	}
 }
 
-bool instructionButton() {
+int instructionButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
+	iprintf("\x1b[02;00H  INSTRUCTION ");
   	if (pos_pantalla.px > 105 && pos_pantalla.px < 175 &&
   		pos_pantalla.py > 108 && pos_pantalla.py < 126) {
-  		return true;
+  		return 1;
   	}
   	else {
-  		return false;
+  		return 0;
   	}
 }
+
 
 void printInstructions() {
 	iprintf("\x1b[01;00H    Welcome to StayAtHome-NDS  ");
@@ -91,33 +99,31 @@ void printGameScreen() {
 	MostrarP1Abajo (8,10,126);
 	MostrarP1Arriba(9,10,145);
 	MostrarP1Abajo (10,10,161);
-	MostrarSpray(xSp, ySp);
+	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
 }
 
 
 void initVarGameScreen() {
-	ySp = 50;
-	speSp = false;
-
 	Objetos.Virus1.indice = 11;
 	Objetos.Virus2.indice = 12;
 	Objetos.Virus3.indice = 13;
 	Objetos.Virus4.indice = 14;
 	Objetos.Virus5.indice = 15;
 	Objetos.Virus6.indice = 16;
+	Objetos.Spray.x = xSp;
+	Objetos.Spray.y = 50;
+	Objetos.Spray.dir = 0;
 
 }
 
 void updateSpray() {
-	if (speSp) {
-		if (dirSp == UP && ySp > 3) {
-			ySp--;
-		}
-		else if (dirSp == DOWN && ySp < 160) {
-			ySp++;
-		}
-		MostrarSpray(xSp, ySp);
+	if (Objetos.Spray.dir == UP && Objetos.Spray.y > 3) {
+		Objetos.Spray.y--;
 	}
+	else if (Objetos.Spray.dir == DOWN && Objetos.Spray.y < 160) {
+		Objetos.Spray.y++;
+	}
+	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
 }
 
 void spawnVirus(){

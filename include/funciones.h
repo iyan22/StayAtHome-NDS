@@ -5,9 +5,11 @@
 #include <time.h>       // time 
 
 // Esta función consulta si se ha tocado la pantalla tactil
-extern bool playButton();
-extern bool instructionButton();
-extern bool touchingScreen();
+
+extern int playButton();
+extern int instructionButton();
+extern int touchingScreen();
+
 
 extern void printInstructions();
 extern void printBasicInfo();

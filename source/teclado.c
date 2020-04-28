@@ -35,8 +35,7 @@ void IntTec() {
 		case GAME:
 			switch(TeclaPulsada()) {
 				case UP:
-					dirSp = UP;
-					speSp = true;
+					Objetos.Spray.dir = UP;
 					break;
 			}
 			break;

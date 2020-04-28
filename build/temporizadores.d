@@ -62,7 +62,8 @@ temporizadores.o: \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
  /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/funciones.h
+ /home/parallels/Desktop/StayAtHome-NDS/include/funciones.h \
+ /home/parallels/Desktop/StayAtHome-NDS/include/fondos.h
 
 /home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
 
@@ -189,3 +190,5 @@ temporizadores.o: \
 /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
 
 /home/parallels/Desktop/StayAtHome-NDS/include/funciones.h:
+
+/home/parallels/Desktop/StayAtHome-NDS/include/fondos.h:
