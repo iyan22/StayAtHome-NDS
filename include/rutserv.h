@@ -4,7 +4,12 @@
 
 extern void interrupciones();
 
-extern void HabilitarInterrupciones();
+extern void HabilitarInterrupcionesTotal();
+extern void HabilitarInterrupcionINIT();
+extern void HabilitarInterrupcionGAME();
 extern void ProgramarRegistrosControl();
-extern void DefinirVectorInterrupciones();
+//extern void DefinirVectorInterrupciones();
+extern void DefinirInterrupcionTemporizadorINIT();
+extern void DefinirInterrupcionTemporizadorGAME();
+extern void DefinirInterrupcionTeclas();
 extern void InhibirInterrupciones();

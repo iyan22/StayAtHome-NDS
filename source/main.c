@@ -54,8 +54,8 @@ int main() {
 	// srand() sólo se suele activar una vez por ejecución y no devuelve ningún valor 
 	srand (time(NULL));
 
-	interrupciones();
 	initVarEstado();
+	MostrarInicio1();
 
 	
 	while(1) {
@@ -63,30 +63,33 @@ int main() {
 			case INIT:
 				// Hay que cambiarlo por playButton() y que funcione bien
 				// SOLUCIONAR EN ESTA RAMA SI O SI....
-				if (TeclaPulsada() == A) {
+				if (playButton()) {
 					consoleDemoInit();
 					Estado.estado = GAME;
 				}
 				// Hay que cambiarlo por instructionButton() y que funcione bien
-				else if (!Estado.instructdone && TeclaPulsada() == B) {
+				else if (!Estado.instructdone && instructionButton() == B) {
 					printInstructions();
 					Estado.instructdone = true;
 				}
 				break;
+
 			case GAME:
 				if (!Estado.initdone) {
+					interrupciones();
 					MostrarFondoTrafico();
 					initVarGameScreen();
 					printBasicInfo();
 					printGameScreen();
 					Estado.initdone = true;
-				}
+				} // if (!Estado.initdone)
+
 				// Encuesta movimiento Spray
-				switch(TeclaPulsada()) {
-					case DOWN:
-						Objetos.Spray.dir = DOWN;
-						break;
-				}
+				if (TeclaPulsada() == DOWN) {
+					Objetos.Spray.dir = DOWN;
+				} // if (TeclaPulsada() == DOWN) 
+				break;
+			case PAUSE:
 				break;
 
 		} // switch(estado)

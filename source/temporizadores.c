@@ -19,15 +19,14 @@ void IntTemp0() {
 	tick0++;											// Sumamos 1 a tick0
 	if (Estado.estado == GAME) {						// Si estamos en estado GAME
 		updateSpray();									// Actualizamos posición Spray
-		updateVirus();									// Actualizamos posición Viruses
-		updateDrop();									// Actualizamos posición Gotas										
+		updateVirus();									// Actualizamos posición Viruses									
 	}
 	if (tick0 == 60) {									// Cuando tenemos 60 tick0
 		tick0 = 0;										// Restablecemos tick0
 		if (Estado.estado == GAME) {					// Si estamos en estado GAME
 			if (Estado.segs0 % 5 == 0){
 				spawnVirus();							// Generamos virus
-				calculateDifficulty(Estado.segs0);
+				calculateDifficulty();
 				printInfectados();
 			}
 			Estado.segs0++;								// Sumamos 1 a segs0 (seg jugando)
@@ -35,7 +34,7 @@ void IntTemp0() {
 		}
 	}
 }
-
+/*
 // Rutina de atención a la interrupción del temporizador
 // 2 ticks/seg
 //	- cada tick actualizamos fondo en inicio
@@ -53,6 +52,18 @@ void IntTemp1() {
 			MostrarInicio2();						// Fondo Inicio2
 			tick1 = 0;								// Restablecemos tick1
 		}
+	}
+}
+*/
+
+void IntTemp2() {
+	static int tick2 = 0;
+	tick2++;
+	if (Estado.estado == GAME) {
+		updateDrop();							// Actualizamos posición Gotas	
+	}
+	if (tick2 == 1) {
+		tick2 = 0;
 	}
 }
 
