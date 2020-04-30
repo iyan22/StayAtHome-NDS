@@ -29,4 +29,5 @@ extern void shot();
 extern void calculateDifficulty();
 extern void printInfectados();
 extern void printPausa();
+extern void detectInfection();
 

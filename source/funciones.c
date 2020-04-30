@@ -263,6 +263,31 @@ void printPausa() {
 	iprintf("\x1b[12;00H         --- PAUSA ---            ");
 	iprintf("\x1b[14;00H   Pulsa START para continuar     ");
 }
+/*
+void detectInfection() {
+	int i = 0;
+	int j = 0;
+	while (i < numPersonaT) {
+		if (!Objetos.Persona[i].infectado) {
+			while (j < numVirusT) {
+				if (Objetos.Virus[j].visible && Objetos.Virus[j].x <= 24 &&
+					Objetos.Virus[j].y+2 <= Objetos.Persona[i].y && 
+					Objetos.Virus[j].y-12 <= Objetos.Persona[i].y+32) {
+						BorrarVirus(Objetos.Virus[j].indice, Objetos.Virus[j].x, Objetos.Virus[j].y);
+						Objetos.Virus[j].visible = false;
+						// Temp
+						Objetos.Persona[i].infectado = true;
+						MostrarVirus(Objetos.Persona[i].indiceArriba, Objetos.Persona[i].x, Objetos.Persona[i].y);
+						MostrarVirus(Objetos.Persona[i].indiceAbajo, Objetos.Persona[i].x, Objetos.Persona[i].y+16);
+						//infect(Objetos.Persona[i].indice);
+				}
+				j++;
+			}
+		}
+		i++;
+	}
+}
+*/
 
 
 

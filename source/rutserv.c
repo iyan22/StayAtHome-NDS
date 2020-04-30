@@ -17,10 +17,9 @@ void HabilitarInterrupciones() { // En el Controlador de Interrupciones
   // Primero se inhiben todas las interrupciones
 	IME = 0;
   // Escribir un 1 en el bit correspondiente 
-  // Se escribe  0x1038 ya que utilizamos el TIMER0, TIMER1 y TIMER2 para eso tenemos que activar
-  // los bits 3, 4 y 5 respectivamente, de esta forma revisaríamos que es lo que pasa en los tres.
-	//IE = 0x1038;
-  IE = 0x1028;
+  // Se escribe  0x1038 ya que utilizamos el TIMER0 y TIMER1 para eso tenemos que activar
+  // los bits 3 y 4 respectivamente, de esta forma revisaríamos que es lo que pasa en los tres.
+  IE = 0x1018;
   // Se vuelven a habilitar todas las interrupciones    
 	IME = 1;
 }
@@ -41,14 +40,12 @@ void ProgramarRegistrosControl() {
   //      10 frecuencia 33554432/256 hz
   //      11 frecuencia 33554432/1024 hz
 	TIMER0_CNT = 0x00C1;
-  TIMER1_CNT = 0x00C3;
-  TIMER2_CNT = 0x00C1;
+  TIMER1_CNT = 0x00C1;
 
   // TIMERx_DAT 
   //   Indica a partir de qué valor tiene que empezar a contar (latch)
 	TIMER0_DAT = 56798;
-  TIMER1_DAT = 49152;
-  TIMER2_DAT = 60293;
+  TIMER1_DAT = 60293;
 
 }
 
@@ -58,8 +55,7 @@ void DefinirVectorInterrupciones() {
 	irqSet(IRQ_KEYS, IntTec);
   // Rutinas de Atención a los Temporizadores
 	irqSet(IRQ_TIMER0, IntTemp0);
-  //irqSet(IRQ_TIMER1, IntTemp1);
-  irqSet(IRQ_TIMER2, IntTemp2);
+  irqSet(IRQ_TIMER1, IntTemp1);
 }
 
 void InhibirInterrupciones() { // En el Controlador de Interrupciones
