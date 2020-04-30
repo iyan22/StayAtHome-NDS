@@ -55,7 +55,7 @@ int main() {
 	srand (time(NULL));
 
 	initVarEstado();
-	MostrarInicio1();
+	MostrarFondoInicio();
 
 	
 	while(1) {

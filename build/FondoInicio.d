@@ -1,0 +1,1 @@
+FondoInicio.o: FondoInicio.s
