@@ -39,7 +39,6 @@ void IntTec() {
 				case START:
 					Estado.estado = PAUSE;
 					printPausa();
-
 					break;
 			}
 			break;

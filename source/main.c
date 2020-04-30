@@ -61,13 +61,10 @@ int main() {
 	while(1) {
 		switch(Estado.estado){
 			case INIT:
-				// Hay que cambiarlo por playButton() y que funcione bien
-				// SOLUCIONAR EN ESTA RAMA SI O SI....
 				if (playButton()) {
 					consoleDemoInit();
 					Estado.estado = GAME;
 				}
-				// Hay que cambiarlo por instructionButton() y que funcione bien
 				else if (!Estado.instructdone && instructionButton() == B) {
 					printInstructions();
 					Estado.instructdone = true;
@@ -85,10 +82,12 @@ int main() {
 				} // if (!Estado.initdone)
 
 				// Encuesta movimiento Spray
+				// Revisar funcionamiento con PAUSA
 				if (TeclaPulsada() == DOWN) {
 					Objetos.Spray.dir = DOWN;
 				} // if (TeclaPulsada() == DOWN) 
 				break;
+			// Revisar funcionamiento con PAUSA
 			case PAUSE:
 				break;
 
