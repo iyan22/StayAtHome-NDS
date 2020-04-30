@@ -26,7 +26,8 @@ extern void updateVirus();
 extern void spawnDrop();
 extern void updateDrop();
 extern void shot();
-extern void calculateDifficulty(int segs);
+extern void calculateDifficulty();
 extern void printInfectados();
-
+extern void printPausa();
+extern void detectInfection();
 

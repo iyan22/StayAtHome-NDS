@@ -28,21 +28,30 @@ int  TeclaPulsada() {
 // Rutina de atencion a la interrupcion del teclado
 void IntTec() {
 	switch(Estado.estado) {
-		case INIT:
-			break;
 		case GAME:
 			switch(TeclaPulsada()) {
-				case UP:
-					Objetos.Spray.dir = UP;
-					break;
 				case A:
 					shot();
 					break;
+				case UP:
+					Objetos.Spray.dir = UP;
+					break;
+				case START:
+					Estado.estado = PAUSE;
+					printPausa();
+
+					break;
 			}
 			break;
-
-
-
+		case PAUSE:
+			switch(TeclaPulsada()) {
+				case START:
+					Estado.estado = GAME;
+					printBasicInfo();
+					break;
+			}
+			break;
+			
 	}
 
 }
