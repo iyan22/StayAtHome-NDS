@@ -302,7 +302,7 @@ void detectInfection() {
 	while (i < numVirusT) {
 		if (Objetos.Virus[i].visible && Objetos.Virus[i].x < 10) {
 			while (j < numPersonaT) {
-				if (5+(35*j) <= Objetos.Virus[i].y && Objetos.Virus[i].y <= 5+(35*j)+32 && 
+				if (5+(35*j) <= Objetos.Virus[i].y && Objetos.Virus[i].y <= 5+(35*j)+35 && 
 					!Objetos.Persona[j].infectado){
 					BorrarP1Arriba(Objetos.Persona[j].indiceArriba, 10, 5+(35*j));
 					BorrarP1Abajo(Objetos.Persona[j].indiceAbajo, 10, 5+(35*j)+16);
