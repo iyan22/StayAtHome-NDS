@@ -15,6 +15,8 @@ u16* gfxSpray;
 u16* gfxGota;
 u16* gfxP1Arriba;
 u16* gfxP1Abajo;
+u16* gfxP2Arriba;
+u16* gfxP2Abajo;
 u16* gfxVirus;
 
 
@@ -30,6 +32,8 @@ void initSpriteMem() {
 	gfxGota = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 	gfxP1Arriba = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 	gfxP1Abajo = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	gfxP2Arriba = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	gfxP2Abajo = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 	gfxVirus = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 
 }
@@ -65,6 +69,7 @@ void establecerPaletaPrincipal() {
    SPRITE_PALETTE[22] = RGB15(16,16,0);  // 22 VERDE OLIVA:    	RGB24={80,80,00}
    SPRITE_PALETTE[23] = RGB15(19,31,19); // 23 VERDE CLARO:    	RGB24={99,FF,99}
    SPRITE_PALETTE[24] = RGB15(31,27,25); // 24 CARNE/PIEL 		(actualizado)
+   SPRITE_PALETTE[25] = RGB15(22,27,16); // 25 VERDE (SICK) 	(actualizado)
 }
 
 
@@ -141,6 +146,46 @@ u8 P1AbajoM[256] =
 	 0, 0, 6,24,24, 6,13,13, 0, 0, 6,24,24, 6,13,13, 
 	 0, 0, 6,24,24, 6,13,13, 0, 0, 6,24,24, 6,13,13, 
 	 0, 0, 6,24,24, 6, 1, 1, 0, 0, 0, 6, 6,19,19, 6, 
+	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6,19,19, 6, 
+	13,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0, 
+	13,13, 6, 0, 0, 0, 0, 0, 1, 1, 6, 0, 0, 0, 0, 0, 
+	19,19, 6, 0, 0, 0, 0, 0,19,19, 6, 0, 0, 0, 0, 0, 
+	19,19, 6, 0, 0, 0, 0, 0,19,19, 6, 0, 0, 0, 0, 0, 
+	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6,19,19, 6, 
+	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6,19,19, 6, 
+	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6, 6, 6, 6, 
+	 0, 0, 0, 0, 6, 3, 3, 3, 0, 0, 0, 0, 6, 6, 6, 6, 
+	19,19, 6, 0, 0, 0, 0, 0,19,19, 6, 0, 0, 0, 0, 0, 
+	19,19, 6, 0, 0, 0, 0, 0,19,19, 6, 0, 0, 0, 0, 0, 
+	19,19, 6, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0, 
+	 6, 3, 3, 3, 6, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0,  
+};
+
+u8 P2ArribaM[256] =
+{
+	0, 0, 0, 0, 0, 0, 6, 6, 0, 0, 0, 0, 0, 6,14,14, 
+	0, 0, 0, 0, 6,14,14,14, 0, 0, 0, 0, 6,14,14,25, 
+	0, 0, 0, 0, 6,14,14,25, 0, 0, 0, 0, 6,25,14,25, 
+	0, 0, 0, 0, 6,25,25,25, 0, 0, 0, 0, 0, 6,25,25, 
+	6, 6, 6, 0, 0, 0, 0, 0,14,14,14, 6, 0, 0, 0, 0, 
+	14,14,14,14, 6, 0, 0, 0,25,25,25,25, 6, 0, 0, 0, 
+	25,25,25,25, 6, 0, 0, 0,14,25,14,25, 6, 0, 0, 0, 
+	25,25,25,25, 6, 0, 0, 0,22,22,25,25, 6, 0, 0, 0, 
+	0, 0, 0, 0, 0, 6, 6,25, 0, 0, 0, 0, 6, 6, 6, 6, 
+	0, 0, 6, 6, 6,13, 1, 6, 0, 0, 6,13,13,13,13,13, 
+	0, 0, 6,13,13,13,13,13, 0, 0, 6,13,13, 6,13,13, 
+	0, 0, 6,13,13, 6,13,13, 0, 0, 6, 1, 1, 6,13,13, 
+	25,25,25, 6, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 
+	1,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0, 
+	13,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0, 
+	13,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0, 
+};
+
+u8 P2AbajoM[256] = 
+{
+	 0, 0, 6,25,25, 6,13,13, 0, 0, 6,25,25, 6,13,13, 
+	 0, 0, 6,25,25, 6,13,13, 0, 0, 6,25,25, 6,13,13, 
+	 0, 0, 6,25,25, 6, 1, 1, 0, 0, 0, 6, 6,19,19, 6, 
 	 0, 0, 0, 0, 6,19,19, 6, 0, 0, 0, 0, 6,19,19, 6, 
 	13,13, 6, 0, 0, 0, 0, 0,13,13, 6, 0, 0, 0, 0, 0, 
 	13,13, 6, 0, 0, 0, 0, 0, 1, 1, 6, 0, 0, 0, 0, 0, 
@@ -322,6 +367,79 @@ oamSet(&oamMain, 					//main graphics engine context
 	oamUpdate(&oamMain);  
 }
 
+void BorrarP2Arriba(int indice, int x, int y) {
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxP2Arriba, //+16*16/2, 	//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	true,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain); 
+}
+
+void MostrarP2Arriba (int indice, int x, int y){ 
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxP2Arriba, //+16*16/2, 	//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	false,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain);  
+}
+
+void BorrarP2Abajo(int indice, int x, int y) {
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxP2Abajo, //+16*16/2, 	//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	true,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain); 
+}
+
+void MostrarP2Abajo (int indice, int x, int y){ 
+oamSet(&oamMain, 					//main graphics engine context
+	indice,  						//oam index (0 to 127)  
+	x, y,    						//x and y pixle location of the sprite
+	0,       						//priority, lower renders last (on top)
+	0,       						//this is the palette index if multiple palettes or the alpha value if bmp sprite	
+	SpriteSize_16x16,     
+	SpriteColorFormat_256Color, 
+	gfxP2Abajo, //+16*16/2, 	//pointer to the loaded graphics
+	-1,                  			//sprite rotation data  
+	false,               			//double the size when rotating?
+	false,							//hide the sprite?
+	false, false, 					//vflip, hflip
+	false							//apply mosaic
+	); 
+	oamUpdate(&oamMain);  
+}
+
+
 void BorrarVirus (int indice, int x, int y) {
 oamSet(&oamMain, 					//main graphics engine context
 	indice,  						//oam index (0 to 127)  
@@ -368,6 +486,8 @@ void guardarSpritesEnMemoria(){
 		gfxGota[i] = GotaM[i*2] | (GotaM[(i*2)+1]<<8);
 		gfxP1Arriba[i] = P1ArribaM[i*2] | (P1ArribaM[(i*2)+1]<<8);	
 		gfxP1Abajo[i] = P1AbajoM[i*2] | (P1AbajoM[(i*2)+1]<<8);	
+		gfxP2Arriba[i] = P2ArribaM[i*2] | (P2ArribaM[(i*2)+1]<<8);	
+		gfxP2Abajo[i] = P2AbajoM[i*2] | (P2AbajoM[(i*2)+1]<<8);	
 		gfxVirus[i] = VirusM[i*2] | (VirusM[(i*2)+1]<<8);			
 	}
 }

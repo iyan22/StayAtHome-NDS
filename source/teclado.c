@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "defines.h"
 #include "sprites.h"
+#include "funciones.h"
 
 
 // Esta funcion tiene que devolver el valor de la tecla pulsada
@@ -39,7 +40,6 @@ void IntTec() {
 				case START:
 					Estado.estado = PAUSE;
 					printPausa();
-
 					break;
 			}
 			break;
@@ -51,7 +51,13 @@ void IntTec() {
 					break;
 			}
 			break;
-			
+
+		case RESTART:
+			if (TeclaPulsada() == START){
+					Estado.initdone = false;
+					Estado.estado = GAME;
+				}
+			break;
 	}
 
 }

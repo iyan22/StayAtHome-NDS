@@ -57,17 +57,16 @@ int main() {
 	initVarEstado();
 	MostrarFondoInicio();
 
-	
 	while(1) {
+		// Al entrar a la pausa se desactivavan las teclas por encuesta, esta 
+		// instrucción lo soluciona.
+		iprintf("\x1b[00;00H ");
 		switch(Estado.estado){
 			case INIT:
-				// Hay que cambiarlo por playButton() y que funcione bien
-				// SOLUCIONAR EN ESTA RAMA SI O SI....
 				if (playButton()) {
 					consoleDemoInit();
 					Estado.estado = GAME;
 				}
-				// Hay que cambiarlo por instructionButton() y que funcione bien
 				else if (!Estado.instructdone && instructionButton() == B) {
 					printInstructions();
 					Estado.instructdone = true;
@@ -82,14 +81,32 @@ int main() {
 					printBasicInfo();
 					printGameScreen();
 					Estado.initdone = true;
+					Estado.restartdone = false;
 				} // if (!Estado.initdone)
 
 				// Encuesta movimiento Spray
+				// Revisar funcionamiento con PAUSA
 				if (TeclaPulsada() == DOWN) {
 					Objetos.Spray.dir = DOWN;
 				} // if (TeclaPulsada() == DOWN) 
 				break;
+				
 			case PAUSE:
+				break;
+
+			case RESTART:
+				if (!Estado.restartdone) {
+					printRestart();
+					Estado.restartdone = true;
+				}
+				if (TeclaPulsada() == SELECT) {
+					Estado.estado = END;
+				}
+				break;
+
+			case END:
+				consoleDemoInit();
+				powerOff(POWER_ALL_2D);
 				break;
 
 		} // switch(estado)

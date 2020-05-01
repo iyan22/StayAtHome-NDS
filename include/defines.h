@@ -103,10 +103,11 @@ typedef struct {
 	int numVirus;
 	int numGota;
 	int dificultad;
-	int r1;
-	int r2;
+	int viruskilled;
+	int infectedpeople;
 	bool initdone;
 	bool instructdone;
+	bool restartdone;
 } tEstado;
 
 // Variables globales
