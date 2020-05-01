@@ -59,6 +59,7 @@ int main() {
 
 	
 	while(1) {
+		iprintf("\x1b[00;00H ");
 		switch(Estado.estado){
 			case INIT:
 				if (playButton()) {
