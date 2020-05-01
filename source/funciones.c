@@ -144,7 +144,7 @@ void spawnVirus(){
 	int n = Estado.numVirus;
 	Objetos.Virus[n].visible = true;
 	Objetos.Virus[n].x = 250;
-	Objetos.Virus[n].y = rand()% (150-10+1) + 10;
+	Objetos.Virus[n].y = rand()% (170-10+1) + 5;
 	MostrarVirus(Objetos.Virus[n].indice, Objetos.Virus[n].x, Objetos.Virus[n].y);
 	if (n < numVirusT-1) {
 		Estado.numVirus++;
@@ -158,7 +158,7 @@ void updateVirus() {
 	int i = 0;
 	if (Estado.dificultad == 1) {
 		while (i < numVirusT) {
-			if(Objetos.Virus[i].x < 10){
+			if(Objetos.Virus[i].x < 5){
 				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
 			else if (Objetos.Virus[i].visible){
@@ -174,7 +174,7 @@ void updateVirus() {
 				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
 			else if (Objetos.Virus[i].visible) {
-				if ( rand()%5 == 0 && Objetos.Virus[i].y < 150){
+				if ( rand()%5 == 0 && Objetos.Virus[i].y < 170){
 						Objetos.Virus[i].y = Objetos.Virus[i].y + 1;
 					}
 				else if ( rand()%5 == 0 && Objetos.Virus[i].y > 10){
@@ -192,7 +192,7 @@ void updateVirus() {
 				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
 			else if (Objetos.Virus[i].visible) {
-				if ( rand()%2 == 0 && Objetos.Virus[i].y < 150){
+				if ( rand()%2 == 0 && Objetos.Virus[i].y < 170){
 					Objetos.Virus[i].y = Objetos.Virus[i].y - 2;
 				}
 				else if ( rand()%2 == 0 && Objetos.Virus[i].y > 10){
