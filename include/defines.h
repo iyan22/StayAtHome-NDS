@@ -104,8 +104,10 @@ typedef struct {
 	int numGota;
 	int dificultad;
 	int viruskilled;
+	int infectedpeople;
 	bool initdone;
 	bool instructdone;
+	bool restartdone;
 } tEstado;
 
 // Variables globales

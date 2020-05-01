@@ -51,7 +51,13 @@ void IntTec() {
 					break;
 			}
 			break;
-			
+
+		case RESTART:
+			if (TeclaPulsada() == START){
+					Estado.initdone = false;
+					Estado.estado = GAME;
+				}
+			break;
 	}
 
 }

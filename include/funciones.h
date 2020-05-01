@@ -5,7 +5,6 @@
 #include <time.h>       // time 
 
 // Esta función consulta si se ha tocado la pantalla tactil
-extern int calculateInfectados();
 
 extern bool playButton();
 extern bool instructionButton();
@@ -33,4 +32,5 @@ extern void detectInfection();
 extern void checkVirusKill();
 extern void printVirusKilled();
 extern void printSegs();
-
+extern void printRestart();
+extern void detectGameFinish();

@@ -19,8 +19,6 @@
 bool touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
-	iprintf("\x1b[00;00H  NORMAL        ");
-	iprintf("\x1b[00;10H %d %d", pos_pantalla.px, pos_pantalla.py);
   	return pos_pantalla.px != 0 && pos_pantalla.py != 0;
 }
 
@@ -74,6 +72,9 @@ void initVarEstado() {
 	Estado.instructdone = false;
 	Estado.numVirus = 0;
 	Estado.numGota = 0;
+	Estado.infectedpeople = 0;
+	Estado.viruskilled =  0;
+	Estado.restartdone = false;
 }
 
 void printGameScreen() {
@@ -131,10 +132,10 @@ void MostrarPersonas() {
 
 void updateSpray() {
 	if (Objetos.Spray.dir == UP && Objetos.Spray.y > 3) {
-		Objetos.Spray.y--;
+		Objetos.Spray.y = Objetos.Spray.y - 1;
 	}
 	else if (Objetos.Spray.dir == DOWN && Objetos.Spray.y < 160) {
-		Objetos.Spray.y++;
+		Objetos.Spray.y = Objetos.Spray.y + 1;
 	}
 	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
 }
@@ -253,20 +254,8 @@ void calculateDifficulty() {
 	}
 }
 
-int calculateInfectados() {
-	int i = 0;
-	int inf = 0;
-	while (i < numPersonaT) {
-		if (Objetos.Persona[i].infectado) {
-			inf++;
-		}
-		i++;
-	}
-	return inf;
-}
-
 void printInfectados() {
-	iprintf("\x1b[12;00H  Infectados: %d", calculateInfectados());
+	iprintf("\x1b[12;00H  Infectados: %d", Estado.infectedpeople);
 }
 
 void printPausa() {
@@ -307,23 +296,23 @@ void printSegs() {
 	iprintf("\x1b[08;13H %d", Estado.segs0);
 }
 
-/*
 void detectInfection() {
 	int i = 0;
 	int j = 0;
-	while (i < numPersonaT) {
-		if (!Objetos.Persona[i].infectado) {
-			while (j < numVirusT) {
-				if (Objetos.Virus[j].visible && Objetos.Virus[j].x <= 24 &&
-					Objetos.Virus[j].y+2 <= Objetos.Persona[i].y && 
-					Objetos.Virus[j].y-12 <= Objetos.Persona[i].y+32) {
-						BorrarVirus(Objetos.Virus[j].indice, Objetos.Virus[j].x, Objetos.Virus[j].y);
-						Objetos.Virus[j].visible = false;
-						// Temp
-						Objetos.Persona[i].infectado = true;
-						MostrarVirus(Objetos.Persona[i].indiceArriba, Objetos.Persona[i].x, Objetos.Persona[i].y);
-						MostrarVirus(Objetos.Persona[i].indiceAbajo, Objetos.Persona[i].x, Objetos.Persona[i].y+16);
-						//infect(Objetos.Persona[i].indice);
+	while (i < numVirusT) {
+		if (Objetos.Virus[i].visible && Objetos.Virus[i].x < 10) {
+			while (j < numPersonaT) {
+				if (5+(35*j) <= Objetos.Virus[i].y && Objetos.Virus[i].y <= 5+(35*j)+32 && 
+					!Objetos.Persona[j].infectado){
+					BorrarP1Arriba(Objetos.Persona[j].indiceArriba, 10, 5+(35*j));
+					BorrarP1Abajo(Objetos.Persona[j].indiceAbajo, 10, 5+(35*j)+16);
+					MostrarP2Arriba(Objetos.Persona[j].indiceArriba, 10, 5+(35*j));
+					MostrarP2Abajo(Objetos.Persona[j].indiceAbajo, 10, 5+(35*j)+16);
+					BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
+					Objetos.Persona[j].infectado = true;
+					Objetos.Virus[i].visible = false;
+					Estado.infectedpeople = Estado.infectedpeople + 1;
+					printInfectados();
 				}
 				j++;
 			}
@@ -331,7 +320,24 @@ void detectInfection() {
 		i++;
 	}
 }
-*/
+
+void printRestart() {
+	consoleDemoInit();
+	iprintf("\x1b[10;00H      --- HAS PERDIDO ---         ");
+	iprintf("\x1b[12;00H     Pulsa START para jugar       ");
+	iprintf("\x1b[13;00H            de nuevo              ");
+
+	iprintf("\x1b[15;00H       Pulsa SELECT para          ");
+	iprintf("\x1b[16;00H       apagar la consola          ");
+
+}
+
+void detectGameFinish() {
+	if (Estado.infectedpeople == 5) {
+		Estado.estado = RESTART;
+	}
+}
+
 
 
 

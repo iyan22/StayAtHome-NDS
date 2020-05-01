@@ -20,15 +20,16 @@ void IntTemp0() {
 	if (Estado.estado == GAME) {						// Si estamos en estado GAME
 		updateSpray();									// Actualizamos posición Spray
 		updateVirus();									// Actualizamos posición Viruses
-		printVirusKilled();								
+		printVirusKilled();	
+		detectInfection();
+		detectGameFinish();						
 	}
 	if (tick0 == 60) {									// Cuando tenemos 60 tick0
 		tick0 = 0;										// Restablecemos tick0
 		if (Estado.estado == GAME) {					// Si estamos en estado GAME
-			if (Estado.segs0 % 5 == 0){
+			if (Estado.segs0 % 2 == 0){
 				spawnVirus();							// Generamos virus
 				calculateDifficulty();
-				printInfectados();
 			}
 			Estado.segs0 = Estado.segs0 + 1;			// Sumamos 1 a segs0 (seg jugando)
 			printSegs();	// Imprimimos en pantalla segs0

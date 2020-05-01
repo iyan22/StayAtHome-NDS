@@ -81,6 +81,7 @@ int main() {
 					printBasicInfo();
 					printGameScreen();
 					Estado.initdone = true;
+					Estado.restartdone = false;
 				} // if (!Estado.initdone)
 
 				// Encuesta movimiento Spray
@@ -92,6 +93,22 @@ int main() {
 				
 			case PAUSE:
 				break;
+
+			case RESTART:
+				if (!Estado.restartdone) {
+					printRestart();
+					Estado.restartdone = true;
+				}
+				if (TeclaPulsada() == SELECT) {
+					Estado.estado = END;
+				}
+				break;
+
+			case END:
+				consoleDemoInit();
+				powerOff(POWER_ALL_2D);
+				break;
+
 		} // switch(estado)
  	} // while(1)
 } // main()
