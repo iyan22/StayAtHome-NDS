@@ -19,18 +19,19 @@ void IntTemp0() {
 	tick0++;											// Sumamos 1 a tick0
 	if (Estado.estado == GAME) {						// Si estamos en estado GAME
 		updateSpray();									// Actualizamos posición Spray
-		updateVirus();									// Actualizamos posición Viruses								
+		updateVirus();									// Actualizamos posición Viruses
+		printVirusKilled();								
 	}
 	if (tick0 == 60) {									// Cuando tenemos 60 tick0
 		tick0 = 0;										// Restablecemos tick0
 		if (Estado.estado == GAME) {					// Si estamos en estado GAME
-			if (Estado.segs0 % 7 == 0){
+			if (Estado.segs0 % 5 == 0){
 				spawnVirus();							// Generamos virus
 				calculateDifficulty();
 				printInfectados();
 			}
-			Estado.segs0++;								// Sumamos 1 a segs0 (seg jugando)
-			iprintf("\x1b[10;13H %d", Estado.segs0);	// Imprimimos en pantalla segs0
+			Estado.segs0 = Estado.segs0 + 1;			// Sumamos 1 a segs0 (seg jugando)
+			printSegs();	// Imprimimos en pantalla segs0
 		}
 	}
 }
@@ -39,7 +40,8 @@ void IntTemp1() {
 	static int tick1 = 0;
 	tick1++;
 	if (Estado.estado == GAME) {
-		updateDrop();							// Actualizamos posición Gotas	
+		updateDrop();							// Actualizamos posición Gotas
+		checkVirusKill();
 	}
 	if (tick1 == 1) {
 		tick1 = 0;

@@ -57,8 +57,9 @@ int main() {
 	initVarEstado();
 	MostrarFondoInicio();
 
-	
 	while(1) {
+		// Al entrar a la pausa se desactivavan las teclas por encuesta, esta 
+		// instrucción lo soluciona.
 		iprintf("\x1b[00;00H ");
 		switch(Estado.estado){
 			case INIT:
@@ -88,10 +89,9 @@ int main() {
 					Objetos.Spray.dir = DOWN;
 				} // if (TeclaPulsada() == DOWN) 
 				break;
-			// Revisar funcionamiento con PAUSA
+				
 			case PAUSE:
 				break;
-
 		} // switch(estado)
  	} // while(1)
 } // main()

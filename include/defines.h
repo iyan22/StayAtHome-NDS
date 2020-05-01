@@ -103,8 +103,7 @@ typedef struct {
 	int numVirus;
 	int numGota;
 	int dificultad;
-	int r1;
-	int r2;
+	int viruskilled;
 	bool initdone;
 	bool instructdone;
 } tEstado;

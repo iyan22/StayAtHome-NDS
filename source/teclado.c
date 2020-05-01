@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "defines.h"
 #include "sprites.h"
+#include "funciones.h"
 
 
 // Esta funcion tiene que devolver el valor de la tecla pulsada

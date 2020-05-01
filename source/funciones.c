@@ -59,8 +59,9 @@ void printBasicInfo() {
 	iprintf("\x1b[01;00H  +--------------------------+ ");
  	iprintf("\x1b[02;00H  : EC                 19/20 : ");
  	iprintf("\x1b[03;00H  +--------------------------+ ");
-	iprintf("\x1b[08;00H    Project StayAtHome - NDS   ");
-	iprintf("\x1b[10;00H  Segundos:");
+	iprintf("\x1b[06;00H    Project StayAtHome - NDS   ");
+	iprintf("\x1b[08;00H  Segundos:");
+	iprintf("\x1b[14;00H  COVID-19 eliminados:");
 	iprintf("\x1b[20;00H          Grupo 2A03           ");
 	iprintf("\x1b[22;00H    Iyan A. Unai R. Aleina P.  ");
 	printInfectados();
@@ -141,6 +142,7 @@ void updateSpray() {
 void spawnVirus(){
 	int n = Estado.numVirus;
 	Objetos.Virus[n].visible = true;
+	Objetos.Virus[n].x = 250;
 	Objetos.Virus[n].y = rand()% (150-10+1) + 10;
 	MostrarVirus(Objetos.Virus[n].indice, Objetos.Virus[n].x, Objetos.Virus[n].y);
 	if (n < numVirusT-1) {
@@ -155,8 +157,11 @@ void updateVirus() {
 	int i = 0;
 	if (Estado.dificultad == 1) {
 		while (i < numVirusT) {
-			if (Objetos.Virus[i].visible){
-	       		Objetos.Virus[i].x--;
+			if(Objetos.Virus[i].x < 10){
+				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
+			}
+			else if (Objetos.Virus[i].visible){
+	       		Objetos.Virus[i].x = Objetos.Virus[i].x - 1;
 	        	MostrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
 			i++;
@@ -164,14 +169,17 @@ void updateVirus() {
 	}
 	else if (Estado.dificultad >= 2) {
 		while (i < numVirusT) {
-			if (Objetos.Virus[i].visible) {
+			if(Objetos.Virus[i].x < 10){
+				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
+			}
+			else if (Objetos.Virus[i].visible) {
 				if ( rand()%5 == 0 && Objetos.Virus[i].y < 150){
-						Objetos.Virus[i].y++;
+						Objetos.Virus[i].y = Objetos.Virus[i].y + 1;
 					}
 				else if ( rand()%5 == 0 && Objetos.Virus[i].y > 10){
-						Objetos.Virus[i].y--;
+						Objetos.Virus[i].y = Objetos.Virus[i].y - 1;
 				}
-				Objetos.Virus[i].x--;
+				Objetos.Virus[i].x = Objetos.Virus[i].x - 1;
 				MostrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
 			i++;
@@ -179,14 +187,17 @@ void updateVirus() {
 	}
 	else {
 		while (i < numVirusT) {
-			if (Objetos.Virus[i].visible) {
+			if(Objetos.Virus[i].x < 10){
+				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
+			}
+			else if (Objetos.Virus[i].visible) {
 				if ( rand()%2 == 0 && Objetos.Virus[i].y < 150){
-					Objetos.Virus[i].y -= 2;
+					Objetos.Virus[i].y = Objetos.Virus[i].y - 2;
 				}
 				else if ( rand()%2 == 0 && Objetos.Virus[i].y > 10){
-					Objetos.Virus[i].y -= 2;
+					Objetos.Virus[i].y = Objetos.Virus[i].y + 2;
 				}
-				Objetos.Virus[i].x--;
+				Objetos.Virus[i].x = Objetos.Virus[i].x - 1;
 				MostrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
 			i++;
@@ -212,10 +223,10 @@ void updateDrop() {
 	int i = 0;
 	while (i < numGotaT) {
 		if (Objetos.Gota[i].visible){
-	       	Objetos.Gota[i].x++;
+	       	Objetos.Gota[i].x = Objetos.Gota[i].x + 1;
 	       	MostrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
 		}
-		if (Objetos.Gota[i].x > 250) {
+		if (Objetos.Gota[i].x > 240) {
 			Objetos.Gota[i].visible = false;
 			BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
 		}
@@ -230,15 +241,15 @@ void shot() {
 void calculateDifficulty() {
 	if (Estado.segs0 < 60) {
 		Estado.dificultad = 1;
-		iprintf("\x1b[12;00H  Dificultad: Facil    ");
+		iprintf("\x1b[10;00H  Dificultad: Facil    ");
 	}
 	else if (Estado.segs0 < 120) {
 		Estado.dificultad = 2;
-		iprintf("\x1b[12;00H  Dificultad: Media    ");
+		iprintf("\x1b[10;00H  Dificultad: Media    ");
 	}
 	else {
 		Estado.dificultad = 3;
-		iprintf("\x1b[12;00H  Dificultad: Dificil  ");
+		iprintf("\x1b[10;00H  Dificultad: Dificil  ");
 	}
 }
 
@@ -255,7 +266,7 @@ int calculateInfectados() {
 }
 
 void printInfectados() {
-	iprintf("\x1b[14;00H  Infectados: %d", calculateInfectados());
+	iprintf("\x1b[12;00H  Infectados: %d", calculateInfectados());
 }
 
 void printPausa() {
@@ -263,6 +274,39 @@ void printPausa() {
 	iprintf("\x1b[12;00H         --- PAUSA ---            ");
 	iprintf("\x1b[14;00H   Pulsa START para continuar     ");
 }
+
+
+
+void checkVirusKill() {
+	int i = 0;
+	int j = 0;
+	while (i < numGotaT) {
+		if (Objetos.Gota[i].visible) {
+			while (j < numVirusT) {
+				if (Objetos.Virus[j].visible &&
+					Objetos.Gota[i].x <= Objetos.Virus[j].x && 
+					Objetos.Virus[j].x <= Objetos.Gota[i].x+5) {
+						Objetos.Virus[j].visible = false;
+						Objetos.Gota[i].visible = false;
+						BorrarVirus(Objetos.Virus[j].indice, Objetos.Virus[j].x, Objetos.Virus[j].y);
+						BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+						Estado.viruskilled = Estado.viruskilled + 1;
+				}
+				j++;
+			}
+		}
+		i++;
+	}
+}
+
+void printVirusKilled() {
+	iprintf("\x1b[14;23H %d", Estado.viruskilled);
+}
+
+void printSegs() {
+	iprintf("\x1b[08;13H %d", Estado.segs0);
+}
+
 /*
 void detectInfection() {
 	int i = 0;

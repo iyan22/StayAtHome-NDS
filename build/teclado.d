@@ -60,7 +60,8 @@ teclado.o: /home/parallels/Desktop/StayAtHome-NDS/source/teclado.c \
  /opt/devkitpro/libnds/include/nds/arm9/videoGL.h \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
  /home/parallels/Desktop/StayAtHome-NDS/include/defines.h \
- /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h
+ /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h \
+ /home/parallels/Desktop/StayAtHome-NDS/include/funciones.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -185,3 +186,5 @@ teclado.o: /home/parallels/Desktop/StayAtHome-NDS/source/teclado.c \
 /home/parallels/Desktop/StayAtHome-NDS/include/defines.h:
 
 /home/parallels/Desktop/StayAtHome-NDS/include/sprites.h:
+
+/home/parallels/Desktop/StayAtHome-NDS/include/funciones.h:

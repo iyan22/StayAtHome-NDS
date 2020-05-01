@@ -30,4 +30,7 @@ extern void calculateDifficulty();
 extern void printInfectados();
 extern void printPausa();
 extern void detectInfection();
+extern void checkVirusKill();
+extern void printVirusKilled();
+extern void printSegs();
 
