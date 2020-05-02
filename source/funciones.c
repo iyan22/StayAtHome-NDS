@@ -242,6 +242,7 @@ void updateDrop() {
 void shot() {
 	if (Estado.canshot) {
 		spawnDrop();
+		Estado.canshot = false;
 	}
 }
 
@@ -279,8 +280,8 @@ void checkVirusKill() {
 				if (Objetos.Virus[j].visible &&
 					Objetos.Gota[i].x <= Objetos.Virus[j].x && 
 					Objetos.Virus[j].x <= Objetos.Gota[i].x+2 &&
-					Objetos.Gota[i].y-2 <= Objetos.Virus[j].y &&
-					Objetos.Virus[j].y <= Objetos.Gota[i].y+18) {
+					Objetos.Gota[i].y+6 <= Objetos.Virus[j].y &&
+					Objetos.Virus[j].y+16 <= Objetos.Gota[i].y+18) {
 
 						Objetos.Virus[j].visible = false;
 						Objetos.Gota[i].visible = false;
