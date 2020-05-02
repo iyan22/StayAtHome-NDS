@@ -1,10 +1,8 @@
 #include <nds.h>
 #include <stdio.h>
-#include <stdlib.h>	// srand, rand,...
+#include <stdlib.h>		// srand, rand,...
 #include <unistd.h>
 #include <time.h>       // time 
-
-// Esta función consulta si se ha tocado la pantalla tactil
 
 extern bool playButton();
 extern bool instructionButton();
