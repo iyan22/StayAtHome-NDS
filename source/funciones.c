@@ -75,6 +75,7 @@ void initVarEstado() {
 	Estado.infectedpeople = 0;
 	Estado.viruskilled =  0;
 	Estado.restartdone = false;
+	Estado.canshot = true;
 }
 
 void printGameScreen() {
@@ -229,17 +230,19 @@ void updateDrop() {
 		if (Objetos.Gota[i].visible){
 	       	Objetos.Gota[i].x = Objetos.Gota[i].x + 1;
 	       	MostrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
-		}
-		if (Objetos.Gota[i].x > 240) {
-			Objetos.Gota[i].visible = false;
-			BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+			if (Objetos.Gota[i].x > 240) {
+				Objetos.Gota[i].visible = false;
+				BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+			}
 		}
 		i++;
-   	}
+	}
 }
 
 void shot() {
-	spawnDrop();
+	if (Estado.canshot) {
+		spawnDrop();
+	}
 }
 
 void calculateDifficulty() {
@@ -267,8 +270,6 @@ void printPausa() {
 	iprintf("\x1b[14;00H   Pulsa START para continuar     ");
 }
 
-
-
 void checkVirusKill() {
 	int i = 0;
 	int j = 0;
@@ -277,7 +278,10 @@ void checkVirusKill() {
 			while (j < numVirusT) {
 				if (Objetos.Virus[j].visible &&
 					Objetos.Gota[i].x <= Objetos.Virus[j].x && 
-					Objetos.Virus[j].x <= Objetos.Gota[i].x+5) {
+					Objetos.Virus[j].x <= Objetos.Gota[i].x+2 &&
+					Objetos.Gota[i].y-2 <= Objetos.Virus[j].y &&
+					Objetos.Virus[j].y <= Objetos.Gota[i].y+18) {
+
 						Objetos.Virus[j].visible = false;
 						Objetos.Gota[i].visible = false;
 						BorrarVirus(Objetos.Virus[j].indice, Objetos.Virus[j].x, Objetos.Virus[j].y);
@@ -335,7 +339,6 @@ void printRestart() {
 
 	iprintf("\x1b[15;00H       Pulsa SELECT para          ");
 	iprintf("\x1b[16;00H       apagar la consola          ");
-
 }
 
 void detectGameFinish() {

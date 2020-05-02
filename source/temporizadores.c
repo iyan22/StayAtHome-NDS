@@ -39,10 +39,13 @@ void IntTemp0() {
 		detectInfection();								// Detectamos si se infecta persona
 		detectGameFinish();								// Detectamos final del juego		
 	}
+	if (tick0 == 30) {
+		Estado.canshot = true;
+	}
 	if (tick0 == 60) {									// Cuando tenemos 60 tick0
 		tick0 = 0;										// Restablecemos tick0
 		if (Estado.estado == GAME) {					// Si estamos en estado GAME
-			if (Estado.segs0 % 1 == 0){					// Cada 2 segs
+			if (Estado.segs0 % 2 == 0){					// Cada 2 segs
 				spawnVirus();							// Generamos virus
 				calculateDifficulty();					// Recalculamos dificultad
 			}

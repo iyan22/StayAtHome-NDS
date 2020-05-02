@@ -105,6 +105,7 @@ typedef struct {
 	int dificultad;
 	int viruskilled;
 	int infectedpeople;
+	bool canshot;
 	bool initdone;
 	bool instructdone;
 	bool restartdone;
