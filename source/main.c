@@ -63,18 +63,18 @@ int main() {
 		iprintf("\x1b[00;00H ");
 		switch(Estado.estado){
 			case INIT:
-				if (playButton()) {
+				if (playButton() == true) {
 					consoleDemoInit();
 					Estado.estado = GAME;
 				}
-				else if (!Estado.instructdone && instructionButton() == B) {
+				else if (Estado.instructdone == false && instructionButton() == true) {
 					printInstructions();
 					Estado.instructdone = true;
 				}
 				break;
 
 			case GAME:
-				if (!Estado.initdone) {
+				if (Estado.initdone == false) {
 					interrupciones();
 					MostrarFondoTrafico();
 					initVarGameScreen();
@@ -95,8 +95,9 @@ int main() {
 				break;
 
 			case RESTART:
-				if (!Estado.restartdone) {
+				if (Estado.restartdone == false) {
 					printRestart();
+					interrupciones();
 					Estado.restartdone = true;
 				}
 				if (TeclaPulsada() == SELECT) {
