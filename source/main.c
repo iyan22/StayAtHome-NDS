@@ -100,6 +100,9 @@ int main() {
 					interrupciones();
 					Estado.restartdone = true;
 				}
+				if (TeclaPulsada() == SELECT) {
+					Estado.estado = END;
+				}
 				break;
 
 			case END:
