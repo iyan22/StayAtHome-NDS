@@ -1,4 +1,6 @@
-
+/*--------------------------------------------------------------------------------------------------------------
+									funciones.c
+---------------------------------------------------------------------------------------------------------------*/
 #include <nds.h>
 #include <stdio.h>
 #include <stdlib.h>	// srand, rand,...
@@ -11,21 +13,20 @@
 #include "rutserv.h"
 #include "teclado.h"
 #include "temporizadores.h"
-/*--------------------------------------------------------------------------------------------------------------
-							Funciones auxiliares
----------------------------------------------------------------------------------------------------------------*/
 
 
-/* Esta función detecta si la pantalla ha sido tocada.
-*/
+/*-----------------------------------------------------------------------------------------------------------
+								FUNCIONES PANTALLA TACTIL
+------------------------------------------------------------------------------------------------------------*/
+
+// Esta función detecta si la pantalla ha sido tocada.
 bool touchingScreen() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
   	return pos_pantalla.px != 0 && pos_pantalla.py != 0;
 }
 
-/* En esta función se detecta si la pantalla ha sido tocada, dentro del cuadro de Play.
-*/
+// En esta función se detecta si la pantalla ha sido tocada, dentro del cuadro de Play.
 bool playButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
@@ -33,8 +34,7 @@ bool playButton() {
   		pos_pantalla.py > 40 && pos_pantalla.py < 95;
 }
 
-/* En esta función se detecta si la pantalla ha sido tocada, dentro del cuadro de informaciones.
-*/
+// En esta función se detecta si la pantalla ha sido tocada, dentro del cuadro de instrucciones.
 bool instructionButton() {
 	touchPosition pos_pantalla;
 	touchRead(&pos_pantalla);
@@ -42,8 +42,11 @@ bool instructionButton() {
   		   pos_pantalla.py > 108 && pos_pantalla.py < 126;
 }
 
-/* Se escribe en pantalla un mensaje informativo sobre el funcionamiento del juego.
-*/
+/*-----------------------------------------------------------------------------------------------------------
+								FUNCIONES BÁSICAS PANTALLA
+------------------------------------------------------------------------------------------------------------*/
+
+// Se escribe en pantalla un mensaje informativo sobre el funcionamiento del juego.
 void printInstructions() {
 	iprintf("\x1b[01;00H   Welcome to StayAtHome-NDS  ");
  	iprintf("\x1b[03;00H          Instructions:       ");
@@ -60,8 +63,7 @@ void printInstructions() {
 	iprintf("\x1b[22;00H   Iyan A. Unai R. Aleina P.  ");
 }
 
-/* Se escribe en pantalla un mensaje informativo sobre el juego y el estado de los puntos/segundos.
-*/
+// Se escribe en pantalla un mensaje informativo sobre el juego y el estado de los puntos/segundos.
 void printBasicInfo() {
 	consoleDemoInit();
 	iprintf("\x1b[01;00H  +--------------------------+ ");
@@ -76,8 +78,82 @@ void printBasicInfo() {
 	calculateDifficulty();
 }
 
-/* Se inicializan los detalles del juego.
-*/
+// Se muestran en pantalla el bote y las personas.
+void printGameScreen() {
+	MostrarPersonas();
+	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
+}
+
+// Esta función actualiza el número de segundos trascurridos durante el juego en pantalla.
+void printSegs() {
+	iprintf("\x1b[08;13H %d", Estado.segs0);
+}
+
+// Esta función calcula y actualiza el nivel de dificultad del juego, en función del tiempo trascurrido. 
+void calculateDifficulty() {
+	if (Estado.segs0 < 60) {
+		Estado.dificultad = 1;
+		iprintf("\x1b[10;00H  Dificultad: Facil    ");
+	}
+	else if (Estado.segs0 < 120) {
+		Estado.dificultad = 2;
+		iprintf("\x1b[10;00H  Dificultad: Media    ");
+	}
+	else {
+		Estado.dificultad = 3;
+		iprintf("\x1b[10;00H  Dificultad: Dificil  ");
+	}
+}
+
+// Esta función actualiza en pantalla el número de personas infectadas.
+void printInfectados() {
+	iprintf("\x1b[12;00H  Infectados: %d", Estado.infectedpeople);
+}
+
+// Esta función actualiza el número de viruses eliminados en pantalla.
+void printVirusKilled() {
+	iprintf("\x1b[14;23H %d", Estado.viruskilled);
+}
+
+// Esta función escribe en pantalla un mensaje cuando el juego se encuentra en pausa.
+void printPausa() {
+	consoleDemoInit();
+	iprintf("\x1b[12;00H         --- PAUSA ---            ");
+	iprintf("\x1b[14;00H   Pulsa START para continuar     ");
+}
+
+// Esta función escribe un mensaje en pantalla, en el momento que el juego se acaba.
+void printRestart() {
+	consoleDemoInit();
+	iprintf("\x1b[10;00H      --- HAS PERDIDO ---         ");
+	iprintf("\x1b[12;00H     Pulsa START para jugar       ");
+	iprintf("\x1b[13;00H            de nuevo              ");
+
+	iprintf("\x1b[15;00H       Pulsa SELECT para          ");
+	iprintf("\x1b[16;00H       apagar la consola          ");
+}
+
+// Esta función "contruye" el sprite de una persona entera.
+void MostrarPersona(int indice, int x, int y) {
+	MostrarP1Arriba(indice,x,y);
+	MostrarP1Abajo (indice+1,x,y+16);
+}
+
+// Esta función hace que se muestren en pantalla las personas.
+void MostrarPersonas() {
+	int i = 0;
+	while (i < numPersonaT) {
+		MostrarPersona(Objetos.Persona[i].indiceArriba, Objetos.Persona[i].x, Objetos.Persona[i].y);
+		i++;
+	}
+}
+
+
+/*-----------------------------------------------------------------------------------------------------------
+								FUNCIONES INICIALIZACIÓN
+------------------------------------------------------------------------------------------------------------*/
+
+// Se inicializan los detalles del juego.
 void initVarEstado() {
 	Estado.dificultad = 1;
 	Estado.initdone = false;
@@ -90,15 +166,7 @@ void initVarEstado() {
 	Estado.canshot = true;
 }
 
-/* Se muestran en pantalla el bote y las personas.
-*/
-void printGameScreen() {
-	MostrarPersonas();
-	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
-}
-
-/* EN esta función se inicializan las variables del juego, las características y las coordenadas de los sprites.
-*/
+// En esta función se inicializan las variables del juego, las características y las coordenadas de los sprites.
 void initVarGameScreen() {
 
 	Objetos.Spray.x = 28;
@@ -134,25 +202,13 @@ void initVarGameScreen() {
 	}
 }
 
-/* Esta función "contruye" el sprite de una persona.
-*/
-void MostrarPersona(int indice, int x, int y) {
-	MostrarP1Arriba(indice,x,y);
-	MostrarP1Abajo (indice+1,x,y+16);
-}
 
-/* Esta función hace que se muestren en pantalla las personas.
-*/
-void MostrarPersonas() {
-	int i = 0;
-	while (i < numPersonaT) {
-		MostrarPersona(Objetos.Persona[i].indiceArriba, Objetos.Persona[i].x, Objetos.Persona[i].y);
-		i++;
-	}
-}
+/*-----------------------------------------------------------------------------------------------------------
+								FUNCIONES PRINCIPALES
+							  ACTUALIZACIÓN Y DETECCIÓN
+------------------------------------------------------------------------------------------------------------*/
 
-/* Esta función hace que se actualice la posición del bote.
-*/
+// Esta función hace que se actualice la posición del desinfectante.
 void updateSpray() {
 	if (Objetos.Spray.dir == UP && Objetos.Spray.y > 3) {
 		Objetos.Spray.y = Objetos.Spray.y - 1;
@@ -163,8 +219,39 @@ void updateSpray() {
 	MostrarSpray(Objetos.Spray.x, Objetos.Spray.y);
 }
 
-/* Esta función hace que se spawnee un virus de forma aleatoria.
-*/
+
+// Esta función hace que se spawnee una gota.
+void spawnDrop() {
+	int n = Estado.numGota;
+	Objetos.Gota[n].visible = true;
+	Objetos.Gota[n].x = Objetos.Spray.x + 16;
+	Objetos.Gota[n].y = Objetos.Spray.y;
+	MostrarGota(Objetos.Gota[n].indice, Objetos.Gota[n].x, Objetos.Gota[n].y);
+	if (n < numGotaT-1) {
+		Estado.numGota++;
+	}
+	else {
+		Estado.numGota = 0;
+	}
+}
+
+// Esta función hace que se actualice en pantalla la posición de las gotas.
+void updateDrop() {
+	int i = 0;
+	while (i < numGotaT) {
+		if (Objetos.Gota[i].visible){
+	       	Objetos.Gota[i].x = Objetos.Gota[i].x + 1;
+	       	MostrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+			if (Objetos.Gota[i].x > 240) {
+				Objetos.Gota[i].visible = false;
+				BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+			}
+		}
+		i++;
+	}
+}
+
+// Esta función hace que se spawnee un virus en una posición 'x' fija y en una 'y' aleatoria.
 void spawnVirus(){
 	int n = Estado.numVirus;
 	Objetos.Virus[n].visible = true;
@@ -179,8 +266,7 @@ void spawnVirus(){
 	}
 }
 
-/* Esta función hace que se actualice la trayectoria de un virus.
-*/
+// Esta función hace que se actualice la posición de los viruses siguiendo una trayectoria definida por la dificultad.
 void updateVirus() {
 	int i = 0;
 	if (Estado.dificultad == 1) {
@@ -236,41 +322,7 @@ void updateVirus() {
 	}
 }
 
-/* Esta función hace que se spawnee una gota.
-*/
-void spawnDrop() {
-	int n = Estado.numGota;
-	Objetos.Gota[n].visible = true;
-	Objetos.Gota[n].x = Objetos.Spray.x + 16;
-	Objetos.Gota[n].y = Objetos.Spray.y;
-	MostrarGota(Objetos.Gota[n].indice, Objetos.Gota[n].x, Objetos.Gota[n].y);
-	if (n < numGotaT-1) {
-		Estado.numGota++;
-	}
-	else {
-		Estado.numGota = 0;
-	}
-}
-
-/* Esta función hace que se actualice en pantalla la trayectoria de una gota.
-*/
-void updateDrop() {
-	int i = 0;
-	while (i < numGotaT) {
-		if (Objetos.Gota[i].visible){
-	       	Objetos.Gota[i].x = Objetos.Gota[i].x + 1;
-	       	MostrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
-			if (Objetos.Gota[i].x > 240) {
-				Objetos.Gota[i].visible = false;
-				BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
-			}
-		}
-		i++;
-	}
-}
-
-/* Esta función hace que se lanze una gota.
-*/
+// Esta función hace que se dispare una gota controlando el tiempo de recarga.
 void shot() {
 	if (Estado.canshot) {
 		spawnDrop();
@@ -278,39 +330,7 @@ void shot() {
 	}
 }
 
-/* Se calcula el nivel de dificultad del juego, en función del tiempo trascurrido 
-*/
-void calculateDifficulty() {
-	if (Estado.segs0 < 60) {
-		Estado.dificultad = 1;
-		iprintf("\x1b[10;00H  Dificultad: Facil    ");
-	}
-	else if (Estado.segs0 < 120) {
-		Estado.dificultad = 2;
-		iprintf("\x1b[10;00H  Dificultad: Media    ");
-	}
-	else {
-		Estado.dificultad = 3;
-		iprintf("\x1b[10;00H  Dificultad: Dificil  ");
-	}
-}
-
-/* Esta función actualiza en pantalla el número de personas infectadas.
-*/
-void printInfectados() {
-	iprintf("\x1b[12;00H  Infectados: %d", Estado.infectedpeople);
-}
-
-/* Esta función escribe en pantalla un mensaje cuando el juego se encuentra en Pausa.
-*/
-void printPausa() {
-	consoleDemoInit();
-	iprintf("\x1b[12;00H         --- PAUSA ---            ");
-	iprintf("\x1b[14;00H   Pulsa START para continuar     ");
-}
-
-/* Esta función verifica si un virus ha sido matado, es decir, si una gota ha llegado a tocar un virus.
-*/
+// Esta función verifica si un virus ha sido eliminado, es decir, si una gota ha llegado a tocar un virus.
 void checkVirusKill() {
 	int i = 0;
 	int j = 0;
@@ -336,25 +356,10 @@ void checkVirusKill() {
 	}
 }
 
-/* Actualiza, en pantalla, el número de viruses matados.
-*/
-void printVirusKilled() {
-	iprintf("\x1b[14;23H %d", Estado.viruskilled);
-}
-
-/* Actualiza, en pantalla, el número de segundos trascurridos durante el juego.
-*/
-void printSegs() {
-	iprintf("\x1b[08;13H %d", Estado.segs0);
-}
-
-/* Esta función detecta cuándo las personas se infectan, es decir, cuando un virus llega en la posición
-* de una persona.
-*/
+// Esta función detecta cuándo las personas se infectan, es decir, cuando un virus llega a la posición de una persona.
 void detectInfection() {
 	int i = 0;
 	int j = 0;
-	bool breakC = false;
 	while (i < numVirusT) {
 		if (Objetos.Virus[i].visible && Objetos.Virus[i].x < 10) {
 			while (j < numPersonaT) {
@@ -379,20 +384,7 @@ void detectInfection() {
 	}
 }
 
-/* Se escribe un mensaje en pantalla, en el momento que el juego se acaba.
-*/
-void printRestart() {
-	consoleDemoInit();
-	iprintf("\x1b[10;00H      --- HAS PERDIDO ---         ");
-	iprintf("\x1b[12;00H     Pulsa START para jugar       ");
-	iprintf("\x1b[13;00H            de nuevo              ");
-
-	iprintf("\x1b[15;00H       Pulsa SELECT para          ");
-	iprintf("\x1b[16;00H       apagar la consola          ");
-}
-
-/* Esta función detecta cuándo se han infectado las 5 personas y el juego se acaba.
-*/
+// Esta función detecta cuándo se han infectado las 5 personas y el juego se da por finalizado.
 void detectGameFinish() {
 	if (Estado.infectedpeople == 5) {
 		Estado.estado = RESTART;
