@@ -97,7 +97,7 @@ int main() {
 			case RESTART:
 				if (Estado.restartdone == false) {
 					printRestart();
-					interrupciones();
+					//interrupciones();
 					Estado.restartdone = true;
 				}
 				if (TeclaPulsada() == SELECT) {

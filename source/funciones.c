@@ -164,6 +164,7 @@ void initVarEstado() {
 	Estado.viruskilled =  0;
 	Estado.restartdone = false;
 	Estado.canshot = true;
+	Estado.segs0 = 0;
 }
 
 // En esta función se inicializan las variables del juego, las características y las coordenadas de los sprites.

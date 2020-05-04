@@ -56,10 +56,10 @@ void IntTec() {
 			if (TeclaPulsada() == START){
 					Estado.initdone = false;
 					Estado.instructdone = false;
+					initVarEstado();
+					MostrarFondoInicio();
 					Estado.estado = INIT;
 			}
-			break;
-		default:
 			break;
 	}
 
