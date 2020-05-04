@@ -1,0 +1,1 @@
+FondoNegro.o: FondoNegro.s

@@ -97,7 +97,6 @@ int main() {
 			case RESTART:
 				if (Estado.restartdone == false) {
 					printRestart();
-					//interrupciones();
 					Estado.restartdone = true;
 				}
 				if (TeclaPulsada() == SELECT) {
@@ -106,7 +105,8 @@ int main() {
 				break;
 
 			case END:
-				consoleDemoInit();
+				limpiarPantalla();
+				MostrarFondoNegro();
 				powerOff(POWER_ALL_2D);
 				break;
 

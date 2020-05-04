@@ -38,16 +38,16 @@ void IntTec() {
 					Objetos.Spray.dir = UP;
 					break;
 				case START:
-					Estado.estado = PAUSE;
 					printPausa();
+					Estado.estado = PAUSE;
 					break;
 			}
 			break;
 		case PAUSE:
 			switch(TeclaPulsada()) {
 				case START:
-					Estado.estado = GAME;
 					printBasicInfo();
+					Estado.estado = GAME;
 					break;
 			}
 			break;
@@ -56,6 +56,7 @@ void IntTec() {
 			if (TeclaPulsada() == START){
 					Estado.initdone = false;
 					Estado.instructdone = false;
+					limpiarPantalla();
 					initVarEstado();
 					MostrarFondoInicio();
 					Estado.estado = INIT;

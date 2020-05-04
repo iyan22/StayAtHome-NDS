@@ -46,9 +46,16 @@ void IntTemp0() {
 		tick0 = 0;										// Restablecemos tick0
 		Estado.canshot = true;
 		if (Estado.estado == GAME) {					// Si estamos en estado GAME
-			if (Estado.segs0 % 2 == 0){					// Cada 2 segs
-				spawnVirus();							// Generamos virus
-				calculateDifficulty();					// Recalculamos dificultad
+			calculateDifficulty();						// Recalculamos dificultad
+			if (Estado.dificultad == 1 ||
+			    Estado.dificultad == 3	) {
+				if (Estado.segs0 % 2 == 0){					// Cada 2 segs
+					spawnVirus();							// Generamos virus
+				}
+			} else {
+				if (Estado.segs0 % 1 == 0){					// Cada 2 segs
+					spawnVirus();							// Generamos virus
+				}
 			}
 			Estado.segs0 = Estado.segs0 + 1;			// Sumamos 1 a segs0 (seg jugando)
 			printSegs();								// Imprimimos en pantalla segs0

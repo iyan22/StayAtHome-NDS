@@ -5,6 +5,7 @@ extern void initFondos();
 
 extern void MostrarFondoTrafico();
 extern void MostrarFondoInicio();
+extern void MostrarFondoNegro();
 
 /* Definir el sistema de vídeo */
 extern void initVideo();

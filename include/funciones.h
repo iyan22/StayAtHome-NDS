@@ -23,6 +23,7 @@ extern void printPausa();
 extern void printRestart();
 extern void MostrarPersonas();
 extern void MostrarPersona(int indice, int x, int y);
+extern void limpiarPantalla();
 
 // Funciones inicialización
 extern void initVarEstado();

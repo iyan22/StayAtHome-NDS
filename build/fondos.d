@@ -61,7 +61,8 @@ fondos.o: /home/parallels/Desktop/StayAtHome-NDS/source/fondos.c \
  /opt/devkitpro/libnds/include/nds/arm9/nand.h \
  /home/parallels/Desktop/StayAtHome-NDS/include/fondos.h \
  /home/parallels/Desktop/StayAtHome-NDS/build/FondoTrafico.h \
- /home/parallels/Desktop/StayAtHome-NDS/build/FondoInicio.h
+ /home/parallels/Desktop/StayAtHome-NDS/build/FondoInicio.h \
+ /home/parallels/Desktop/StayAtHome-NDS/build/FondoNegro.h
 
 /opt/devkitpro/libnds/include/nds.h:
 
@@ -188,3 +189,5 @@ fondos.o: /home/parallels/Desktop/StayAtHome-NDS/source/fondos.c \
 /home/parallels/Desktop/StayAtHome-NDS/build/FondoTrafico.h:
 
 /home/parallels/Desktop/StayAtHome-NDS/build/FondoInicio.h:
+
+/home/parallels/Desktop/StayAtHome-NDS/build/FondoNegro.h:

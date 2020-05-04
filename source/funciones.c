@@ -99,9 +99,13 @@ void calculateDifficulty() {
 		Estado.dificultad = 2;
 		iprintf("\x1b[10;00H  Dificultad: Media    ");
 	}
-	else {
+	else if (Estado.segs0 < 180) {
 		Estado.dificultad = 3;
 		iprintf("\x1b[10;00H  Dificultad: Dificil  ");
+	}
+	else {
+		Estado.dificultad = 4;
+		iprintf("\x1b[10;00H  Dificultad: Extrema  ");
 	}
 }
 
@@ -125,9 +129,9 @@ void printPausa() {
 // Esta función escribe un mensaje en pantalla, en el momento que el juego se acaba.
 void printRestart() {
 	consoleDemoInit();
-	iprintf("\x1b[10;00H      --- HAS PERDIDO ---         ");
-	iprintf("\x1b[12;00H     Pulsa START para jugar       ");
-	iprintf("\x1b[13;00H            de nuevo              ");
+	iprintf("\x1b[07;00H      --- HAS PERDIDO ---         ");
+	iprintf("\x1b[11;00H     Pulsa START para jugar       ");
+	iprintf("\x1b[12;00H            de nuevo              ");
 
 	iprintf("\x1b[15;00H       Pulsa SELECT para          ");
 	iprintf("\x1b[16;00H       apagar la consola          ");
@@ -146,6 +150,28 @@ void MostrarPersonas() {
 		MostrarPersona(Objetos.Persona[i].indiceArriba, Objetos.Persona[i].x, Objetos.Persona[i].y);
 		i++;
 	}
+}
+
+// Esta función borra todos los sprites de la pantalla.
+void limpiarPantalla() {
+	int i = 0;
+	while (i < numVirusT) {
+		BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
+		i++;
+	}
+	i = 0;
+	while (i < numGotaT) {
+		BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+		i++;
+	}
+	i = 0;
+	while (i < numPersonaT) {
+		BorrarP2Arriba(Objetos.Persona[i].indiceArriba, Objetos.Persona[i].x, Objetos.Persona[i].y);
+		BorrarP2Abajo(Objetos.Persona[i].indiceAbajo, Objetos.Persona[i].x, Objetos.Persona[i].y+16);
+		i++;
+	}
+	BorrarSpray(Objetos.Spray.x, Objetos.Spray.y);
+	consoleDemoInit();
 }
 
 
@@ -202,7 +228,6 @@ void initVarGameScreen() {
 		i++;
 	}
 }
-
 
 /*-----------------------------------------------------------------------------------------------------------
 								FUNCIONES PRINCIPALES
@@ -270,7 +295,7 @@ void spawnVirus(){
 // Esta función hace que se actualice la posición de los viruses siguiendo una trayectoria definida por la dificultad.
 void updateVirus() {
 	int i = 0;
-	if (Estado.dificultad == 1) {
+	if (Estado.dificultad < 3) {
 		while (i < numVirusT) {
 			if(Objetos.Virus[i].visible && Objetos.Virus[i].x < 5){
 				Objetos.Virus[i].visible = false;
@@ -283,25 +308,6 @@ void updateVirus() {
 			i++;
     	}
 	}
-	else if (Estado.dificultad >= 2) {
-		while (i < numVirusT) {
-			if(Objetos.Virus[i].visible && Objetos.Virus[i].x < 5){
-				Objetos.Virus[i].visible = false;
-				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
-			}
-			else if (Objetos.Virus[i].visible) {
-				if ( rand()%5 == 0 && Objetos.Virus[i].y < 170){
-						Objetos.Virus[i].y = Objetos.Virus[i].y + 1;
-					}
-				else if ( rand()%5 == 0 && Objetos.Virus[i].y > 10){
-						Objetos.Virus[i].y = Objetos.Virus[i].y - 1;
-				}
-				Objetos.Virus[i].x = Objetos.Virus[i].x - 1;
-				MostrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
-			}
-			i++;
-		}
-	}
 	else {
 		while (i < numVirusT) {
 			if(Objetos.Virus[i].visible && Objetos.Virus[i].x < 5){
@@ -309,11 +315,11 @@ void updateVirus() {
 				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
 			else if (Objetos.Virus[i].visible) {
-				if ( rand()%2 == 0 && Objetos.Virus[i].y < 170){
-					Objetos.Virus[i].y = Objetos.Virus[i].y - 2;
-				}
-				else if ( rand()%2 == 0 && Objetos.Virus[i].y > 10){
-					Objetos.Virus[i].y = Objetos.Virus[i].y + 2;
+				if ( rand()%3 == 0 && Objetos.Virus[i].y < 170){
+						Objetos.Virus[i].y = Objetos.Virus[i].y + 1;
+					}
+				else if ( rand()%3 == 0 && Objetos.Virus[i].y > 10){
+						Objetos.Virus[i].y = Objetos.Virus[i].y - 1;
 				}
 				Objetos.Virus[i].x = Objetos.Virus[i].x - 1;
 				MostrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);

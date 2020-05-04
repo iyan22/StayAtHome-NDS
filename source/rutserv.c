@@ -19,7 +19,7 @@ void HabilitarInterrupciones() { // En el Controlador de Interrupciones
   // Escribir un 1 en el bit correspondiente 
   // Se escribe  0x1038 ya que utilizamos el TIMER0 y TIMER1 para eso tenemos que activar
   // los bits 3 y 4 respectivamente, de esta forma revisaríamos que es lo que pasa en los tres.
-  IE = 0x1018;
+  IE = IE | 0x1018;
   // Se vuelven a habilitar todas las interrupciones    
 	IME = 1;
 }
