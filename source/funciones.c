@@ -295,7 +295,7 @@ void spawnVirus(){
 // Esta función hace que se actualice la posición de los viruses siguiendo una trayectoria definida por la dificultad.
 void updateVirus() {
 	int i = 0;
-	if (Estado.dificultad < 3) {
+	if (Estado.dificultad == 1 || Estado.dificultad == 3) {
 		while (i < numVirusT) {
 			if(Objetos.Virus[i].visible && Objetos.Virus[i].x < 5){
 				Objetos.Virus[i].visible = false;
@@ -312,7 +312,7 @@ void updateVirus() {
 		while (i < numVirusT) {
 			if(Objetos.Virus[i].visible && Objetos.Virus[i].x < 5){
 				Objetos.Virus[i].visible = false;
-				BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
+				(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
 			}
 			else if (Objetos.Virus[i].visible) {
 				if ( rand()%3 == 0 && Objetos.Virus[i].y < 170){
@@ -341,19 +341,19 @@ void shot() {
 void checkVirusKill() {
 	int i = 0;
 	int j = 0;
-	while (i < numGotaT) {
-		if (Objetos.Gota[i].visible) {
-			while (j < numVirusT) {
-				if (Objetos.Virus[j].visible &&
-					Objetos.Gota[i].x <= Objetos.Virus[j].x && 
-					Objetos.Virus[j].x <= Objetos.Gota[i].x+2 &&
-					Objetos.Gota[i].y-10 <= Objetos.Virus[j].y &&
-					Objetos.Virus[j].y <= Objetos.Gota[i].y+18) {
+	while (i < numVirusT) {
+		if (Objetos.Virus[i].visible) {
+			while (j < numGotaT) {
+				if (Objetos.Gota[j].visible&&
+					Objetos.Gota[j].x-2 <= Objetos.Virus[i].x && 
+					Objetos.Virus[i].x <= Objetos.Gota[j].x+2 &&
+					Objetos.Gota[j].y-10 <= Objetos.Virus[i].y &&
+					Objetos.Virus[i].y <= Objetos.Gota[j].y+18) {
 
-						Objetos.Virus[j].visible = false;
-						Objetos.Gota[i].visible = false;
-						BorrarVirus(Objetos.Virus[j].indice, Objetos.Virus[j].x, Objetos.Virus[j].y);
-						BorrarGota(Objetos.Gota[i].indice, Objetos.Gota[i].x, Objetos.Gota[i].y);
+						Objetos.Virus[i].visible = false;
+						Objetos.Gota[j].visible = false;
+						BorrarVirus(Objetos.Virus[i].indice, Objetos.Virus[i].x, Objetos.Virus[i].y);
+						BorrarGota(Objetos.Gota[j].indice, Objetos.Gota[j].x, Objetos.Gota[j].y);
 						Estado.viruskilled = Estado.viruskilled + 1;
 				}
 				j++;
