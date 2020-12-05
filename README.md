@@ -1,4 +1,6 @@
 # StayAtHome-NDS
+
+### Introduction
 Development of NDS game: StayAtHome
 
 This project is part of the subject Computer Structure given the first year of Computer Science Engineering (BS) at UPV/EHU.
@@ -15,11 +17,24 @@ For more information you can read the Memory or the Project statement in documen
   <img width="256" height="192" src="https://github.com/iyan22/StayAtHome-NDS/blob/master/images/FondoInicio.png">
 </p>
 
+We have used libnds library.
+
 
 Developed by:
 - <p><a href="https://github.com/iyan22" target="_blank">@iyan22</a></p>
 - <p><a href="https://github.com/Unai3105" target="_blank">@Unai3105</a></p>
 - <p><a href="https://github.com/all3xandra" target="_blank">@all3xandra</a></p>
+
+
+### How to compile
+make clean: Clean binaries created.
+make: Create the new binaries (nds, elf, arm9,...).
+
+
+
+### How to play
+You will need to download the emulator NO$GBA for Nintendo DS. 
+Desmume does not work correctly due to a technique used in the development.
 
 
 
